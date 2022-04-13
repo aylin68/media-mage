@@ -1,4 +1,5 @@
-import React from "react";
+import {React} from "react";
+import {Link} from "react-router-dom"
 import "./navbar.css";
 //🍔 Menu
 let burgerIsToggled = false;
@@ -10,8 +11,6 @@ const burgerToggle = () => {
     : (navLinks[0].style.display = "flex");
 };
 
-
-
 const Navbar = () => {
   return (
     <div className="navBar">
@@ -21,8 +20,7 @@ const Navbar = () => {
           alt="logo"
           href="#"
         />
-          <h1>mediamage</h1>
-
+        <h1>mediamage</h1>
       </div>
       <div className="searchContainer">
         <input type="text" className="searchBar" />
@@ -31,16 +29,16 @@ const Navbar = () => {
       <div className="navLinks">
         <ul className="navList">
           <li>
-            <a href="">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="">APIs</a>
+            <Link to="/apis">APIs</Link>
           </li>
           <li>
-            <a href="">Profile</a>
+            <Link to="/profile/:id">Profile</Link>
           </li>
         </ul>
       </div>
