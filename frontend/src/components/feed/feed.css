@@ -1,0 +1,13 @@
+.feedBody {
+    display: flex;
+    flex-direction: column;
+}
+iframe {
+    display: flex;
+    margin: 1rem;
+}
+p {
+    width: 40rem;
+    display: flex;
+    margin: 1rem;
+}
