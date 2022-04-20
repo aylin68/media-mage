@@ -1,0 +1,12 @@
+.apiList {
+    margin: .5rem;
+    list-style: none;
+    width: max-content;
+}
+
+.apiListItem{
+    margin: .2rem;
+}
+.apiListItem a {
+    text-decoration: none;
+}
