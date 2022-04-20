@@ -59,6 +59,10 @@
   padding:0  .5rem ;
 }
 
+.burgerMenu {
+  display: none;
+}
+
 @media only screen and (max-width: 700px) {
   .navBar h1 {
     display: none;

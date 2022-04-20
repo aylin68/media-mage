@@ -1,14 +1,15 @@
-import {React} from "react";
-import {Link} from "react-router-dom"
+import { React } from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
+
 //🍔 Menu
 let burgerIsToggled = false;
 const navLinks = document.getElementsByClassName("navLinks");
 const burgerToggle = () => {
   burgerIsToggled = !burgerIsToggled;
   burgerIsToggled
-    ? (navLinks[0].style.display = "none")
-    : (navLinks[0].style.display = "flex");
+    ? (navLinks[0].style.display = "flex")
+    : (navLinks[0].style.display = "none");
 };
 
 const Navbar = () => {
