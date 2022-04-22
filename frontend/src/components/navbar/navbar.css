@@ -49,14 +49,14 @@
   /* width: 100%; */
   height: 2rem;
   border: 2px solid antiquewhite;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
 }
 .searchBtn {
   border: none;
   border: 2px solid antiquewhite;
   border-radius: 1rem;
   cursor: pointer;
-  padding:0  .5rem ;
+  padding: 0 0.5rem;
 }
 
 .burgerMenu {

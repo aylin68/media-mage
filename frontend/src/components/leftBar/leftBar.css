@@ -1,12 +1,19 @@
-.apiList {
-    margin: .5rem;
-    list-style: none;
-    width: max-content;
+.leftBarBody {
+  height: 100%;
+  width: 300px;
 }
 
-.apiListItem{
-    margin: .2rem;
+.apiList {
+  margin-top: 0.5rem;
+  list-style: none;
+  /*width: max-content;*/
+}
+
+.apiListItem {
+  margin: 0.2rem;
 }
 .apiListItem a {
-    text-decoration: none;
+  text-decoration: none;
+  background-color: transparent;
+  color: darkslateblue;
 }

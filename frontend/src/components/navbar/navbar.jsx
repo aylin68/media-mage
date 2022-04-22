@@ -2,17 +2,19 @@ import { React } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 
-//🍔 Menu
+// 🍔 Menu
 let burgerIsToggled = false;
 const navLinks = document.getElementsByClassName("navLinks");
 const burgerToggle = () => {
   burgerIsToggled = !burgerIsToggled;
-  burgerIsToggled
-    ? (navLinks[0].style.display = "flex")
-    : (navLinks[0].style.display = "none");
+  if (burgerIsToggled) {
+    navLinks[0].style.display = "flex";
+  } else {
+    navLinks[0].style.display = "none";
+  }
 };
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div className="navBar">
       <div className="logo">
@@ -43,12 +45,18 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="burgerMenu" onClick={burgerToggle}>
-        <div className="burgerBtn"></div>
-        <div className="burgerBtn"></div>
+      <div
+        className="burgerMenu"
+        onClick={burgerToggle}
+        onKeyDown={burgerToggle}
+        role="button"
+        tabIndex={0}
+      >
+        <div className="burgerBtn" />
+        <div className="burgerBtn" />
       </div>
     </div>
   );
-};
+}
 
 export default Navbar;
