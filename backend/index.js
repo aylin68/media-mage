@@ -1,14 +1,20 @@
-require("dotenv").config();
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const connectDB = require("./db");
+const authRoute = require("./src/routes/auth");
+const postRoute = require("./src/routes/posts");
 
-const app = require("./src/app");
+dotenv.config();
+connectDB();
 
-const port = parseInt(process.env.APP_PORT ?? "5000", 10);
+// middlewares
+app.use(express.json());
 
-app.listen(port, (err) => {
-  if (err) {
-    console.error("Something bad happened");
-  } else {
-    // eslint-disable-next-line no-restricted-syntax
-    console.log(`Server is listening on ${port}`);
-  }
+app.use("/api/auth", authRoute); // when i go to this address it will run "authRoute" router
+app.use("/api/posts", postRoute);
+
+app.listen(8000, () => {
+  console.log("Backend server is running");
 });
