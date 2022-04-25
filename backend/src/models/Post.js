@@ -14,11 +14,11 @@ const PostSchema = new mongoose.Schema(
       type: String,
     },
     likes: {
-      type: String,
+      type: Array,
       default: [],
     },
   },
   { timestamps: true }
 );
 
-module.export = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Post", PostSchema);

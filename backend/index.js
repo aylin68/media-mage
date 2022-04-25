@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./db");
 const authRoute = require("./src/routes/auth");
 const postRoute = require("./src/routes/posts");
+const userRoute = require("./src/routes/users");
 
 dotenv.config();
 connectDB();
@@ -14,7 +15,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute); // when i go to this address it will run "authRoute" router
 app.use("/api/posts", postRoute);
+app.use("/api/users", userRoute);
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Backend server is running");
 });
