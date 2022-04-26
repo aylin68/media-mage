@@ -11,7 +11,6 @@ function ApiItems() {
     <>
       {Apis.map((api) => (
         <ListGroup.Item
-          as="li"
           variant="primary"
           action
           key={api.name}
