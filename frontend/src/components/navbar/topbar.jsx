@@ -35,7 +35,7 @@ function Topbar() {
               <Button variant="outline-success">Search</Button>
             </Form>
                 </Container>
-                <Container>
+                <Container className="linkContainer">
 
             <Nav className="me-auto">
               <Nav.Link>

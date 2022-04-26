@@ -3,9 +3,18 @@ Link {
 }
 
 .navbar-nav,
-.mr-auto {
+.me-auto {
 flex: 1;
 margin: auto !important;
 display: flex;
 /* justify-content: space-between; */
+}
+
+a.nav-link, a.basic-nav-dropdown {
+    display: flex;
+}
+
+.linkContainer {
+    display: flex;
+    justify-content: space-between !important;
 }
