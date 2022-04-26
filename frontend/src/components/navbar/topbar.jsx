@@ -33,7 +33,7 @@ function Topbar() {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success" color="blue">Search</Button>
+                <Button variant="outline-warning">Search</Button>
               </Form>
             </Container>  
             <Container expand="lg">
@@ -55,7 +55,7 @@ function Topbar() {
                     Weather
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/apis/vimeo" style={{ textDecoration: 'none', color: 'black' }}>Vimeo</Link>
+                    <Link to="/apis/vimeo" style={{ textDecoration: 'none', color: 'black', backgroundColor: 'white' }}>Vimeo</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>Something</NavDropdown.Item>
                   <NavDropdown.Divider />
