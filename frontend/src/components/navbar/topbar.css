@@ -4,17 +4,11 @@ Link {
 
 .navbar-nav,
 .me-auto {
-flex: 1;
-margin: auto !important;
-display: flex;
-/* justify-content: space-between; */
-}
-
-a.nav-link, a.basic-nav-dropdown {
+    flex: 1;
+    margin: auto !important;
     display: flex;
+    justify-content:space-evenly;
 }
-
-.linkContainer {
-    display: flex;
-    justify-content: space-between !important;
+.navbar{
+    border-bottom: 3px solid white;
 }
