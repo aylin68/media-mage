@@ -1,5 +1,6 @@
 .container {
   max-width: 100vw;
+  height: calc(98vh - 4rem);
 }
 
 .row {

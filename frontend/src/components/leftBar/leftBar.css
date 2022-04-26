@@ -7,11 +7,13 @@
   margin-top: 0.5rem;
   list-style: none;
   /*width: max-content;*/
+  height: calc(98vh - 4rem);
 }
 
 .apiListItem {
   margin: 0.2rem;
 }
+
 .apiListItem a {
   text-decoration: none;
   background-color: transparent;
