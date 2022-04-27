@@ -1,4 +1,4 @@
-import { React } from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
 import {
@@ -8,12 +8,22 @@ import {
   Form,
   FormControl,
   Container,
-  Button,
+  Button
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
+import { AuthContext } from "../../context/AuthContext";
 
 function Topbar() {
+  const { user, dispatch } = useContext(AuthContext);
+  const logOut = () => {
+    dispatch({
+      type: "LOGOUT",
+      /* payload: null, */
+    });
+    console.log("hey");
+    /*     user = !user; */
+  };
   return (
     <div className="topbar">
       <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
@@ -81,8 +91,7 @@ function Topbar() {
                     <Link
                       to="/api/weather"
                       style={{ textDecoration: "none", color: "white" }}
-                    />
-                    Weather
+                    >Weather</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link
@@ -102,10 +111,10 @@ function Topbar() {
                 </NavDropdown>
                 <Nav.Link>
                   <Link
-                    to="/logout"
+                    to="/register"
                     style={{ textDecoration: "none", color: "white" }}
-                  >
-                    Log out
+                    onClick={logOut}
+                  >Log out
                   </Link>
                 </Nav.Link>
               </Nav>

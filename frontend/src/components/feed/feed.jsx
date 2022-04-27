@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./feed.css";
+import axios from "axios";
 import { Container } from "react-bootstrap";
 import Post from "../post/post";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await axios.get("posts/timeline/6266bc5a4ba5823fb42d182e");
+      console.log(res);
+      setPosts(res.data);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <Container>
       <Post type="text" postID="1" length="3" />
