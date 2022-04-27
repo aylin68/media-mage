@@ -8,15 +8,19 @@ import {
   Form,
   FormControl,
   Container,
-  Button
+  Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faUser, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faUser,
+  faPaperPlane,
+  faBell,
+} from "@fortawesome/free-solid-svg-icons";
 // config.autoAddCss = false
-
 
 function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
@@ -66,10 +70,13 @@ function Topbar() {
                 <Button variant="outline-warning">Search</Button>
               </Form>
             </Container>
-            <Container className="iconContainer" >
-            <FontAwesomeIcon icon={faEnvelope} />
-            <FontAwesomeIcon icon={faPaperPlane} />
-            <FontAwesomeIcon icon={faUser} />
+            <Container className="iconContainer">
+              <FontAwesomeIcon icon={faEnvelope} />
+              <FontAwesomeIcon icon={faPaperPlane} />
+              <Link to="/profile/:user">
+                <FontAwesomeIcon icon={faUser} />
+              </Link>
+              <FontAwesomeIcon icon={faBell} />
             </Container>
             <Container expand="lg">
               <Nav className="me-auto">
@@ -99,7 +106,9 @@ function Topbar() {
                     <Link
                       to="/api/weather"
                       style={{ textDecoration: "none", color: "white" }}
-                    >Weather</Link>
+                    >
+                      Weather
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link
@@ -122,7 +131,8 @@ function Topbar() {
                     to="/register"
                     style={{ textDecoration: "none", color: "white" }}
                     onClick={logOut}
-                  >Log out
+                  >
+                    Log out
                   </Link>
                 </Nav.Link>
               </Nav>
