@@ -6,7 +6,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        //"plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -14,9 +14,6 @@ module.exports = {
         },
         "ecmaVersion": "latest"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
     }
 }
