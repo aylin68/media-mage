@@ -1,7 +1,3 @@
-.rightBarBody {
-  height: calc(100vh - 4rem);
-}
-
 .rightBarBody img {
   width: 100px;
   height: auto;
