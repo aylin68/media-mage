@@ -25,7 +25,7 @@ function Login() {
         <Link to="/ForgetPassword">
           <div className="login-style">
             <span>
-              <a href="#">Forgot password?</a>
+              <a href="/ForgetPassword">Forgot password?</a>
             </span>
           </div>
         </Link>

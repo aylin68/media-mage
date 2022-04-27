@@ -1,0 +1,45 @@
+.card {
+  margin: 1rem 0 1.5rem 0;
+}
+
+.card-header {
+  background-color: transparent;
+  color: darkslateblue;
+}
+
+.card-body,
+.card-title,
+.card-text,
+.hstack,
+.fa-thumbs-up,
+.fa-thumbs-down,
+.fa-share-from-square {
+  background-color: white;
+  color: darkslateblue;
+}
+
+.card-title {
+  margin-bottom: 1.5rem !important;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-primary {
+  margin-right: 10px;
+}
+
+.vr {
+  background-color: black !important;
+}
+
+img {
+  margin: auto;
+}
+
+.btn-primary {
+  background-color: darkslateblue !important;
+  border-color: darkslateblue !important;
+}
