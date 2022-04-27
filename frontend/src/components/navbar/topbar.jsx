@@ -20,7 +20,6 @@ function Topbar() {
   const logOut = () => {
     dispatch({
       type: "LOGOUT",
-      /* payload: null, */
     });
     console.log("hey");
     /*     user = !user; */
