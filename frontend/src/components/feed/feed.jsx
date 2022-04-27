@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./feed.css";
+import axios from "axios";
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await axios.get("posts/timeline/6266bc5a4ba5823fb42d182e");
+      console.log(res);
+      setPosts(res.data);
+    };
+    fetchPost();
+  }, []);
+
   return (
     <div className="feedBody">
       <iframe
@@ -37,6 +49,9 @@ function Feed() {
         perspiciatis blanditiis eligendi? Nam aliquam eos pariatur? Vitae culpa
         explicabo nihil praesentium cupiditate ullam id quod deserunt itaque?
       </p>
+      <div className="feed">
+        <div className="feedWrapper">{/* min 24:00 */}</div>
+      </div>
     </div>
   );
 }
