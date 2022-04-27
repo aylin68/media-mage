@@ -18,7 +18,7 @@ import {
   faEnvelope,
   faUser,
   faPaperPlane,
-  faBell,
+  faBell
 } from "@fortawesome/free-solid-svg-icons";
 // config.autoAddCss = false
 
