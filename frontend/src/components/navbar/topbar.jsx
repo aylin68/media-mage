@@ -17,9 +17,9 @@ import logo from '../../assets/images/logo.svg'
 function Topbar() {
   return (
     <div className="topbar">
-      <Navbar variant="dark" expand="lg" className="ml-auto" sticky="top">
+      <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
           <img src={logo} alt="logo" className="logo" style={{display: 'flex', width: '3rem', height: 'auto', margin: '0, 1.5rem' }}/>
-        <Container>
+        <Container className="navContainer">
           <Navbar.Brand style={{display: 'flex !important', flexDirection: 'row !important', padding: '0 1rem !important  '}}>
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>mediamage</Link>
           </Navbar.Brand>
@@ -39,7 +39,7 @@ function Topbar() {
             <Container expand="lg">
               <Nav className="me-auto">
                 <Nav.Link>
-                  <Link to="/home" style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
+                  <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
                 </Nav.Link>
                 <Nav.Link>
                   <Link to="/profile/:user" style={{ textDecoration: 'none', color: 'white' }}>Profile</Link>

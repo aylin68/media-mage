@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Feed from "@components/feed/feed";
 import FullPage from "@components/fullpage/fullPage";
 import Vimeo from "@components/Vimeo/vimeo";
-import Navbar from "./components/navbar/navbar";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import ForgetPassword from "./pages/ForgetPassword";
