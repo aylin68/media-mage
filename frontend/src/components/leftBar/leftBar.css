@@ -1,12 +1,24 @@
+.leftBarBody {
+  height: 100%;
+  width: 300px;
+}
+
 .apiList {
-  margin: 0.5rem;
+  margin-top: 0.5rem;
   list-style: none;
-  width: max-content;
+  /*width: max-content;*/
+  height: calc(98vh - 4rem);
 }
 
 .apiListItem {
   margin: 0.2rem;
 }
+
 .apiListItem a {
   text-decoration: none;
+  background-color: transparent;
+  color: darkslateblue;
+  display: block;
+  width: inherit;
+  height: inherit;
 }

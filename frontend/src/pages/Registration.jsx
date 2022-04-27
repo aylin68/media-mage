@@ -3,6 +3,9 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 /* import { Link } from "react-router-dom"; */
 //import "../App.css";
+import React from "react";
+// import { Link } from "react-router-dom";
+import "../App.css";
 
 // adding email and passwordAgain formù
 // axios.defaults.baseURL = "http://localhost:8000/api";

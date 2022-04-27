@@ -22,9 +22,10 @@
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "prettier": "^2.6.2",
+    "prop-types": "^15.8.1",
     "react-bootstrap": "^2.3.0",
-    "react-router-dom": "^6.3.0",
-    "prettier": "^2.6.2"
+    "react-router-dom": "^6.3.0"
   },
   "proxy": "http://localhost:8000/api"
 }
