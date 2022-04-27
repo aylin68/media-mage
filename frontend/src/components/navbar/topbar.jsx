@@ -8,7 +8,7 @@ import {
   Form,
   FormControl,
   Container,
-  Button
+  Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
@@ -21,6 +21,7 @@ function Topbar() {
       type: "LOGOUT",
       /* payload: null, */
     });
+    localStorage.clear();
     console.log("hey");
     /*     user = !user; */
   };
@@ -91,7 +92,9 @@ function Topbar() {
                     <Link
                       to="/api/weather"
                       style={{ textDecoration: "none", color: "white" }}
-                    >Weather</Link>
+                    >
+                      Weather
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link
@@ -111,10 +114,11 @@ function Topbar() {
                 </NavDropdown>
                 <Nav.Link>
                   <Link
-                    to="/register"
+                    to="/login"
                     style={{ textDecoration: "none", color: "white" }}
                     onClick={logOut}
-                  >Log out
+                  >
+                    Log out
                   </Link>
                 </Nav.Link>
               </Nav>

@@ -8,11 +8,10 @@ import { AuthContext } from "../context/AuthContext";
 function Login() {
   const email = useRef(); // we can use useState, but it will re render at every input, we want to avoid this
   const password = useRef();
-  const { isFetching, error, dispatch } = useContext(AuthContext); // to use the value in AuthContext for loginCall
+  const { user, isFetching, error, dispatch } = useContext(AuthContext); // to use the value in AuthContext for loginCall
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(email.current.value);
     loginCall(
       { email: email.current.value, password: password.current.value },
       dispatch
@@ -48,9 +47,10 @@ function Login() {
         <button
           type="submit"
           className="btn btn-lg btn-primary btn-block"
-          disabled={isFetching}
+          // disabled={isFetching}
         >
-          {isFetching ? "Loading" : "Log in"}
+          Log In
+          {/* {isFetching ? "Loading" : "Log in"} */}
         </button>
         <Link to="/ForgetPassword">
           <div className="login-style">
