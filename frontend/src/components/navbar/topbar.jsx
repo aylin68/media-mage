@@ -8,8 +8,7 @@ import {
   Form,
   FormControl,
   Container,
-  Button,
-  ThemeProvider,
+  Button
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
@@ -91,8 +90,7 @@ function Topbar() {
                     <Link
                       to="/api/weather"
                       style={{ textDecoration: "none", color: "white" }}
-                    ></Link>
-                    Weather
+                    >Weather</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link
@@ -115,8 +113,7 @@ function Topbar() {
                     to="/register"
                     style={{ textDecoration: "none", color: "white" }}
                     onClick={logOut}
-                  >
-                    Log out
+                  >Log out
                   </Link>
                 </Nav.Link>
               </Nav>

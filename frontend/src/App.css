@@ -8,13 +8,12 @@
   background-color: darkslateblue;
 }
 
-
-
 .bodyContainer {
-
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
+
 .form-login {
   position: relative;
   display: flex;

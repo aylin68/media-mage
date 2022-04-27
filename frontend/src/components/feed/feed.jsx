@@ -18,7 +18,7 @@ function Feed() {
   }, []);
 
   return (
-    <Container className="feedBody">
+    <Container>
       <Post type="text" postID="1" length="3" />
       <Post type="image" postID="2" length="1" />
       <Post type="weather" postID="3" length="7" />

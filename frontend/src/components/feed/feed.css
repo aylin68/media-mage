@@ -1,22 +1,5 @@
 .feedBody {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  
-  scrollbar-width: none; /* Firefox */
-}
-
-.feedBody::-webkit-scrollbar {
-  display: none;
-}
-
-iframe {
-  display: flex;
-  margin: 1rem;
-}
-p {
-  width: 40rem;
-  display: flex;
-  margin: 1rem;
+  margin: auto;
 }
