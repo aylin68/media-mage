@@ -12,3 +12,13 @@ Link {
 .navbar {
   border-bottom: 3px solid white;
 }
+
+.iconContainer{
+  display: flex;
+  justify-content: space-evenly;
+}
+svg {
+  color: white;
+  font-size: 2rem;
+  display: flex;
+}
