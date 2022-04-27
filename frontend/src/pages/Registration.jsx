@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 //import "../App.css";
 
 // adding email and passwordAgain formù
-axios.defaults.baseURL = "http://localhost:8000/api";
+// axios.defaults.baseURL = "http://localhost:8000/api";
 function Registration() {
   const username = useRef();
   const email = useRef();
