@@ -1,14 +1,14 @@
 Link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .navbar-nav,
 .me-auto {
-    flex: 1;
-    margin: auto !important;
-    display: flex;
-    justify-content:space-evenly;
+  flex: 1;
+  margin: auto !important;
+  display: flex;
+  justify-content: space-evenly;
 }
-.navbar{
-    border-bottom: 3px solid white;
+.navbar {
+  border-bottom: 3px solid white;
 }

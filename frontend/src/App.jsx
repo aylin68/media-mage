@@ -10,7 +10,6 @@ import ForgetPassword from "./pages/ForgetPassword";
 // import Weather from "./components/Weather";
 import Topbar from "./components/navbar/topbar";
 
-
 import "./App.css";
 
 function App() {

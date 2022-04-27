@@ -11,13 +11,13 @@ function FullPage() {
   return (
     <Container className="fullPageBodyContainer">
       <Row lg={12}>
-        <Col lg={2}>
+        <Col className="leftBar" lg={2}>
           <LeftBar />
         </Col>
-        <Col lg={8}>
+        <Col className="feedBody" lg={8}>
           <Outlet />
         </Col>
-        <Col lg={2}>
+        <Col className="rightBar" lg={2}>
           <RightBar />
         </Col>
       </Row>
