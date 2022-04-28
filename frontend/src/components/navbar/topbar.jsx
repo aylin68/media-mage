@@ -18,7 +18,7 @@ import {
   faEnvelope,
   faUser,
   faPaperPlane,
-  faBell
+  faBell,
 } from "@fortawesome/free-solid-svg-icons";
 // config.autoAddCss = false
 
@@ -30,7 +30,6 @@ function Topbar() {
     });
     localStorage.clear();
     console.log("hey");
-    /*     user = !user; */
   };
   return (
     <div className="topbar">
@@ -81,22 +80,16 @@ function Topbar() {
             </Container>
             <Container expand="lg">
               <Nav className="me-auto">
-                <Nav.Link>
-                  <Link
-                    to="/"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    Home
-                  </Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link
-                    to="/profile/:user"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    Profile
-                  </Link>
-                </Nav.Link>
+                <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                  Home
+                </Link>
+
+                <Link
+                  to="/profile/:user"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Profile
+                </Link>
                 <NavDropdown
                   title="API's"
                   id="basic-nav-dropdown"
@@ -127,15 +120,14 @@ function Topbar() {
                   <NavDropdown.Divider />
                   <NavDropdown.Item>Separated link</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link>
-                  <Link
-                    to="/login"
-                    style={{ textDecoration: "none", color: "white" }}
-                    onClick={logOut}
-                  >
-                    Log out
-                  </Link>
-                </Nav.Link>
+
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "white" }}
+                  onClick={logOut}
+                >
+                  Log out
+                </Link>
               </Nav>
             </Container>
           </Navbar.Collapse>

@@ -31,11 +31,13 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res.status(404).json("user not found");
     }
+    console.log(req.body.password, user.password);
     // checking if password match
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password,
       function (err, result) {
+        console.log(result);
         if (!result) {
           return res.status(420).json({ status: "failed" });
         } else {

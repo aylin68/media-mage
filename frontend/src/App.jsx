@@ -11,7 +11,7 @@ import { AuthContext } from "./context/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 // import Weather from "./components/Weather";
 import Topbar from "./components/navbar/topbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -28,6 +28,7 @@ function App() {
     } else {
       //  REDIRECT TO LOGIN
       // return <Navigate to="/register" />;
+      return;
     }
   }, []);
   return (
@@ -36,15 +37,23 @@ function App() {
         <Topbar />
       </nav>
       <div className="bodyContainer">
-        <ProtectedRoute user={user}>
-          <Routes>
-            <Route path="/" element={<FullPage />}>
-              <Route path="" element={<Feed />} />
-              <Route path="vimeo" element={<Vimeo />} />
-            </Route>
-          </Routes>
-        </ProtectedRoute>
         <Routes>
+          {/* <Route exact path="/" element={<FullPage />}>
+            <Route path="" element={<Feed />} />
+            <Route path="vimeo" element={<Vimeo />} />
+          </Route> */}
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute user={user}>
+                <FullPage />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="" element={<Feed />} />
+            <Route path="vimeo" element={<Vimeo />} />
+          </Route>
           {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
@@ -56,6 +65,7 @@ function App() {
 
           {/* } */}
           {/* /> */}
+
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}
