@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./post.css";
-// import { useState } from "react/cjs/react.production.min";
 import { Card, Button, Stack, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from "prop-types";
 
 function Post(props) {
-  const { type, postID, length } = props;
-
+  const { type, postID, length, postContent } = props;
+  //const [isLiked, setIsLiked] = useState(false);
+  
   const rows = [];
 
   for (let i = 0; i < length; i += 1) {
-    rows.push(<Card.Text key={i}>Dummy text, will become content</Card.Text>);
+    rows.push(<Card.Text key={i}>{postContent}</Card.Text>);
   }
 
   return (
@@ -46,15 +46,15 @@ function Post(props) {
             onKeyDown="null"
           />
           <i
-            role="button"
-            tabIndex={0}
-            aria-label="Thumbs down"
-            className="fa-regular fa-thumbs-down fa-xl"
-            onClick={(event) => {
-              event.target.classList.toggle("fa-regular");
-              event.target.classList.toggle("fa-solid");
-            }}
-            onKeyDown="null"
+           role="button"
+           tabIndex={0}
+           aria-label="Thumbs down"
+           className="fa-regular fa-thumbs-down fa-xl"
+           onClick={(event) => {
+             event.target.classList.toggle("fa-regular");
+             event.target.classList.toggle("fa-solid");
+           }}
+           onKeyDown="null"
           />
           <i className="fa-solid fa-share-from-square fa-xl" />
         </Stack>
