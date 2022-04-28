@@ -1,7 +1,6 @@
-Link {
-  text-decoration: none;
-}
+.ml-auto {
 
+}
 .navbar-nav,
 .me-auto {
   flex: 1;
@@ -11,4 +10,39 @@ Link {
 }
 .navbar {
   border-bottom: 3px solid white;
+}
+
+nav {
+  justify-content: space-between !important;
+}
+
+.nav-link, .dropdown-item {
+  font-size: 1.5rem !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;  
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
+  font-weight: bold;
+
+}
+
+.navContainer.container {
+  margin: 0;
+}
+.iconContainer{
+  display: flex;
+  justify-content: space-evenly;
+}
+svg {
+  color: white;
+  font-size: 1.75rem;
+  display: flex;
+
+}
+
+svg:hover {
+  cursor: pointer;
+  opacity: 70%;
 }

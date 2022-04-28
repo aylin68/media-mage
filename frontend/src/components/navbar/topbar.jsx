@@ -13,13 +13,20 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faUser,
+  faPaperPlane,
+  faBell
+} from "@fortawesome/free-solid-svg-icons";
+// config.autoAddCss = false
 
 function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
   const logOut = () => {
     dispatch({
       type: "LOGOUT",
-      /* payload: null, */
     });
     localStorage.clear();
     console.log("hey");
@@ -63,6 +70,14 @@ function Topbar() {
                 />
                 <Button variant="outline-warning">Search</Button>
               </Form>
+            </Container>
+            <Container className="iconContainer">
+              <FontAwesomeIcon icon={faEnvelope} />
+              <FontAwesomeIcon icon={faPaperPlane} />
+              <Link to="/profile/:user">
+                <FontAwesomeIcon icon={faUser} />
+              </Link>
+              <FontAwesomeIcon icon={faBell} />
             </Container>
             <Container expand="lg">
               <Nav className="me-auto">
