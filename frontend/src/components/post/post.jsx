@@ -3,10 +3,14 @@ import "./post.css";
 import { Card, Button, Stack, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from "prop-types";
+import { faThumbsUp as fasThumbsUp, faThumbsDown as fasThumbsDown, faShareFromSquare as fasShareFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as farThumbsUp, faThumbsDown as farThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Post(props) {
   const { type, postID, length, postContent } = props;
-  //const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
   
   const rows = [];
 
@@ -34,29 +38,29 @@ function Post(props) {
           <Form.Control className="me-auto" placeholder="Comment..." />
           <Button variant="primary">COMMENT</Button>
           <div className="vr" />
-          <i
+          <FontAwesomeIcon
             role="button"
             tabIndex={0}
             aria-label="Thumbs up"
-            className="fa-regular fa-thumbs-up fa-xl"
-            onClick={(event) => {
-              event.target.classList.toggle("fa-regular");
-              event.target.classList.toggle("fa-solid");
+            icon={isLiked ? fasThumbsUp : farThumbsUp}
+            // className="fa-regular fa-thumbs-up fa-xl"
+            onClick={() => {
+              setIsLiked(!isLiked)
             }}
             onKeyDown="null"
           />
-          <i
+          <FontAwesomeIcon
            role="button"
            tabIndex={0}
            aria-label="Thumbs down"
-           className="fa-regular fa-thumbs-down fa-xl"
-           onClick={(event) => {
-             event.target.classList.toggle("fa-regular");
-             event.target.classList.toggle("fa-solid");
+           icon={isDisliked? fasThumbsDown : farThumbsDown}
+          //  className="fa-regular fa-thumbs-down fa-xl"
+           onClick={() => {
+            setIsDisliked(!isDisliked)
            }}
            onKeyDown="null"
           />
-          <i className="fa-solid fa-share-from-square fa-xl" />
+          <FontAwesomeIcon icon={fasShareFromSquare} />
         </Stack>
       </Card.Body>
     </Card>

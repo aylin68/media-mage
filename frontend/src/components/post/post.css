@@ -51,3 +51,7 @@ img {
 svg{
   font-size: 1.5rem;
 }
+
+svg:focus{
+  outline: none;
+}
