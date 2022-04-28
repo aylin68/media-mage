@@ -44,7 +44,7 @@ const TopbarMobile = () => {
           justifyContent: 'space-between'
         }}
       >
-          <Container className="iconContainer" style={{display: 'flex', alignItems: 'center'}}>
+          <Container className="iconContainer" style={{display: 'flex', alignItems: 'center', padding: '0'}}>
         <img
           src={logo}
           alt="logo"
