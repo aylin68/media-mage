@@ -1,5 +1,23 @@
-.rightBarBody img {
-  width: 100px;
-  height: auto;
-  border-radius: 50%;
+/* width */
+.rightBarContainer {
+    height: calc(100vh - 5rem);
+    overflow-y: auto;
 }
+::-webkit-scrollbar {
+    /* width: 10px; */
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* background: #b18fb3;  */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    /* background: rgb(64, 2, 115);  */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    /* background: #555;  */
+  }

@@ -10,6 +10,7 @@ import {
   Container,
   Button,
 } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
@@ -88,58 +89,58 @@ const TopbarDesktop = () => {
         </Container>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+              <LinkContainer to="/" style={{ textDecoration: "none", color: "white" }}>
             <Nav.Link>
-              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
                 Home
-              </Link>
             </Nav.Link>
-            <Nav.Link>
-              <Link
+              </LinkContainer>
+              <LinkContainer
                 to="/profile/:user"
                 style={{ textDecoration: "none", color: "white" }}
-              >
+                >
+                <Nav.Link>
                 Profile
-              </Link>
             </Nav.Link>
+              </LinkContainer>
             <NavDropdown
               title="API's"
               id="basic-nav-dropdown"
               variant="dark"
               bg="dark"
             >
-              <NavDropdown.Item>
-                <Link
-                  to="/api/weather"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
+                <LinkContainer
+                  to="/apis/weather"
+                  style={{ textDecoration: "none"}}
+                  >
+                  <NavDropdown.Item>
                   Weather
-                </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link
+                </LinkContainer>
+                <LinkContainer
                   to="/apis/vimeo"
                   style={{
                     textDecoration: "none",
                     color: "black",
                     backgroundColor: "white",
                   }}
-                >
+                  >
+                  <NavDropdown.Item>
                   Vimeo
-                </Link>
               </NavDropdown.Item>
+                </LinkContainer>
               <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link>
-              <Link
+              <LinkContainer
                 to="/register"
-                style={{ textDecoration: "none", color: "white" }}
+                style={{ textDecoration: "none", color: "white", marginRight: '1rem'}}
                 onClick={logOut}
-              >
+                >
+                <Nav.Link>
                 Log out
-              </Link>
             </Nav.Link>
+              </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>
