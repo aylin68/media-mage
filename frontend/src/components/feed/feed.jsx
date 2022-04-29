@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./feed.css";
 import axios from "axios";
 import { Container } from "react-bootstrap";
+import Post from "@components/post/post";
 import PostListComponent from "../post/postListComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,7 +12,7 @@ import PostList from "../post/PostList";
 function Feed() {
   const [posts, setPosts] = useState([]);
   const { user, error } = useContext(AuthContext);
-  const [postList, setPostList] = useState([...PostList])
+  const [postList, setPostList] = useState([...PostList]);
 
   // useEffect(() => {
   //   const fetchPosts = async () => {
@@ -39,19 +40,17 @@ function Feed() {
 
   return (
     <Container>
-      {posts.map((p) => (
-        <Post type={p.desc} postID={posts.indexOf(p)} length={p.desc.length} />
-      ))}
-      <CreatePostInput postList={postList} setPostList={setPostList}/>
-      <PostListComponent postList={postList} setPostList={setPostList}/>
+      <CreatePostInput postList={postList} setPostList={setPostList} />
 
-      <Post type="text" postID="1" length="3" />
-      <Post type="image" postID="2" length="1" />
-      <Post type="weather" postID="3" length="7" />
-      <Post type="text" postID="4" length="6" />
-      <Post type="text" postID="5" length="2" />
-      <Post type="text" postID="6" length="9" />
-      <Post type="text" postID="7" length="4" />
+      <PostListComponent postList={postList} setPostList={setPostList} />
+      {posts.map((p) => (
+        <Post
+          key={posts.indexOf(p)}
+          type={p.desc}
+          postID={posts.indexOf(p)}
+          length={p.desc.length}
+        />
+      ))}
     </Container>
   );
 }

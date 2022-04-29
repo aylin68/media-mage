@@ -7,7 +7,6 @@ import Vimeo from "@components/Vimeo/vimeo";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import ForgetPassword from "./pages/ForgetPassword";
-import Share from "@components/share/share";
 import { AuthContext } from "./context/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 // import Weather from "./components/Weather";
