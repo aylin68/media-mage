@@ -39,7 +39,7 @@
   background-color: black !important;
 }
 
-img {
+.card-body img {
   margin: auto;
 }
 
@@ -54,4 +54,34 @@ svg{
 
 svg:focus{
   outline: none;
+}
+
+.comment-section  {
+  background-color: white !important;
+}
+.vstack {
+  background-color: white !important;
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+.comment-body{
+  gap: 0 !important;
+
+}
+
+.full-comment{
+  border: 1px solid darkslateblue;
+  border-radius: 5px;
+}
+
+.user-post-header{
+  justify-content: flex-start;
+}
+.user-post-header a{
+  background-color: white !important;
+  text-decoration: none;
+  color: gray
 }
