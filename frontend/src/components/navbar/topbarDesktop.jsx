@@ -110,7 +110,7 @@ const TopbarDesktop = () => {
             >
                 <LinkContainer
                   to="/apis/weather"
-                  style={{ textDecoration: "none", color: "white" }}
+                  style={{ textDecoration: "none"}}
                   >
                   <NavDropdown.Item>
                   Weather
