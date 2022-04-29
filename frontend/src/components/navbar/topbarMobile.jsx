@@ -11,6 +11,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +20,7 @@ import {
   faUser,
   faPaperPlane,
   faBell,
-  faSearch
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
 const TopbarMobile = () => {
@@ -37,25 +38,28 @@ const TopbarMobile = () => {
         fluid
         className="navContainer"
         style={{
-            display: "flex",
+          display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: 'space-between'
+          justifyContent: "space-between",
         }}
       >
-          <Container className="iconContainer" style={{display: 'flex', alignItems: 'center', padding: '0'}}>
-        <img
-          src={logo}
-          alt="logo"
-          className="logo"
-          style={{
-            display: "flex",
-            width: "3rem",
-            height: "auto",
-            margin: "0"
-          }}
-        />
+        <Container
+          className="iconContainer"
+          style={{ display: "flex", alignItems: "center", padding: "0" }}
+        >
+          <img
+            src={logo}
+            alt="logo"
+            className="logo"
+            style={{
+              display: "flex",
+              width: "3rem",
+              height: "auto",
+              margin: "0",
+            }}
+          />
 
           <Form className="d-flex">
             <FormControl
@@ -65,11 +69,9 @@ const TopbarMobile = () => {
               aria-label="Search"
             />
             <Button variant="outline" id="searchText">
-            <FontAwesomeIcon icon={faSearch}/>
+              <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
-
-          
 
           {/* <FontAwesomeIcon icon={faEnvelope} />
           <FontAwesomeIcon icon={faPaperPlane} />
@@ -82,63 +84,56 @@ const TopbarMobile = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link>
-              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-                Home
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/profile/:user"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Profile
-              </Link>
-            </Nav.Link>
+            <LinkContainer
+              to="/"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer
+              to="/profile/:user"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Nav.Link>Profile</Nav.Link>
+            </LinkContainer>
             <NavDropdown
               title="API's"
               id="basic-nav-dropdown"
               variant="dark"
               bg="dark"
             >
-              <NavDropdown.Item>
-                <Link
-                  to="/api/weather"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  Weather
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link
-                  to="/apis/vimeo"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    backgroundColor: "white",
-                  }}
-                >
-                  Vimeo
-                </Link>
-              </NavDropdown.Item>
+              <LinkContainer
+                to="/api/weather"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <NavDropdown.Item>Weather</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer
+                to="/apis/vimeo"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  backgroundColor: "white",
+                }}
+              >
+                <NavDropdown.Item>Vimeo</NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link>
-              <Link
-                to="/register"
-                style={{ textDecoration: "none", color: "white" }}
-                onClick={logOut}
-              >
-                Log out
-              </Link>
-            </Nav.Link>
+            <LinkContainer
+              to="/register"
+              style={{ textDecoration: "none", color: "white" }}
+              onClick={logOut}
+            >
+              <Nav.Link>Log out</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default TopbarMobile;

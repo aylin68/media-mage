@@ -2,7 +2,8 @@ import React from "react";
 import "./leftBar.css";
 // import { useState } from "react/cjs/react.production.min";
 import { Link } from "react-router-dom";
-import { ListGroup } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { ListGroup, NavLink } from "react-bootstrap";
 import Apis from "./ApiList";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,7 +17,9 @@ function ApiItems() {
           key={api.name}
           className="apiListItem"
         >
-          <Link to={api.route}>{api.name}</Link>
+          <LinkContainer to={api.route}>
+            <NavLink>{api.name}</NavLink>
+          </LinkContainer>
         </ListGroup.Item>
       ))}
     </>
