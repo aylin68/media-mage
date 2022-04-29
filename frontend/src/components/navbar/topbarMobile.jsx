@@ -19,7 +19,7 @@ import {
   faUser,
   faPaperPlane,
   faBell,
-  faSearch
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
 const TopbarMobile = () => {
@@ -37,25 +37,27 @@ const TopbarMobile = () => {
         fluid
         className="navContainer"
         style={{
-            display: "flex",
+          display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: 'space-between'
         }}
       >
-          <Container className="iconContainer" style={{display: 'flex', alignItems: 'center', padding: '0'}}>
-        <img
-          src={logo}
-          alt="logo"
-          className="logo"
-          style={{
-            display: "flex",
-            width: "3rem",
-            height: "auto",
-            margin: "0"
-          }}
-        />
+        <Container
+          className="iconContainer"
+          style={{ display: "flex", alignItems: "center", padding: "0" }}
+        >
+          <img
+            src={logo}
+            alt="logo"
+            className="logo"
+            style={{
+              display: "flex",
+              width: "3rem",
+              height: "auto",
+              margin: "0",
+            }}
+          />
 
           <Form className="d-flex">
             <FormControl
@@ -65,11 +67,9 @@ const TopbarMobile = () => {
               aria-label="Search"
             />
             <Button variant="outline" id="searchText">
-            <FontAwesomeIcon icon={faSearch}/>
+              <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
-
-          
 
           {/* <FontAwesomeIcon icon={faEnvelope} />
           <FontAwesomeIcon icon={faPaperPlane} />
@@ -139,6 +139,6 @@ const TopbarMobile = () => {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default TopbarMobile;
