@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function FullPage() {
   const { user, error, isFetching } = useContext(AuthContext);
-
+  console.log({ user, error, isFetching });
   return (
     <Container className="fullPageBodyContainer">
       <Row lg={12}>

@@ -19,10 +19,10 @@ function Login() {
   };
 
   // console.log(user);
+  <h3>Log in to App</h3>;
   return (
     <form className="form-login" onSubmit={handleClick}>
       <div className="login">
-        <h3>Log in to App</h3>
         <div className="login-style">
           {/* I changed username with email and added required*/}
           <input
