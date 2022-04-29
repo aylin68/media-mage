@@ -8,6 +8,7 @@ import "./CreatePost.css"
 function CreatePostInput(props) {
     const {postList, setPostList} = props;
     const [newPostContent, setNewPostContent] = useState("");
+    const [newPostTitle, setNewPostTitle] = useState("");
 
     const handleEnterDown = (event) => {
         if (event.key === "Enter") {
@@ -17,15 +18,17 @@ function CreatePostInput(props) {
 
     const handlePostCreation  = () => {
             const newPost = {
+                user: [],
                 type: "text",
                 length: 1,
                 postId: 1,
                 postContent: newPostContent,
+                postTitle: newPostTitle,
+                comments: [],
             }
             setPostList([newPost,...postList])
+            setNewPostTitle("")
             setNewPostContent("")
-            console.log(postList);
-            console.log(newPostContent)
     }
     
 
@@ -36,9 +39,12 @@ function CreatePostInput(props) {
             <Card.Title>
             Create a text post
             </Card.Title>
+            <Stack className="post-input" direction="vertical" gap={3}>
+            <Form.Control className="me-auto" as="input" type="text" value={newPostTitle} placeholder="Give your new post a title (or not)..."  onChange={(e) => setNewPostTitle(e.target.value)}/>
             <Stack direction="horizontal" gap={3}>
-            <Form.Control className="me-auto" as="input" type="text" value={newPostContent} placeholder="Create a text post..."  onChange={(e) => setNewPostContent(e.target.value)}/>
+            <Form.Control className="me-auto" as="textarea" type="text" value={newPostContent} placeholder="What's on your mind..."  onChange={(e) => setNewPostContent(e.target.value)}/>
             <Button variant="primary" onClick={handlePostCreation} onKeyDown={handleEnterDown}>POST</Button>
+            </Stack>
             </Stack>
             </Card.Body>
         </Card>
