@@ -1,5 +1,4 @@
 .ml-auto {
-
 }
 .navbar-nav,
 .me-auto {
@@ -10,13 +9,15 @@
 }
 .navbar {
   border-bottom: 3px solid white;
+  background-color: darkslateblue;
 }
 
 nav {
   justify-content: space-between !important;
 }
 
-.nav-link, .dropdown-item {
+.nav-link,
+.dropdown-item {
   font-size: 1.5rem !important;
   flex-direction: row !important;
   min-width: fit-content;
@@ -30,13 +31,12 @@ nav {
 .navbar-brand {
   font-size: 2rem !important;
   font-weight: bold;
-  
 }
 
 .navContainer.container {
   margin: 0;
 }
-.iconContainer{
+.iconContainer {
   display: flex;
   justify-content: space-evenly;
 }
@@ -55,8 +55,8 @@ svg:hover {
   margin: 0 1rem;
 }
 
-.col-lg-2{
-  display: flex   ;
+.col-lg-2 {
+  display: flex;
   flex-direction: row !important;
   min-width: fit-content;
 }
