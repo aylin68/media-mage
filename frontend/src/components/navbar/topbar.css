@@ -19,7 +19,13 @@ nav {
 .dropdown-item {
   font-size: 1.5rem !important;
   flex-direction: row !important;
-  flex-wrap: nowrap !important;
+  /*flex-wrap: nowrap !important;*/
+  min-width: fit-content;
+}
+
+.dropdown-item a {
+  color: black !important;
+  background: none !important;
 }
 
 .navbar-brand {
@@ -44,3 +50,21 @@ svg:hover {
   cursor: pointer;
   opacity: 70%;
 }
+
+.logo {
+  margin: 0 1rem;
+}
+
+.col-lg-2{
+  display: flex   ;
+  flex-direction: row !important;
+  min-width: fit-content;
+}
+
+/* @media only screen and (max-width: 700px) {
+  .navbar-brand {
+    display: none;
+  }
+
+} */
+
