@@ -3,6 +3,7 @@ const { default: mongoose } = require("mongoose");
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URL, {
+      maxPoolSize: 100,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
