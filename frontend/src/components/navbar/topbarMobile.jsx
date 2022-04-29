@@ -104,7 +104,7 @@ const TopbarMobile = () => {
             >
               <LinkContainer
                 to="/api/weather"
-                style={{ textDecoration: "none", color: "white" }}
+                style={{ textDecoration: "none"}}
               >
                 <NavDropdown.Item>Weather</NavDropdown.Item>
               </LinkContainer>
@@ -124,7 +124,7 @@ const TopbarMobile = () => {
             </NavDropdown>
             <LinkContainer
               to="/register"
-              style={{ textDecoration: "none", marginRight: "1rem" }}
+              style={{ textDecoration: "none", color: "white", marginRight: '1rem' }}
               onClick={logOut}
             >
               <Nav.Link>Log out</Nav.Link>
