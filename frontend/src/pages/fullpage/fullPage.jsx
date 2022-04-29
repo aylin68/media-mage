@@ -9,7 +9,7 @@ import { Outlet } from "react-router-dom";
 
 function FullPage() {
   return (
-    <Container className="fullPageBodyContainer">
+    <Container className="fullPageBodyContainer" >
       <Row lg={12}>
         <Col className="leftBar" lg={2}>
           <LeftBar />

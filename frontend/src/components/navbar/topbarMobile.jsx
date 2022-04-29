@@ -124,7 +124,7 @@ const TopbarMobile = () => {
             </NavDropdown>
             <LinkContainer
               to="/register"
-              style={{ textDecoration: "none", color: "white" }}
+              style={{ textDecoration: "none", color: "white", marginRight: '1rem' }}
               onClick={logOut}
             >
               <Nav.Link>Log out</Nav.Link>

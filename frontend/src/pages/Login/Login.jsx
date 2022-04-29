@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
-import "../App.css";
-import { loginCall } from "../apiCalls";
-import { AuthContext } from "../context/AuthContext";
+import "./Login.css";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 function Login() {
   const email = useRef(); // we can use useState, but it will re render at every input, we want to avoid this
@@ -20,6 +20,7 @@ function Login() {
       dispatch
     );
   };
+  
 
   // console.log(user);
   return (

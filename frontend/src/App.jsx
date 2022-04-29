@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 // import Home from "@pages/Home";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Feed from "@components/feed/feed";
-import FullPage from "@components/fullpage/fullPage";
+import FullPage from "@pages/fullpage/fullPage";
 import Vimeo from "@components/Vimeo/vimeo";
-import Login from "./pages/Login";
-import Registration from "./pages/Registration";
-import ForgetPassword from "./pages/ForgetPassword";
+import Login from "./pages/Login/Login";
+import Registration from "./pages/Login/Registration";
+import ForgetPassword from "./pages/Login/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 // import Weather from "./components/Weather";
 import Topbar from "./components/navbar/topbar";
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
-            {/* <Route path='weather' element={<Weather />} /> */}
+            {/* <Route path='apis/weather' element={<Weather />} /> */}
           </Route>
           <Route
             path="/login"
