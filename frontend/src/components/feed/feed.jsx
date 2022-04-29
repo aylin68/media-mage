@@ -26,15 +26,20 @@ function Feed() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("posts/timeline/" + user._id);
-      console.log(res);
-      console.log(res.data);
-      setPosts(res.data);
+      // console.log(res);
+      // console.log(res.data);
+      // setPosts(res.data);
+      setPosts(
+        res.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        })
+      );
       console.log(posts);
     };
-    console.log({ user });
-    console.log(user._id);
-    console.log(posts);
-    console.log(posts[0]);
+    // console.log({ user });
+    // console.log(user._id);
+    // console.log(posts);
+    // console.log(posts[0]);
     fetchPosts();
   }, [user._id]);
 
