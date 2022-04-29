@@ -1,8 +1,7 @@
 .ml-auto {
-
 }
 .navbar-nav,
-.me-auto {
+.me-auto > Link {
   flex: 1;
   margin: auto !important;
   display: flex;
@@ -16,9 +15,11 @@ nav {
   justify-content: space-between !important;
 }
 
-.nav-link, .dropdown-item {
+.nav-link,
+.dropdown-item {
   font-size: 1.5rem !important;
   flex-direction: row !important;
+  /*flex-wrap: nowrap !important;*/
   min-width: fit-content;
 }
 
@@ -30,13 +31,12 @@ nav {
 .navbar-brand {
   font-size: 2rem !important;
   font-weight: bold;
-  
 }
 
 .navContainer.container {
   margin: 0;
 }
-.iconContainer{
+.iconContainer {
   display: flex;
   justify-content: space-evenly;
 }
@@ -67,3 +67,4 @@ svg:hover {
   }
 
 } */
+
