@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const Post = require("../models/Post");
+// const Post = require("../models/Post");
+const Post = require("../models/Post2");
 const User = require("../models/User");
 
 // create a post
@@ -14,7 +15,6 @@ router.post("/", async (req, res) => {
 });
 
 // update a post
-
 router.put("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -30,7 +30,6 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete a post
-
 router.delete("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -46,7 +45,6 @@ router.delete("/:id", async (req, res) => {
 });
 
 // get a post
-
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -57,7 +55,6 @@ router.get("/:id", async (req, res) => {
 });
 
 // get timeline posts
-
 router.get("/timeline/:userId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);

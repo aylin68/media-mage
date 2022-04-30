@@ -1,0 +1,98 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.25rem solid lightgray;
+  height: 4rem;
+}
+.navList {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+}
+.navList a {
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.logo {
+  width: 3rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 100%;
+  height: auto;
+  margin: 0.2rem;
+  filter: blur(2px);
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.logo h1 {
+  margin: 0 1rem;
+  display: flex;
+  z-index: 0;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchBar {
+  background-color: antiquewhite;
+  color: black;
+  margin: 0 1rem;
+  border-radius: 1rem;
+  /* width: 100%; */
+  height: 2rem;
+  border: 2px solid antiquewhite;
+  padding: 0 0.5rem;
+}
+.searchBtn {
+  border: none;
+  border: 2px solid antiquewhite;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .navBar h1 {
+    display: none;
+  }
+  .navLinks {
+    display: none;
+    background-color: blueviolet;
+    position: absolute;
+    top: 4.25rem;
+    right: 0;
+  }
+  .navLinks li {
+    padding: 0.25rem;
+  }
+  .navLinks ul {
+    flex-direction: column;
+  }
+  .searchBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burgerBtn {
+    display: flex;
+    width: 2rem;
+    height: 0.25rem;
+    background-color: antiquewhite;
+    margin: 0.25rem;
+  }
+}

@@ -46,7 +46,9 @@ function Post(props) {
         <img alt="icon" src="src/assets/images/icon.png" style={{
                 width: "2rem",
                 height: "auto",
-                // margin: "0, 1.5rem",
+                borderRadius: "50%",
+                fitContent: "cover",
+                marginRight: " 0.5rem"
               }}/>
         <Link to="{user.username}">{user.username}</Link>
         </Stack>
@@ -95,7 +97,9 @@ function Post(props) {
             <img alt="icon" src="src/assets/images/icon.png" style={{
                 width: "2rem",
                 height: "auto",
-                margin: "0, 1.5rem",
+                borderRadius: "50%",
+                fitContent: "cover",
+                marginRight: " 0.5rem"
               }}/>
             <Stack direction="vertical" gap={1} className="comment-body">
             <Card.Text className="comment-username">{comment.user}</Card.Text>
