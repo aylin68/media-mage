@@ -79,9 +79,10 @@ svg:focus{
 
 .user-post-header{
   justify-content: flex-start;
+  background-color: transparent;
 }
 .user-post-header a{
-  background-color: white !important;
+  background-color: transparent;
   text-decoration: none;
   color: gray
 }

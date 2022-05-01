@@ -34,10 +34,10 @@ function Feed() {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
         })
       );
-      console.log(posts);
+      //console.log(posts);
     };
     // console.log({ user });
-    // console.log(user._id);
+    //console.log(user._id);
     // console.log(posts);
     // console.log(posts[0]);
     fetchPosts();
@@ -47,13 +47,20 @@ function Feed() {
     <Container>
       <CreatePostInput postList={postList} setPostList={setPostList} />
 
-      <PostListComponent postList={postList} setPostList={setPostList} />
+      {/* <PostListComponent postList={postList} setPostList={setPostList} /> */}
       {posts.map((p) => (
         <Post
           key={posts.indexOf(p)}
-          type={p.desc}
-          postID={posts.indexOf(p)}
-          length={p.desc.length}
+          postType={p.postType}
+          postID={p._id}
+          username={p.username}
+          userId={p.userId}
+          likes={p.likes}
+          dislikes={p.dislikes}
+          comments={p.comments}
+          profilePic={p.profilePic}
+          postContent={p.postContent}
+          postTitle={p.postTitle}
         />
       ))}
     </Container>

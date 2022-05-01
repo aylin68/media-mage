@@ -1,5 +1,4 @@
 import React, { useState, useContext, useRef } from "react";
-//import { useState } from "react/cjs/react.production.min";
 import { Card, Button, Stack, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import PropTypes from "prop-types";
@@ -12,7 +11,8 @@ function CreatePostInput(props) {
   //   const [newPostContent, setNewPostContent] = useState("");
   const [newPostTitle, setNewPostTitle] = useState("");
   const { user } = useContext(AuthContext);
-  const desc = useRef();
+  const postContent = useRef();
+  const postTitle = useRef();
 
 
   //   const handleEnterDown = (event) => {
@@ -39,7 +39,14 @@ function CreatePostInput(props) {
     e.preventDefault();
     const nPost = {
       userId: user._id,
-      desc: desc.current.value,
+      postContent: postContent.current.value,
+      postTitle: postTitle.current.value,
+      postType: "text",
+      username: user.username,
+      likes: [],
+      dislikes: [],
+      comments: [],
+      profilePic: "src/assets/images/icon.png"
     };
     try {
       await axios.post("/posts", nPost);
@@ -62,6 +69,7 @@ function CreatePostInput(props) {
 //             setNewPostContent("")
 //}
   };
+}
 
   return (
     <>
@@ -69,6 +77,8 @@ function CreatePostInput(props) {
         <Card.Body>
           <Card.Title>Create a text post</Card.Title>
           <Form onSubmit={handleSubmit}>
+          <Stack className="post-input" direction="vertical" gap={3}>
+            <Form.Control ref={postTitle} className="me-auto" as="input" type="text" value={newPostTitle} placeholder="Give your new post a title (or not)..."  onChange={(e) => setNewPostTitle(e.target.value)}/>
             <Stack direction="horizontal" gap={3}>
               <Form.Control
                 className="me-auto"
@@ -77,7 +87,7 @@ function CreatePostInput(props) {
                 //   value={newPostContent}
                 placeholder="Create a text post..."
                 //   onChange={(e) => setNewPostContent(e.target.value)}
-                ref={desc}
+                ref={postContent}
               />
               <Button
                 variant="primary"
@@ -88,12 +98,15 @@ function CreatePostInput(props) {
                 POST
               </Button>
             </Stack>
+            </Stack>
           </Form>
         </Card.Body>
       </Card>
       <hr className="outside-card-hr" />
     </>
   );
+
+  };
 
 //     return (
 //         <>
@@ -115,6 +128,5 @@ function CreatePostInput(props) {
 //         </>
 //     );
 
-}
 
-export default CreatePostInput;
+export default CreatePostInput
