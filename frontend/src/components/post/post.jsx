@@ -16,11 +16,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Post(props) {
-  const { user, type, postID, length, postContent, postTitle, comments } = props;
+  const { user, type, postID, length, postContent, postTitle, comments } =
+    props;
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(false);
-  const [commentList, setCommentList] = useState([...comments])
-  const [newCommentContent, setNewCommentContent] = useState("")
+  // const [commentList, setCommentList] = useState([...comments]);
+  const [newCommentContent, setNewCommentContent] = useState("");
   const rows = [];
 
   for (let i = 0; i < length; i += 1) {
@@ -28,7 +29,7 @@ function Post(props) {
   }
 
   // const showCommentList = () => {
-  //   commentList.map((comment) => 
+  //   commentList.map((comment) =>
   //     <Stack direction="horizontal" gap={3} key={comment.time}>
   //       <Card.Text >{comment.user}</Card.Text>
   //       <Card.Text >{comment.comment}</Card.Text>
@@ -39,26 +40,34 @@ function Post(props) {
   // }
 
   const handleCommentCreation = () => {
-    const newComment = {user: user.username, time: "", comment: newCommentContent};
+    const newComment = {
+      user: user.username,
+      time: "",
+      comment: newCommentContent,
+    };
     setCommentList([...comments, newComment]);
     console.log(commentList);
     setNewCommentContent("");
-  }
+  };
 
   return (
     <Card>
       <Card.Header>
-        <Stack direction="horizontal" className="user-post-header" >
-        <img alt="icon" src="src/assets/images/icon.png" style={{
-                width: "2rem",
-                height: "auto",
-                // margin: "0, 1.5rem",
-              }}/>
-        <Link to="{user.username}">{user.username}</Link>
+        <Stack direction="horizontal" className="user-post-header">
+          <img
+            alt="icon"
+            src="src/assets/images/icon.png"
+            style={{
+              width: "2rem",
+              height: "auto",
+              // margin: "0, 1.5rem",
+            }}
+          />
+          <Link to="{user.username}">{user.username}</Link>
         </Stack>
-      </Card.Header> 
+      </Card.Header>
       <Card.Body>
-      { postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
+        {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
         {type === "text" ? rows : null}
         {type === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
@@ -68,36 +77,42 @@ function Post(props) {
         ) : null}
         <hr />
         <Stack className="comment-section" direction="vertical" gap={2}>
-        <Stack direction="horizontal" gap={3}>
-          <Form.Control className="me-auto" placeholder="Comment..." value={newCommentContent} onChange={(e) => setNewCommentContent(e.target.value)}/>
-          <Button variant="primary" onClick={handleCommentCreation}>COMMENT</Button>
-          <div className="vr" />
-          <FontAwesomeIcon
-            role="button"
-            tabIndex={0}
-            aria-label="Thumbs up"
-            icon={isLiked ? fasThumbsUp : farThumbsUp}
-            onClick={() => {
-              setIsLiked(!isLiked);
-            }}
-            onKeyDown={null}
-          />
-          <FontAwesomeIcon
-            role="button"
-            tabIndex={0}
-            aria-label="Thumbs down"
-            icon={isDisliked ? fasThumbsDown : farThumbsDown}
-            //  className="fa-regular fa-thumbs-down fa-xl"
-            onClick={() => {
-              setIsDisliked(!isDisliked);
-            }}
-            onKeyDown={null}
-          />
-          <FontAwesomeIcon icon={fasShareFromSquare} />
-        </Stack>
-        
-        
-           {commentList.map((comment) => 
+          <Stack direction="horizontal" gap={3}>
+            <Form.Control
+              className="me-auto"
+              placeholder="Comment..."
+              value={newCommentContent}
+              onChange={(e) => setNewCommentContent(e.target.value)}
+            />
+            <Button variant="primary" onClick={handleCommentCreation}>
+              COMMENT
+            </Button>
+            <div className="vr" />
+            <FontAwesomeIcon
+              role="button"
+              tabIndex={0}
+              aria-label="Thumbs up"
+              icon={isLiked ? fasThumbsUp : farThumbsUp}
+              onClick={() => {
+                setIsLiked(!isLiked);
+              }}
+              onKeyDown={null}
+            />
+            <FontAwesomeIcon
+              role="button"
+              tabIndex={0}
+              aria-label="Thumbs down"
+              icon={isDisliked ? fasThumbsDown : farThumbsDown}
+              //  className="fa-regular fa-thumbs-down fa-xl"
+              onClick={() => {
+                setIsDisliked(!isDisliked);
+              }}
+              onKeyDown={null}
+            />
+            <FontAwesomeIcon icon={fasShareFromSquare} />
+          </Stack>
+
+          {/* {commentList.map((comment) => 
             <Stack direction="horizontal" key={comment.time} gap={1} className="full-comment">
             <img alt="icon" src="src/assets/images/icon.png" style={{
                 width: "2rem",
@@ -111,7 +126,7 @@ function Post(props) {
             <Card.Text>{comment.time}</Card.Text>
             <hr />
             </Stack>
-          )}
+          )} */}
         </Stack>
       </Card.Body>
     </Card>
