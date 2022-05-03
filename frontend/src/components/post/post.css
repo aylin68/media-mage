@@ -39,7 +39,7 @@
   background-color: black !important;
 }
 
-img {
+.card-body img {
   margin: auto;
 }
 
@@ -50,4 +50,56 @@ img {
 
 svg{
   font-size: 1.5rem;
+}
+
+svg:focus{
+  outline: none;
+}
+
+.comment-section  {
+  background-color: white !important;
+}
+.vstack {
+  background-color: white !important;
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+.comment-body{
+  gap: 0 !important;
+}
+
+.full-comment{
+  border: 1px solid darkslateblue;
+  border-radius: 5px;
+}
+
+.user-post-header{
+  justify-content: flex-start;
+  background-color: transparent;
+}
+.user-post-header a{
+  background-color: transparent;
+  text-decoration: none;
+  color: gray
+}
+
+.post-time{
+  margin-left: auto;
+  background-color: transparent;
+  color: gray
+}
+
+.post-content{
+  white-space: pre;
+}
+
+.post-input-field{
+  min-height: 8rem !important;
+}
+
+.submit-button{
+  align-self: flex-end;
 }

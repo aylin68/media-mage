@@ -1,7 +1,7 @@
 .ml-auto {
 }
 .navbar-nav,
-.me-auto {
+.me-auto > Link {
   flex: 1;
   margin: auto !important;
   display: flex;
@@ -20,6 +20,7 @@ nav {
 .dropdown-item {
   font-size: 1.5rem !important;
   flex-direction: row !important;
+  /*flex-wrap: nowrap !important;*/
   min-width: fit-content;
 }
 

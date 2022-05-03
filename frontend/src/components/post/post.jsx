@@ -1,72 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 import "./post.css";
-import { Card, Button, Stack, Form } from "react-bootstrap";
+import { Card, Stack, } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
+import CommentSection from "./commentSection"
 
 function Post(props) {
-  const { type, postID, length, postContent } = props;
-  //const [isLiked, setIsLiked] = useState(false);
-  
-  const rows = [];
-
-  for (let i = 0; i < length; i += 1) {
-    rows.push(<Card.Text key={i}>{postContent}</Card.Text>);
-  }
+  const { username, postID, postType, userID, profilePic, postContent, postTitle, comments, likes, createdAt} = props;
 
   return (
     <Card>
-      <Card.Header>Example {type} Post</Card.Header>
+      <Card.Header>
+        <Stack direction="horizontal" className="user-post-header" >
+        <img alt="icon" src={profilePic} style={{
+                width: "2rem",
+                height: "auto",
+                borderRadius: "50%",
+                fitContent: "cover",
+                marginRight: " 0.5rem",
+                backgroundColor: "transparent"
+              }}/>
+        <Link to="/">{username}</Link>
+        <span className="post-time">{new Date(createdAt).toString()}</span>
+        </Stack>
+      </Card.Header> 
       <Card.Body>
-        <Card.Title>
-          This is an example of a {type} post with ID {postID} and length{" "}
-          {length}
-        </Card.Title>
-        {type === "text" ? rows : null}
-        {type === "image" ? (
+      { postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
+        {postType === "text" ? <Card.Text className="post-content">{postContent}</Card.Text> : null}
+        {postType === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
-        {type === "weather" ? (
+        {postType === "weather" ? (
           <img alt="random" src="https://picsum.photos/600/420" />
         ) : null}
         <hr />
-        <Stack direction="horizontal" gap={3}>
-          <Form.Control className="me-auto" placeholder="Comment..." />
-          <Button variant="primary">COMMENT</Button>
-          <div className="vr" />
-          <i
-            role="button"
-            tabIndex={0}
-            aria-label="Thumbs up"
-            className="fa-regular fa-thumbs-up fa-xl"
-            onClick={(event) => {
-              event.target.classList.toggle("fa-regular");
-              event.target.classList.toggle("fa-solid");
-            }}
-            onKeyDown="null"
-          />
-          <i
-           role="button"
-           tabIndex={0}
-           aria-label="Thumbs down"
-           className="fa-regular fa-thumbs-down fa-xl"
-           onClick={(event) => {
-             event.target.classList.toggle("fa-regular");
-             event.target.classList.toggle("fa-solid");
-           }}
-           onKeyDown="null"
-          />
-          <i className="fa-solid fa-share-from-square fa-xl" />
-        </Stack>
+        <CommentSection comments={comments} likes={likes} postID={postID}/>
       </Card.Body>
     </Card>
   );
 }
 
-Post.propTypes = {
-  type: PropTypes.string.isRequired,
-  postID: PropTypes.number.isRequired,
-  length: PropTypes.number.isRequired,
-};
+// Post.propTypes = {
+//   type: PropTypes.string.isRequired,
+//   postID: PropTypes.number.isRequired,
+//   length: PropTypes.number.isRequired,
+// };
 
 export default Post;

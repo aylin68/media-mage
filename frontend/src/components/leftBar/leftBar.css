@@ -1,5 +1,6 @@
 .apiList {
   list-style: none;
+  width: 100%;
 }
 
 .apiListItem {

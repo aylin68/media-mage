@@ -28,8 +28,8 @@ const TopbarMobile = () => {
     dispatch({
       type: "LOGOUT",
     });
+    localStorage.clear();
     console.log("hey");
-    /*     user = !user; */
   };
   return (
     <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
@@ -127,7 +127,7 @@ const TopbarMobile = () => {
             </NavDropdown>
             <Nav.Link>
               <Link
-                to="/register"
+                to="/login"
                 style={{ textDecoration: "none", color: "white" }}
                 onClick={logOut}
               >

@@ -50,6 +50,7 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
 // router.get("/", async (req, res) => {
 //   const userId = req.query.userId;
 //   const username = req.query.username;
@@ -64,6 +65,27 @@ router.get("/:id", async (req, res) => {
 //   }
 // });
 
+// GET FRIENDS
+
+router.get("/friends/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const friends = await Promise.all(
+      user.followings.map((friendId) => {
+        return User.findById(friendId);
+      })
+    );
+    let friendList = [];
+    friends.map((friend) => {
+      const { _id, username, profilePicture } = friend;
+      friendList.push({ _id, username, profilePicture });
+    });
+    res.status(200).json(friendList);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 // FOLLOW A USER
 router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
@@ -73,7 +95,7 @@ router.put("/:id/follow", async (req, res) => {
       if (!user.followers.includes(req.body.userId)) {
         await user.updateOne({ $push: { followers: req.body.userId } });
         await currentUser.updateOne({
-          $push: { followings: req.params.userId },
+          $push: { followings: req.params.id },
         });
         res.status(200).json("User has been followed");
       } else {

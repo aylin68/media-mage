@@ -11,13 +11,29 @@ import Registration from "./pages/Registration";
 import ForgetPassword from "./pages/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
+import ProtectedRoute from "./ProtectedRoute";
 import Topbar from "./components/navbar/topbar";
+import { useEffect, useState } from "react";
 
 import "./App.css";
 library.add(fas);
 
 function App() {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("userToken");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      // setUser(foundUser);
+      dispatch({ type: "LOGIN_SUCCESS", payload: foundUser.data });
+      console.log("you are logged in");
+    } else {
+      //  REDIRECT TO LOGIN
+      // return <Navigate to="/register" />;
+      return;
+    }
+  }, []);
   return (
     <BrowserRouter>
       <nav className="App">
@@ -25,11 +41,35 @@ function App() {
       </nav>
       <div className="bodyContainer">
         <Routes>
-          <Route exact path="/" element={user ? <FullPage /> : <Login />}>
+          {/* <Route exact path="/" element={<FullPage />}>
+            <Route path="" element={<Feed />} />
+            <Route path="vimeo" element={<Vimeo />} />
+          </Route> */}
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute user={user}>
+                <FullPage />
+              </ProtectedRoute>
+            }
+          >
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
             <Route path="weather" element={<Weather />} />
           </Route>
+          {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
+            <Route path="" element={<Feed />} />
+            <Route path="vimeo" element={<Vimeo />} />
+            {<Route path='weather' element={<Weather />} />}
+          </Route> */}
+          {/* <Route
+            path="/"
+            element={ */}
+
+          {/* } */}
+          {/* /> */}
+
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}
