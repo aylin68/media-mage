@@ -11,7 +11,7 @@ const {postList, setPostList} = props;
   return (
     <>
       {postList.map((post) => (
-        <Post type={post.type} length={post.length} postID={post.postID} postContent={post.postContent}/>
+        <Post key={post.postID} username={post.username} profilePic={post.profilePic} postType={post.postType} userID={post.userId} postContent={post.postContent} postTitle={post.postTitle} comments={post.comments} likes={post.likes} dislikes={post.dislikes}/>
       ))}
     </>
   );

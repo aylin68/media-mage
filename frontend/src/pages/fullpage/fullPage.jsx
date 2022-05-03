@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LeftBar from "@components/leftBar/leftBar";
-
 import RightBar from "@components/rightBar/rightBar";
 import "./fullPage.css";
 import { Outlet } from "react-router-dom";
+// import ForgetPassword from "./pages/ForgetPassword";
+import { AuthContext } from "../../context/AuthContext";
 
 function FullPage() {
+  const { user, error, isFetching } = useContext(AuthContext);
+  console.log({ user, error, isFetching });
   return (
     <Container className="fullPageBodyContainer" >
       <Row lg={12}>

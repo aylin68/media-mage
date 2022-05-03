@@ -9,4 +9,4 @@ const Topbar = () => {
   return <div>{isDesktop ? <TopbarDesktop /> : <TopbarMobile />}</div>;
 };
 
-export default Topbar
+export default Topbar;

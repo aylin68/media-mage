@@ -28,8 +28,8 @@ const TopbarDesktop = () => {
     dispatch({
       type: "LOGOUT",
     });
+    localStorage.clear();
     console.log("hey");
-    /*     user = !user; */
   };
   return (
     <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
@@ -146,6 +146,6 @@ const TopbarDesktop = () => {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default TopbarDesktop;
