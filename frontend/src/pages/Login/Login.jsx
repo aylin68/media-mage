@@ -20,13 +20,14 @@ function Login() {
       dispatch
     );
   };
-  
 
   // console.log(user);
   return (
     <form className="form-login" onSubmit={handleClick}>
       <div className="login">
-        <h3>Log in to App</h3>
+        <h3>
+          Log in to <strong>mediamage</strong>
+        </h3>
         <div className="login-style">
           {/* I changed username with email and added required*/}
           <input
