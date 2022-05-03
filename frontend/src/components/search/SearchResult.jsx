@@ -2,25 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import "./feed.css";
 import axios from "axios";
 import { Container } from "react-bootstrap";
-import Post from "@components/post/post";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../../context/AuthContext";
-import CreatePostInput from "@components/createPost/CreatePostInput";
-import PostList from "../post/PostList";
+import SearchCard from "./SearchCard"
+
 
 function Feed() {
   const [posts, setPosts] = useState([]);
   const { user, error } = useContext(AuthContext);
-  const [postList, setPostList] = useState([...PostList]);
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const res = await axios.get("posts/timeline/6266bc5a4ba5823fb42d182e");
-  //     console.log(res);
-  //     setPosts(res.data);
-  //   };
-  //   fetchPosts();
-  // }, []);
+  const [searchResults, setSearchResults] = useState();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -28,7 +18,7 @@ function Feed() {
       // console.log(res);
       // console.log(res.data);
       // setPosts(res.data);
-      setPosts(
+      setSearchResults(
         res.data.sort((p1, p2) => {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
         })
@@ -44,11 +34,8 @@ function Feed() {
 
   return (
     <Container>
-      <CreatePostInput postList={postList} setPostList={setPostList} />
-
-      {/* <PostListComponent postList={postList} setPostList={setPostList} /> */}
-      {posts.map((p) => (
-        <Post
+      {searchResults.map((p) => (
+        <SearchCard
           key={posts.indexOf(p)}
           postType={p.postType}
           postID={p._id}
