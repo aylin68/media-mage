@@ -37,7 +37,7 @@ const ForecastDays = ({ data }) => {
               }
               return (
                 <div key={index} className="forecast-items">
-                  {days ? <span>{today}</span> : null}
+                  {days ? <span className="title-day">{today}</span> : null}
                   <div className="icons-sx">
                     {days ? <Icons icons={days} /> : null}
                   </div>

@@ -21,7 +21,7 @@ const ForecastTimes = ({ data }) => {
                       <Icons className="icons-sx" icons={fd} />
                     ) : null}
                   </div>
-                  {fd.main ? <span>{fd.main.temp.toFixed()}°C</span> : null}
+                  {fd.main ? <p>{fd.main.temp.toFixed()}°C</p> : null}
                 </div>
               );
             })}

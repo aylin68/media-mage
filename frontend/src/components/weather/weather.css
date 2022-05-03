@@ -12,10 +12,11 @@
 
 .curent-weather,
 .forecast-weather {
-  width: 350px;
+  width: 318px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  box-sizing: border-box;
 }
 .title-location {
   font-weight: bold;
@@ -144,4 +145,7 @@
   color: rgba(255, 255, 255, 0.6);
   font-size: 9px;
   font-weight: bold;
+}
+.title-day {
+  font-size: 13px;
 }
