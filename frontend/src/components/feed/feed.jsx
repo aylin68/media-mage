@@ -37,7 +37,7 @@ function Feed() {
       //console.log(posts);
     };
     // console.log({ user });
-    //console.log(user._id);
+    console.log(user._id);
     // console.log(posts);
     // console.log(posts[0]);
     fetchPosts();
@@ -56,11 +56,11 @@ function Feed() {
           username={p.username}
           userId={p.userId}
           likes={p.likes}
-          dislikes={p.dislikes}
           comments={p.comments}
           profilePic={p.profilePic}
           postContent={p.postContent}
           postTitle={p.postTitle}
+          createdAt={p.createdAt}
         />
       ))}
     </Container>
