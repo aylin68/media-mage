@@ -10,15 +10,11 @@ import {
   Container,
   Button,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
-  faUser,
-  faPaperPlane,
   faBell,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
@@ -58,6 +54,7 @@ const TopbarMobile = () => {
               width: "3rem",
               height: "auto",
               margin: "0",
+              padding: "0"
             }}
           />
 
