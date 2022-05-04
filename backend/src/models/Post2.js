@@ -24,7 +24,7 @@ const PostSchema2 = new mongoose.Schema(
     },
     profilePic: {
       type: String,
-      default: "src/assets/images/icon.png"
+      default: "src/assets/images/icon.png",
     },
     comments: {
       type: Array,
