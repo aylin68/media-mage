@@ -10,7 +10,8 @@ import {
   Container,
   Button,
 } from "react-bootstrap";
-import { LinkContainer, Link, useNavigate  } from "react-router-bootstrap";
+import { LinkContainer  } from "react-router-bootstrap";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
