@@ -39,55 +39,55 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <SearchContextProvider>
-        <WeatherContextProvider>
-          <nav className="App">
-            <Topbar />
-          </nav>
-          <div className="bodyContainer">
-            <Routes>
-              {/* <Route exact path="/" element={<FullPage />}>
+    <SearchContextProvider >
+    <WeatherContextProvider>
+      <nav className="App">
+          <Topbar />
+      </nav>
+      <div className="bodyContainer">
+        <Routes>
+          {/* <Route exact path="/" element={<FullPage />}>
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
           </Route> */}
 
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute user={user}>
-                    <FullPage />
-                  </ProtectedRoute>
-                }
-              >
-                <Route path="" element={<Feed />} />
-                <Route path="vimeo" element={<Vimeo />} />
-                <Route path="weather" element={<Weather showSearch={true} />} />
-                <Route path="search" element={<SearchResults />} />
-              </Route>
-              {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute user={user}>
+                <FullPage />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="" element={<Feed />} />
+            <Route path="vimeo" element={<Vimeo />} />
+            <Route path="weather" element={<Weather />} />
+            <Route path="search" element={<SearchResults />} />
+          </Route>
+          {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
             {<Route path='weather' element={<Weather />} />}
           </Route> */}
-              {/* <Route
+          {/* <Route
             path="/"
             element={ */}
 
-              {/* } */}
-              {/* /> */}
+            {/* } */}
+            {/* /> */}
 
-              <Route
-                path="/login"
-                element={user ? <Navigate to="/" /> : <Login />}
-              />
-              <Route
-                path="/register"
-                element={user ? <Navigate to="/" /> : <Registration />}
-              />
-              <Route path="/ForgetPassword" element={<ForgetPassword />} />
-            </Routes>
-          </div>
-        </WeatherContextProvider>
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={user ? <Navigate to="/" /> : <Registration />}
+          />
+          <Route path="/ForgetPassword" element={<ForgetPassword />} />
+        </Routes>
+      </div>
+      </WeatherContextProvider>
       </SearchContextProvider>
     </BrowserRouter>
   );
