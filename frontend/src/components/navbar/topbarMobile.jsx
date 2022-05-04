@@ -14,10 +14,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBell,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBell, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TopbarMobile = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -38,7 +35,6 @@ const TopbarMobile = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: "space-between",
         }}
       >
         <Container
@@ -54,7 +50,7 @@ const TopbarMobile = () => {
               width: "3rem",
               height: "auto",
               margin: "0",
-              padding: "0"
+              padding: "0",
             }}
           />
 
@@ -101,7 +97,7 @@ const TopbarMobile = () => {
             >
               <LinkContainer
                 to="/api/weather"
-                style={{ textDecoration: "none"}}
+                style={{ textDecoration: "none" }}
               >
                 <NavDropdown.Item>Weather</NavDropdown.Item>
               </LinkContainer>
@@ -121,7 +117,11 @@ const TopbarMobile = () => {
             </NavDropdown>
             <LinkContainer
               to="/register"
-              style={{ textDecoration: "none", color: "white", marginRight: '1rem' }}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "1rem",
+              }}
               onClick={logOut}
             >
               <Nav.Link>Log out</Nav.Link>
