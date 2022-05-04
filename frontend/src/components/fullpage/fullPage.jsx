@@ -7,20 +7,28 @@ import "./fullPage.css";
 import { Outlet } from "react-router-dom";
 // import ForgetPassword from "./pages/ForgetPassword";
 import { AuthContext } from "../../context/AuthContext";
+import { SearchContextProvider } from "../../context/SearchContext";
+import {SearchContext} from "../../context/SearchContext";
+//import { useOutletContext } from "react-router-dom";
+
 
 function FullPage() {
   const { user, error, isFetching } = useContext(AuthContext);
+  // const {searchResults, setSearchResults} = useContext(SearchContext);
+  // console.log(searchResults, setSearchResults);
   console.log({ user, error, isFetching });
   return (
     <Container className="fullPageBodyContainer">
-      <Row lg={12}>
-        <Col className="leftBar" lg={2}>
+      <Row  lg={12}>
+        <Col className="leftBar" s={0} md={0} lg={2}>
           <LeftBar />
         </Col>
-        <Col className="feedBody" lg={8}>
+        <Col className="feedBody" s={12} md={12} lg={8}>
+        
           <Outlet />
+        
         </Col>
-        <Col className="rightBar" lg={2}>
+        <Col className="rightBar" s={0} md={0} lg={2}>
           <RightBar />
         </Col>
       </Row>

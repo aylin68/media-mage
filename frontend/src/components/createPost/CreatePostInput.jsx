@@ -15,7 +15,6 @@ function CreatePostInput(props) {
     const handleEnterDown = (event) => {
       if (event.key === "Enter") {
         postContent.current.value.concat("\r");
-        console.log(postContent.current.value);
       }
     };
 
@@ -58,7 +57,7 @@ function CreatePostInput(props) {
                 placeholder="Create a text post..."
                 //   onChange={(e) => setNewPostContent(e.target.value)}
                 ref={postContent}
-                onKeyDownCapture={handleEnterDown}
+                onKeyDown={handleEnterDown}
               />
               </Stack>
               <Button

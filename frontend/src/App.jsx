@@ -13,7 +13,9 @@ import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
 import ProtectedRoute from "./ProtectedRoute";
 import Topbar from "./components/navbar/topbar";
+import SearchResults from "./components/search/SearchResult";
 import { useEffect, useState } from "react";
+import { SearchContextProvider } from "./context/SearchContext";
 
 import "./App.css";
 library.add(fas);
@@ -36,8 +38,9 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
+    <SearchContextProvider >
       <nav className="App">
-        <Topbar />
+          <Topbar />
       </nav>
       <div className="bodyContainer">
         <Routes>
@@ -57,6 +60,7 @@ function App() {
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
             <Route path="weather" element={<Weather />} />
+            <Route path="search" element={<SearchResults />} />
           </Route>
           {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
@@ -81,6 +85,7 @@ function App() {
           <Route path="/ForgetPassword" element={<ForgetPassword />} />
         </Routes>
       </div>
+      </SearchContextProvider>
     </BrowserRouter>
   );
 }
