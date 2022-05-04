@@ -14,7 +14,6 @@ function CreatePostInput(props) {
   const handleEnterDown = (event) => {
     if (event.key === "Enter") {
       postContent.current.value.concat("\r");
-      console.log(postContent.current.value);
     }
   };
 
