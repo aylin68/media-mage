@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import PropTypes from "prop-types";
 import CommentSection from "./commentSection"
 
+
 function Post(props) {
-  const { username, postID, postType, userID, profilePic, postContent, postTitle, comments, likes, createdAt} = props;
+  const { username, postID, postType, userId, profilePic, postContent, postTitle, comments, likes, createdAt} = props;
 
   return (
     <Card>
@@ -21,7 +22,7 @@ function Post(props) {
                 marginRight: " 0.5rem",
                 backgroundColor: "transparent"
               }}/>
-        <Link to="/">{username}</Link>
+        <Link to={`profile/${userId}`}>{username}</Link>
         <span className="post-time">{new Date(createdAt).toString()}</span>
         </Stack>
       </Card.Header> 
