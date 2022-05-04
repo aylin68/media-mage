@@ -61,8 +61,8 @@ function App() {
             }
           >
             <Route path="" element={<Feed />} />
-            <Route path="vimeo" element={<Vimeo />} />
-            <Route path="weather" element={<Weather />} />
+            <Route path="/apis/vimeo" element={<Vimeo />} />
+            <Route path="/apis/weather" element={<Weather />} />
             <Route path="search" element={<SearchResults />} />
             <Route path="profile/:user" element={<ProfilePage />} />
           </Route>
