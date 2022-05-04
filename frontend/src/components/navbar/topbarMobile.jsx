@@ -38,7 +38,6 @@ const TopbarMobile = () => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          justifyContent: "space-between",
         }}
       >
         <Container

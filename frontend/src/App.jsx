@@ -16,6 +16,7 @@ import Topbar from "./components/navbar/topbar";
 import { useEffect, useState } from "react";
 
 import "./App.css";
+import ProfilePage from "@components/profile-page/ProfilePage";
 library.add(fas);
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
             <Route path="" element={<Feed />} />
             <Route path="vimeo" element={<Vimeo />} />
             <Route path="weather" element={<Weather />} />
+            <Route path="profile/:user" element={<ProfilePage />} />
           </Route>
           {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
