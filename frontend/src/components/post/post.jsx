@@ -7,6 +7,9 @@ import PropTypes from "prop-types";
 import CommentSection from "./commentSection";
 import { format } from "timeago.js";
 import moment from "moment";
+import Weather from "../weather/Weather";
+import "../weather/Weather.css";
+
 
 function Post(props) {
   const {
@@ -19,7 +22,6 @@ function Post(props) {
     postTitle,
     comments,
     likes,
-    dislikes,
     createdAt,
   } = props;
 
@@ -43,6 +45,7 @@ function Post(props) {
             }}
           />
           <Link to="/">{username}</Link>
+
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
           </span>
@@ -56,14 +59,11 @@ function Post(props) {
         {postType === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
-        {postType === "weather" ? (
-          <img alt="random" src="https://picsum.photos/600/420" />
-        ) : null}
+        {postType === "weather" ? <Weather /> : null}
 
         {/* <div className="time">
           <span className="span-time"> Posted at: {finalDate}</span>
         </div> */}
-
         <hr />
         <CommentSection comments={comments} likes={likes} postID={postID} />
       </Card.Body>
