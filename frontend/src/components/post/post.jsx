@@ -1,13 +1,15 @@
 import React from "react";
 import "./post.css";
 import { Card, Stack } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import CommentSection from "./commentSection";
+import { format } from "timeago.js";
+import moment from "moment";
 import Weather from "../weather/Weather";
-
 import "../weather/Weather.css";
+
 
 function Post(props) {
   const {
@@ -22,6 +24,9 @@ function Post(props) {
     likes,
     createdAt,
   } = props;
+
+  // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
+  let finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
 
   return (
     <Card>
@@ -40,7 +45,10 @@ function Post(props) {
             }}
           />
           <Link to="/">{username}</Link>
-          <span className="post-time">{new Date(createdAt).toString()}</span>
+
+          <span className="post-time">
+            {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
+          </span>
         </Stack>
       </Card.Header>
       <Card.Body>
@@ -52,6 +60,10 @@ function Post(props) {
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
         {postType === "weather" ? <Weather /> : null}
+
+        {/* <div className="time">
+          <span className="span-time"> Posted at: {finalDate}</span>
+        </div> */}
         <hr />
         <CommentSection comments={comments} likes={likes} postID={postID} />
       </Card.Body>

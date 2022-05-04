@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../../context/AuthContext";
 import CreatePostInput from "@components/createPost/CreatePostInput";
 import PostList from "../post/PostList";
+import moment from "moment";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -42,6 +43,7 @@ function Feed() {
     // console.log(posts[0]);
     fetchPosts();
   }, [user._id]);
+  /*   console.log(posts.map((a) => a.createdAt)); */
 
   return (
     <Container>

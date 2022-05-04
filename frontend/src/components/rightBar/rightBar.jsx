@@ -1,24 +1,32 @@
 import React from "react";
 import "./rightBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Form,
+  FormControl,
+  Container,
+  Button,
+  ListGroup,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import FriendList from "./friendList";
 
 function RightBar() {
+  const friendsOnline = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const rows = [];
+
+  for (let i = 0; i < friendsOnline.length; i++) {
+    rows.push(<FriendList key={i}/>);
+      }
   return (
-    <div className="rightBarBody">
-      <ul className="FriendList">
-        <li className="friend">
-          <img
-          // src="https://images.unsplash.com/photo-1522159698025-071104a1ddbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          // alt="andrei"
-          />
-        </li>
-        <li className="friend">
-          <img
-          // src="https://images.unsplash.com/photo-1522159698025-071104a1ddbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          // alt=""
-          />
-        </li>
-      </ul>
-    </div>
+    <Container className="rightBarContainer" style={{ display: "flex", alignItems: "flex-end" }}>
+      <ListGroup>
+          {rows}
+      </ListGroup>
+    </Container>
   );
 }
 

@@ -61,10 +61,12 @@ svg:hover {
   flex-direction: row !important;
   min-width: fit-content;
 }
-
-/* @media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   .navbar-brand {
     display: none;
   }
-
-} */
+  .me-3, .form-control input  {
+    margin: 0 !important;
+  }
+  
+}

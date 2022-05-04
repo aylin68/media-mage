@@ -12,7 +12,7 @@ function FullPage() {
   const { user, error, isFetching } = useContext(AuthContext);
   console.log({ user, error, isFetching });
   return (
-    <Container className="fullPageBodyContainer">
+    <Container className="fullPageBodyContainer" >
       <Row lg={12}>
         <Col className="leftBar" lg={2}>
           <LeftBar />

@@ -1,9 +1,11 @@
 import React, { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
-import { loginCall } from "../apiCalls";
-import { AuthContext } from "../context/AuthContext";
+import { NavLink } from "react-router-dom";
+import "./Login.css";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 function Login() {
   const email = useRef(); // we can use useState, but it will re render at every input, we want to avoid this
@@ -23,6 +25,9 @@ function Login() {
   return (
     <form className="form-login" onSubmit={handleClick}>
       <div className="login">
+        <h3>
+          Log in to <strong>mediamage</strong>
+        </h3>
         <div className="login-style">
           {/* I changed username with email and added required*/}
           <input
@@ -52,21 +57,21 @@ function Login() {
           Log In
           {/* {isFetching ? "Loading" : "Log in"} */}
         </button>
-        <Link to="/ForgetPassword">
+        <LinkContainer to="/ForgetPassword">
           <div className="login-style">
             <span>
               <a href="/ForgetPassword">Forgot password?</a>
             </span>
           </div>
-        </Link>
+        </LinkContainer>
 
-        <Link to="/register">
+        <LinkContainer to="/register">
           <div className="login-style">
             <button type="button" className="btn btn-lg btn-success btn-block">
               Create a New Account
             </button>
           </div>
-        </Link>
+        </LinkContainer>
       </div>
     </form>
   );
