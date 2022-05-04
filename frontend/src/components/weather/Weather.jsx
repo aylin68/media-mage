@@ -25,6 +25,8 @@ const Weather = (props) => {
       .get(url)
       .then((response) => {
         setData(response.data);
+        console.log(response.data.city.name);
+        setLocation(response.data.city.name);
       })
       .catch((err) => alert("This citye does not exist"));
   };
@@ -53,6 +55,8 @@ const Weather = (props) => {
       SearchHandel();
     }
   }, []);
+
+  // console.log(data.city.name);
 
   return (
     <>
