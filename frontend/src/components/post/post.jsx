@@ -16,7 +16,7 @@ function Post(props) {
     username,
     postID,
     postType,
-    userID,
+    userId,
     profilePic,
     postContent,
     postTitle,

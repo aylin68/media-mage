@@ -17,7 +17,7 @@ router.put("/:id", async (req, res) => {
       const user = await User.findByIdAndUpdate(req.params.id, {
         $set: req.body,
       });
-      res.status(200).jaon("Account has been updated");
+      res.status(200).json("Account has been updated");
     } catch (error) {
       return res.status(500).json(error);
     }
@@ -40,7 +40,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// GET USER
+// GET USER BY ID
 router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -50,6 +50,22 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+
+router.get("/search/:username", async (req, res) => {
+  let query = {username: {
+        $regex: req.params.username,
+        $options: "i"
+    }
+};
+const users = await User.find(query);
+  try {
+    res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+
 
 // router.get("/", async (req, res) => {
 //   const userId = req.query.userId;

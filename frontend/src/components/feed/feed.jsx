@@ -3,7 +3,6 @@ import "./feed.css";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 import Post from "@components/post/post";
-import PostListComponent from "../post/postListComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../../context/AuthContext";
 import CreatePostInput from "@components/createPost/CreatePostInput";
