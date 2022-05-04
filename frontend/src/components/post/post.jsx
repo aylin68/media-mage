@@ -11,6 +11,7 @@ import Weather from "../weather/Weather";
 import "../weather/Weather.css";
 
 
+
 function Post(props) {
   const {
     username,
@@ -44,7 +45,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to="/">{username}</Link>
+          <Link to={`/profile/userId`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}

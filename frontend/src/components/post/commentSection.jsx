@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./post.css";
 import { Card, Button, Stack, Form } from "react-bootstrap";
 //import { Link } from "react-router-dom";
@@ -96,10 +97,12 @@ function commentSection(props) {
               }}
             />
             <Stack direction="vertical" gap={1} className="comment-body">
-              <Card.Text className="comment-username">
-                {comment.username}
+            <Card.Text className="comment-username">
+              <Link to="/profile/user_id">
+              {comment.username}
+              </Link>
               </Card.Text>
-              <Card.Text>{comment.comment}</Card.Text>
+            <Card.Text >{comment.comment}</Card.Text>
             </Stack>
             <Card.Text>{moment(comment.createdAt).fromNow()}</Card.Text>
             <hr />
