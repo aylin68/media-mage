@@ -2,7 +2,6 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./post.css";
 import { Card, Button, Stack, Form } from "react-bootstrap";
-//import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   faThumbsUp as fasThumbsUp,

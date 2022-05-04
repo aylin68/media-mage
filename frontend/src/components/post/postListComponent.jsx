@@ -1,8 +1,5 @@
 import React from "react";
-//import { useState } from "react/cjs/react.production.min";
-//import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import PostList from "./PostList";
 import Post from "./post";
 
 function PostListComponent(props) {
@@ -16,7 +13,7 @@ function PostListComponent(props) {
           username={post.username}
           profilePic={post.profilePic}
           postType={post.postType}
-          userID={post.userId}
+          userId={post.userId}
           postContent={post.postContent}
           postTitle={post.postTitle}
           comments={post.comments}
