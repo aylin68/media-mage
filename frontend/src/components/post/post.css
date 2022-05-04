@@ -1,6 +1,13 @@
 .card {
   margin: 1rem 0 1.5rem 0;
 }
+.time {
+  background: white;
+  color: black !important;
+}
+.span-time {
+  background: gainsboro;
+}
 
 .card:first-of-type {
   margin: 0.5rem 0 1.5rem 0 !important;
@@ -48,15 +55,15 @@
   border-color: darkslateblue !important;
 }
 
-svg{
+svg {
   font-size: 1.5rem;
 }
 
-svg:focus{
+svg:focus {
   outline: none;
 }
 
-.comment-section  {
+.comment-section {
   background-color: white !important;
 }
 .vstack {
@@ -67,23 +74,23 @@ svg:focus{
   font-weight: bold;
   margin-bottom: 0rem;
 }
-.comment-body{
+.comment-body {
   gap: 0 !important;
 }
 
-.full-comment{
+.full-comment {
   border: 1px solid darkslateblue;
   border-radius: 5px;
 }
 
-.user-post-header{
+.user-post-header {
   justify-content: flex-start;
   background-color: transparent;
 }
-.user-post-header a{
+.user-post-header a {
   background-color: transparent;
   text-decoration: none;
-  color: gray
+  color: gray;
 }
 
 .post-time{
