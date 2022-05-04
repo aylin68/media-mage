@@ -18,13 +18,17 @@ const PostSchema2 = new mongoose.Schema(
       type: String,
       required: true,
     },
+    weatherContent: {
+      type: Object,
+      default: {},
+    },
     postTitle: {
       type: String,
       default: "",
     },
     profilePic: {
       type: String,
-      default: "src/assets/images/icon.png"
+      default: "src/assets/images/icon.png",
     },
     comments: {
       type: Array,
