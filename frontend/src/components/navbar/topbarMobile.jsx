@@ -96,7 +96,7 @@ const TopbarMobile = () => {
               bg="dark"
             >
               <LinkContainer
-                to="/api/weather"
+                to="/apis/weather"
                 style={{ textDecoration: "none" }}
               >
                 <NavDropdown.Item>Weather</NavDropdown.Item>
