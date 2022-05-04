@@ -1,15 +1,23 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import WeatherContextProvider from "../../context/WeatherContext";
 import Icons from "./Icons";
 import ForecastWeatherTime from "./ForecastWeatherTime";
 import ForecastWeatherDay from "./ForecastWeatherDay";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./weather.css";
+import { AuthContext } from "../../context/AuthContext";
 
-const Weather = () => {
-  const [data, setData] = useState({});
-  const [location, setLocation] = useState("berlin");
+const Weather = (props) => {
+  const { location, setLocation, data, setData } = useContext(
+    WeatherContextProvider
+  );
+  const { user } = useContext(AuthContext);
+
+  //const [searchQuery, setSerachQuery] = useState(location);
+  const { showSearch } = props;
 
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
@@ -18,8 +26,27 @@ const Weather = () => {
       .then((response) => {
         setData(response.data);
       })
-      .catch((err) => console.log("error"));
-    setLocation("");
+      .catch((err) => alert("This citye does not exist"));
+  };
+
+  const createPostWeatherHandel = async () => {
+    const nPost = {
+      userId: user._id,
+      postContent: "weather",
+      weatherContent: data,
+      postTitle: "Weather",
+      postType: "weather",
+      username: user.username,
+      likes: [],
+      comments: [],
+      profilePic: "src/assets/images/icon.png",
+    };
+    try {
+      await axios.post("/posts", nPost);
+      window.location.replace("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     if (location) {
@@ -32,21 +59,24 @@ const Weather = () => {
       <div className="weather-style">
         <div className="weather-body">
           <div className="curent-weather">
-            <div className="search-box">
-              <input
-                type="text"
-                className="form-control search-input"
-                value={location}
-                placeholder="Enter location"
-                onChange={(e) => setLocation(e.target.value)}
-              ></input>
-              <button className="search-button" onClick={SearchHandel}>
-                <FontAwesomeIcon
-                  className="weather-search"
-                  icon="fa-solid fa-magnifying-glass"
-                />
-              </button>
-            </div>
+            {showSearch ? (
+              <div className="search-box">
+                <input
+                  type="text"
+                  className="form-control search-input"
+                  value={location}
+                  placeholder="Enter location"
+                  onChange={(e) => setLocation(e.target.value)}
+                ></input>
+                <button className="search-button" onClick={SearchHandel}>
+                  <FontAwesomeIcon
+                    className="weather-search"
+                    icon="fa-solid fa-magnifying-glass"
+                  />
+                </button>
+              </div>
+            ) : null}
+
             <div className="title-location">
               <div className="title-icon">
                 <div className="icons-lg">
@@ -87,6 +117,15 @@ const Weather = () => {
             {data.list ? <ForecastWeatherTime data={data.list} /> : null}
             {data.list ? <ForecastWeatherDay data={data.list} /> : null}
           </div>
+
+          {showSearch ? (
+            <button
+              className="weather-btn-post"
+              onClick={createPostWeatherHandel}
+            >
+              Create a Post
+            </button>
+          ) : null}
         </div>
       </div>
     </>

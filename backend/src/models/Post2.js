@@ -18,6 +18,10 @@ const PostSchema2 = new mongoose.Schema(
       type: String,
       required: true,
     },
+    weatherContent: {
+      type: Object,
+      default: {},
+    },
     postTitle: {
       type: String,
       default: "",
