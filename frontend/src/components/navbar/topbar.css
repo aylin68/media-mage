@@ -9,6 +9,7 @@
 }
 .navbar {
   border-bottom: 3px solid white;
+  background-color: darkslateblue;
 }
 
 nav {
@@ -55,8 +56,8 @@ svg:hover {
   margin: 0 1rem;
 }
 
-.col-lg-2{
-  display: flex   ;
+.col-lg-2 {
+  display: flex;
   flex-direction: row !important;
   min-width: fit-content;
 }
@@ -67,4 +68,3 @@ svg:hover {
   }
 
 } */
-

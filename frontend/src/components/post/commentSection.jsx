@@ -5,25 +5,20 @@ import { Card, Button, Stack, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   faThumbsUp as fasThumbsUp,
-  faThumbsDown as fasThumbsDown,
   faShareFromSquare as fasShareFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faThumbsUp as farThumbsUp,
-  faThumbsDown as farThumbsDown,
-} from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp as farThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import moment from "moment";
 
 function commentSection(props) {
-  const { comments, postID, likes, dislikes } = props;
+  const { comments, postID, likes } = props;
   const [commentList, setCommentList] = useState([...comments]);
   const { user } = useContext(AuthContext);
   const comment = useRef();
   const [isLiked, setIsLiked] = useState(likes.includes(user._id));
-  const [isDisliked, setIsDisliked] = useState(dislikes.includes(user._id));
 
   const handleComment = async (e) => {
     e.preventDefault();
@@ -42,61 +37,18 @@ function commentSection(props) {
   };
 
   const handleLike = async () => {
-    if (!dislikes.includes(user._id)) {
-      const nLike = {
-        userId: user._id,
-      };
-      try {
-        await axios.patch("/posts/likes/" + postID, nLike);
-        console.log("success");
-        setIsLiked(!isLiked);
-        likes.push(user._id);
-      } catch (error) {
-        console.log(error);
-      }
-    } else if (likes.includes(user._id)) {
-      const nLike = {
-        userId: user._id,
-      };
-      const index = likes.indexOf(user._id);
-      try {
-        await axios.patch("/posts/likes/" + postID, nLike);
-        console.log("success");
-        setIsLiked(!isLiked);
-        likes.splice(index, 1);
-      } catch (error) {
-        console.log(error);
-      }
+    const userToChange = {
+      userId: user._id,
+    };
+    try {
+      await axios.patch("/posts/likes/" + postID, userToChange);
+      console.log("success");
+      setIsLiked(!isLiked);
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const handleDislike = async () => {
-    if (!likes.includes(user._id)) {
-      const nDislike = {
-        userId: user._id,
-      };
-      try {
-        await axios.patch("/posts/dislikes/" + postID, nDislike);
-        setIsDisliked(!isDisliked);
-        dislikes.push(user._id);
-      } catch (error) {
-        console.log(error);
-      }
-    } else if (dislikes.includes(user._id)) {
-      const nDislike = {
-        userId: user._id,
-      };
-      const index = dislikes.indexOf(user._id);
-      try {
-        await axios.patch("/posts/dislikes/" + postID, nDislike);
-        setIsDisliked(!isDisliked);
-        dislikes.splice(index, 1);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-  console.log(comments.createdAt);
   return (
     <>
       <Stack className="comment-section" direction="vertical" gap={2}>
@@ -121,16 +73,6 @@ function commentSection(props) {
               }}
               onKeyDown={null}
             />
-            <FontAwesomeIcon
-              role="button"
-              tabIndex={0}
-              aria-label="Thumbs down"
-              icon={isDisliked ? fasThumbsDown : farThumbsDown}
-              onClick={() => {
-                handleDislike();
-              }}
-              onKeyDown={null}
-            />
             <FontAwesomeIcon icon={fasShareFromSquare} />
           </Stack>
         </Form>
@@ -150,6 +92,7 @@ function commentSection(props) {
                 borderRadius: "50%",
                 fitContent: "cover",
                 marginRight: " 0.5rem",
+                backgroundColor: "transparent",
               }}
             />
             <Stack direction="vertical" gap={1} className="comment-body">

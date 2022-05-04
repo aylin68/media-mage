@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./post.css";
-import { Card, Button, Stack, Form } from "react-bootstrap";
+import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from "prop-types";
@@ -39,19 +39,20 @@ function Post(props) {
               borderRadius: "50%",
               fitContent: "cover",
               marginRight: " 0.5rem",
+              backgroundColor: "transparent",
             }}
           />
-          <Link to="/">
-            {username}{" "}
-            <span className="time">
-              {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
-            </span>
-          </Link>
+          <Link to="/">{username}</Link>
+          <span className="post-time">
+            {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
+          </span>
         </Stack>
       </Card.Header>
       <Card.Body>
         {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
-        {postType === "text" ? <Card.Text>{postContent}</Card.Text> : null}
+        {postType === "text" ? (
+          <Card.Text className="post-content">{postContent}</Card.Text>
+        ) : null}
         {postType === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
@@ -64,12 +65,7 @@ function Post(props) {
         </div> */}
 
         <hr />
-        <CommentSection
-          comments={comments}
-          likes={likes}
-          dislikes={dislikes}
-          postID={postID}
-        />
+        <CommentSection comments={comments} likes={likes} postID={postID} />
       </Card.Body>
     </Card>
   );

@@ -7,32 +7,17 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 function CreatePostInput(props) {
-  //   const { postList, setPostList } = props;
-  //   const [newPostContent, setNewPostContent] = useState("");
-  const [newPostTitle, setNewPostTitle] = useState("");
   const { user } = useContext(AuthContext);
   const postContent = useRef();
   const postTitle = useRef();
 
 
-  //   const handleEnterDown = (event) => {
-  //     if (event.key === "Enter") {
-  //       handlePostCreation();
-  //     }
-  //   };
-
-  //   const handlePostCreation = () => {
-  //     const newPost = {
-  //       type: "text",
-  //       length: 1,
-  //       postId: 1,
-  //       postContent: newPostContent,
-  //     };
-  //     setPostList([newPost, ...postList]);
-  //     setNewPostContent("");
-  //     console.log(postList);
-  //     console.log(newPostContent);
-  //   };
+    const handleEnterDown = (event) => {
+      if (event.key === "Enter") {
+        postContent.current.value.concat("\r");
+        console.log(postContent.current.value);
+      }
+    };
 
 
   const handleSubmit = async (e) => {
@@ -44,7 +29,6 @@ function CreatePostInput(props) {
       postType: "text",
       username: user.username,
       likes: [],
-      dislikes: [],
       comments: [],
       profilePic: "src/assets/images/icon.png"
     };
@@ -53,21 +37,6 @@ function CreatePostInput(props) {
       window.location.reload();
     } catch (error) {
       console.log(error);
-
-//     const handlePostCreation  = () => {
-//             const newPost = {
-//                 user: [],
-//                 type: "text",
-//                 length: 1,
-//                 postId: 1,
-//                 postContent: newPostContent,
-//                 postTitle: newPostTitle,
-//                 comments: [],
-//             }
-//             setPostList([newPost,...postList])
-//             setNewPostTitle("")
-//             setNewPostContent("")
-//}
   };
 }
 
@@ -78,19 +47,22 @@ function CreatePostInput(props) {
           <Card.Title>Create a text post</Card.Title>
           <Form onSubmit={handleSubmit}>
           <Stack className="post-input" direction="vertical" gap={3}>
-            <Form.Control ref={postTitle} className="me-auto" as="input" type="text" value={newPostTitle} placeholder="Give your new post a title (or not)..."  onChange={(e) => setNewPostTitle(e.target.value)}/>
             <Stack direction="horizontal" gap={3}>
+            <Stack direction="vertical" gap={3}>
+              <Form.Control ref={postTitle} className="me-auto" as="input" type="text" placeholder="Give your new post a title (or not)..."  />
               <Form.Control
-                className="me-auto"
-                as="input"
+                className="me-auto post-input-field"
+                as="textarea"
                 type="text"
                 //   value={newPostContent}
                 placeholder="Create a text post..."
                 //   onChange={(e) => setNewPostContent(e.target.value)}
                 ref={postContent}
+                onKeyDownCapture={handleEnterDown}
               />
+              </Stack>
               <Button
-                variant="primary"
+                variant="primary submit-button"
                 type="submit"
                 //   onClick={handlePostCreation}
                 //   onKeyDown={handleEnterDown}

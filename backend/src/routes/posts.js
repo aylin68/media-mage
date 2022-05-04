@@ -57,25 +57,6 @@ router.patch("/likes/:id", async (req, res) => {
   }
 });
 
-// dislike or undislike a post
-router.patch("/dislikes/:id", async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-    if (!post.dislikes.includes(req.body.userId)){
-      await post.updateOne({ $push: {dislikes: req.body.userId }});
-      res.status(200).json("the dislike has been added");
-    } else if (post.dislikes.includes(req.body.userId)){
-      await post.updateOne({ $pull: {dislikes: req.body.userId }});
-      res.status(200).json("the dislike has been removed");
-    } else {
-      res.status(403).json("dislike could not be handled");
-    }    
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-
 
 // delete a post
 router.delete("/:id", async (req, res) => {

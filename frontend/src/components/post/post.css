@@ -92,3 +92,21 @@ svg:focus {
   text-decoration: none;
   color: gray;
 }
+
+.post-time{
+  margin-left: auto;
+  background-color: transparent;
+  color: gray
+}
+
+.post-content{
+  white-space: pre;
+}
+
+.post-input-field{
+  min-height: 8rem !important;
+}
+
+.submit-button{
+  align-self: flex-end;
+}
