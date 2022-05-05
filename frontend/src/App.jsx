@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Feed from "@components/feed/feed";
 import FullPage from "@pages/fullpage/fullPage";
 import Vimeo from "@components/Vimeo/vimeo";
+import CryptoTracker from "@components/cryptotracker/CryptoTracker";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Login/Registration";
 import ForgetPassword from "./pages/Login/ForgetPassword";
@@ -62,6 +63,7 @@ function App() {
               >
                 <Route path="" element={<Feed />} />
                 <Route path="/apis/vimeo" element={<Vimeo />} />
+                <Route path="/apis/cryptotracker" element={<CryptoTracker />} />
                 <Route
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}

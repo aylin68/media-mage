@@ -4,6 +4,10 @@ const Apis = [
     route: "/apis/weather",
   },
   {
+    name: "cryptotracker",
+    route: "/apis/cryptotracker",
+  },
+  {
     name: "vimeo",
     route: "/apis/vimeo",
   },
