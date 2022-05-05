@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
-import WeatherPost from "../weather/WeatherPost";
+import Weather from "../weather/WeatherPost";
 import "../weather/Weather.css";
 import Coin from "@components/cryptotracker/Coin";
 
@@ -22,7 +22,7 @@ function Post(props) {
     likes,
     createdAt,
     weatherContent,
-    coinContent
+    coinContent,
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
@@ -53,30 +53,26 @@ function Post(props) {
       </Card.Header>
       <Card.Body>
         <Stack>
+          {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
+          {postType === "text" ? (
+            <Card.Text className="post-content">{postContent}</Card.Text>
+          ) : null}
+          {postType === "image" ? (
+            <img alt="random" src="https://picsum.photos/400/320" />
+          ) : null}
+          {postType === "weather" ? (
+            <Weather weatherContent={weatherContent} />
+          ) : null}
 
-        {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
-        {postType === "text" ? (
-          <Card.Text className="post-content">{postContent}</Card.Text>
-          ) : null}
-        {postType === "image" ? (
-          <img alt="random" src="https://picsum.photos/400/320" />
-          ) : null}
-        {postType === "weather" ? (
-
-          <Weather weatherContent={weatherContent} />
-          ) : null}
-        
-        {postType === "coin" ? (
-          <Coin coinContent={coinContent} />
-          ) : null}
-          </Stack>
+          {postType === "coin" ? <Coin coinContent={coinContent} /> : null}
+        </Stack>
 
         {/* <div className="time">
           <span className="span-time"> Posted at: {finalDate}</span>
         </div> */}
         <Stack>
-        <hr />
-        <CommentSection comments={comments} likes={likes} postID={postID} />
+          <hr />
+          <CommentSection comments={comments} likes={likes} postID={postID} />
         </Stack>
       </Card.Body>
     </Card>
