@@ -45,7 +45,7 @@ function App() {
       <SearchContextProvider>
         <WeatherContextProvider>
           <nav className="App">
-            <Topbar />
+            {user ? <Topbar /> : null}
           </nav>
           <div className="bodyContainer">
             <Routes>
