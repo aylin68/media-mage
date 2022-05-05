@@ -37,7 +37,7 @@ function Feed() {
       //console.log(posts);
     };
     // console.log({ user });
-    console.log(user._id);
+    //console.log(user._id);
     // console.log(posts);
     // console.log(posts[0]);
     fetchPosts();

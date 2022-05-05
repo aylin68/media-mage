@@ -63,7 +63,7 @@ function CreatePostInput(props) {
                     placeholder="Create a text post..."
                     //   onChange={(e) => setNewPostContent(e.target.value)}
                     ref={postContent}
-                    onKeyDownCapture={handleEnterDown}
+                    onKeyDown={handleEnterDown}
                   />
                 </Stack>
                 <Button
