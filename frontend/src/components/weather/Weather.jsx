@@ -54,6 +54,8 @@ const Weather = (props) => {
     }
   }, []);
 
+  // console.log(data.city.name);
+
   return (
     <>
       <div className="weather-style">

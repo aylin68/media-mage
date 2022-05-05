@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { SearchContextProvider } from "../../context/SearchContext";
 import {SearchContext} from "../../context/SearchContext";
 //import { useOutletContext } from "react-router-dom";
+import useMediaQuery from "@components/hooks/MediaQuery";
 
 
 function FullPage() {
@@ -17,9 +18,11 @@ function FullPage() {
   // const {searchResults, setSearchResults} = useContext(SearchContext);
   // console.log(searchResults, setSearchResults);
   console.log({ user, error, isFetching });
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
+
   return (
     <Container className="fullPageBodyContainer" >
-      <Row lg={12}>
+    {isDesktop? <Row lg={12}>
         <Col className="leftBar" lg={2}>
           <LeftBar />
         </Col>
@@ -31,7 +34,16 @@ function FullPage() {
         <Col className="rightBar" lg={2}>
           <RightBar />
         </Col>
-      </Row>
+      </Row> : <Row lg={8}>
+        
+        <Col className="feedBody"  lg={8}>
+        
+          <Outlet />
+        
+        </Col>
+       
+      </Row> }
+      
     </Container>
   );
 }

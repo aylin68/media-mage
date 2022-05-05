@@ -19,6 +19,7 @@ import { WeatherContextProvider } from "./context/WeatherContext";
 import { SearchContextProvider } from "./context/SearchContext";
 
 import "./App.css";
+import ProfilePage from "@components/profile-page/ProfilePage";
 library.add(fas);
 
 function App() {
@@ -60,9 +61,13 @@ function App() {
                 }
               >
                 <Route path="" element={<Feed />} />
-                <Route path="vimeo" element={<Vimeo />} />
-                <Route path="weather" element={<Weather showSearch={true} />} />
+                <Route path="/apis/vimeo" element={<Vimeo />} />
+                <Route
+                  path="/apis/weather"
+                  element={<Weather showSearch={true} />}
+                />
                 <Route path="search" element={<SearchResults />} />
+                <Route path="users/:user" element={<ProfilePage />} />
               </Route>
               {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
