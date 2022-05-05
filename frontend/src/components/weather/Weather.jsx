@@ -15,7 +15,6 @@ const Weather = (props) => {
   const [data, setData] = useState({});
   const { user } = useContext(AuthContext);
 
-
   const handleEnterDown = (event) => {
     if (event.key === "Enter") {
       SearchHandel();
@@ -30,13 +29,11 @@ const Weather = (props) => {
         setData(response.data);
 
         console.log("data is: ", data);
-
       })
       .catch((err) => console.log("erorr ", err));
   };
 
-  const createPostWeatherHandel = async (e) => {
-    e.preventDefault();
+  const createPostWeatherHandel = async () => {
     const nPost = {
       userId: user._id,
       postContent: "weather",
@@ -63,7 +60,6 @@ const Weather = (props) => {
     }
   }, []);
 
-
   return (
     <>
       <div className="weather-style">
@@ -79,7 +75,7 @@ const Weather = (props) => {
                   onChange={(e) => setLocation(e.target.value)}
                   onKeyDown={handleEnterDown}
                 ></input>
-                <button className="search-button" onClick={SearchHandel} >
+                <button className="search-button" onClick={SearchHandel}>
                   <FontAwesomeIcon
                     className="weather-search"
                     icon="fa-solid fa-magnifying-glass"
@@ -146,7 +142,7 @@ const Weather = (props) => {
           {showSearch ? (
             <button
               className="weather-btn-post"
-              onClick={(e) => createPostWeatherHandel(e)}
+              onClick={createPostWeatherHandel}
             >
               Create a Post
             </button>

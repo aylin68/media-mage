@@ -19,9 +19,11 @@ import SearchResults from "./components/search/SearchResult";
 import { useEffect, useState } from "react";
 import { WeatherContextProvider } from "./context/WeatherContext";
 import { SearchContextProvider } from "./context/SearchContext";
-
+import ChuckNorris from "@components/chuckNorris/ChuckNorris";
 import "./App.css";
 import ProfilePage from "@components/profile-page/ProfilePage";
+import ZenQuotes from "@components/zenQuotes/ZenQuotes";
+
 library.add(fas);
 
 function App() {
@@ -63,14 +65,22 @@ function App() {
                 }
               >
                 <Route path="" element={<Feed />} />
-
                 <Route path="/apis/vimeo" element={<Vimeo />} />
                 <Route path="/apis/cryptotracker" element={<CryptoTracker />} />
                 <Route
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}
-
                 />
+                <Route
+                  path="/apis/chuck"
+                  element={<ChuckNorris showSearch={true} />}
+                />
+                <Route
+                  path="/apis/zen"
+                  element={<ZenQuotes showSearch={true} />}
+                />
+                <Route path="search" element={<SearchResults />} />
+                <Route path="profile/:user" element={<ProfilePage />} />
                 <Route path="search" element={<SearchResults />} />
                 <Route path="users/:user" element={<ProfilePage />} />
               </Route>

@@ -15,6 +15,14 @@ const Apis = [
     name: "books",
     route: "/apis/books",
   },
+  {
+    name: "chuckquote",
+    route: "/apis/chuck",
+  },
+  {
+    name: "zenquotes",
+    route: "/apis/zen",
+  },
 ];
 
 export default Apis;

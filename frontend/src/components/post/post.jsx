@@ -8,6 +8,8 @@ import moment from "moment";
 import Weather from "../weather/WeatherPost";
 import "../weather/Weather.css";
 import Coin from "@components/cryptotracker/Coin";
+import ZenQuotes from "@components/zenQuotes/ZenQuotes";
+import ChuckNorris from "@components/chuckNorris/ChuckNorris";
 
 function Post(props) {
   const {
@@ -23,6 +25,8 @@ function Post(props) {
     createdAt,
     weatherContent,
     coinContent,
+    zenContent,
+    chuckContent,
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
@@ -52,20 +56,21 @@ function Post(props) {
         </Stack>
       </Card.Header>
       <Card.Body>
-        <Stack>
-          {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
-          {postType === "text" ? (
-            <Card.Text className="post-content">{postContent}</Card.Text>
-          ) : null}
-          {postType === "image" ? (
-            <img alt="random" src="https://picsum.photos/400/320" />
-          ) : null}
-          {postType === "weather" ? (
-            <Weather weatherContent={weatherContent} />
-          ) : null}
-
-          {postType === "coin" ? <Coin coinContent={coinContent} /> : null}
-        </Stack>
+        {postTitle ? <Card.Title> {postTitle} </Card.Title> : null}
+        {postType === "text" ? (
+          <Card.Text className="post-content">{postContent}</Card.Text>
+        ) : null}
+        {postType === "image" ? (
+          <img alt="random" src="https://picsum.photos/400/320" />
+        ) : null}
+        {postType === "weather" ? (
+          <WeatherPost weatherContent={weatherContent} />
+        ) : null}
+        {postType === "zenquote" ? <ZenQuotes zenContent={zenContent} /> : null}
+        {postType === "chuckquote" ? (
+          <ChuckNorris chuckContent={chuckContent} />
+        ) : null}
+        {postType === "coin" ? <Coin coinContent={coinContent} /> : null}
 
         {/* <div className="time">
           <span className="span-time"> Posted at: {finalDate}</span>
