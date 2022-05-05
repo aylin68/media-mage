@@ -11,6 +11,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,6 +42,7 @@ const TopbarMobile = () => {
           className="iconContainer"
           style={{ display: "flex", alignItems: "center", padding: "0" }}
         >
+          <Link to="/">
           <img
             src={logo}
             alt="logo"
@@ -52,7 +54,8 @@ const TopbarMobile = () => {
               margin: "0",
               padding: "0",
             }}
-          />
+            />
+            </Link>
 
           <Form className="d-flex">
             <FormControl
@@ -65,12 +68,6 @@ const TopbarMobile = () => {
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
-
-          {/* <FontAwesomeIcon icon={faEnvelope} />
-          <FontAwesomeIcon icon={faPaperPlane} />
-          <Link to="/profile/:user">
-            <FontAwesomeIcon icon={faUser} />
-          </Link> */}
           <FontAwesomeIcon icon={faBell} />
           <Navbar.Toggle aria-controls="responsivex-navbar-nav" />
         </Container>
@@ -84,7 +81,7 @@ const TopbarMobile = () => {
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             <LinkContainer
-              to="/profile/:user"
+              to={`/users/${user._id}`}
               style={{ textDecoration: "none", color: "white" }}
             >
               <Nav.Link>Profile</Nav.Link>

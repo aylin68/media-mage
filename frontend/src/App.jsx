@@ -67,7 +67,7 @@ function App() {
                   element={<Weather showSearch={true} />}
                 />
                 <Route path="search" element={<SearchResults />} />
-                <Route path="profile/:user" element={<ProfilePage />} />
+                <Route path="users/:user" element={<ProfilePage />} />
               </Route>
               {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />
