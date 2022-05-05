@@ -27,6 +27,7 @@ function commentSection(props) {
       userId: user._id,
       comment: comment.current.value,
       createdAt: new Date().toUTCString(),
+      profilePic: user.profilePicture,
     };
     try {
       await axios.patch("/posts/comment/" + postID, nComment);
@@ -85,7 +86,7 @@ function commentSection(props) {
           >
             <img
               alt="icon"
-              src="src/assets/images/icon.png"
+              src={comment.profilePic}
               style={{
                 width: "2rem",
                 height: "auto",

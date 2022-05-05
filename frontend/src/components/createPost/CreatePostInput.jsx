@@ -29,7 +29,7 @@ function CreatePostInput(props) {
       username: user.username,
       likes: [],
       comments: [],
-      profilePic: "src/assets/images/icon.png",
+      profilePic: user.profilePicture,
     };
     try {
       await axios.post("/posts", nPost);
