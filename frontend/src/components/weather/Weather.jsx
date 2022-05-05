@@ -13,8 +13,8 @@ const Weather = (props) => {
   const { showSearch, weatherContent } = props;
   const [location, setLocation] = useState("Berlin");
   const [data, setData] = useState({});
-
   const { user } = useContext(AuthContext);
+
 
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
@@ -22,12 +22,15 @@ const Weather = (props) => {
       .get(url)
       .then((response) => {
         setData(response.data);
+
         console.log("data is: ", data);
+
       })
       .catch((err) => console.log("erorr ", err));
   };
 
-  const createPostWeatherHandel = async () => {
+  const createPostWeatherHandel = async (e) => {
+    e.preventDefault();
     const nPost = {
       userId: user._id,
       postContent: "weather",
@@ -54,7 +57,6 @@ const Weather = (props) => {
     }
   }, []);
 
-  // console.log(data.city.name);
 
   return (
     <>
@@ -137,7 +139,7 @@ const Weather = (props) => {
           {showSearch ? (
             <button
               className="weather-btn-post"
-              onClick={createPostWeatherHandel}
+              onClick={(e) => createPostWeatherHandel(e)}
             >
               Create a Post
             </button>
