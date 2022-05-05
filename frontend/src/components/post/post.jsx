@@ -7,6 +7,8 @@ import CommentSection from "./commentSection";
 import moment from "moment";
 import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
+import ZenQuotes from "@components/zenQuotes/ZenQuotes";
+import ChuckNorris from "@components/chuckNorris/ChuckNorris";
 
 function Post(props) {
   const {
@@ -21,10 +23,13 @@ function Post(props) {
     likes,
     createdAt,
     weatherContent,
+    zenContent,
+    chuckContent,
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
   let finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
+
   return (
     <Card>
       <Card.Header>
@@ -41,7 +46,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to={`/profile/${userId}`}>{username}</Link>
+          <Link to={`/users/${userId}`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
@@ -59,11 +64,9 @@ function Post(props) {
         {postType === "weather" ? (
           <WeatherPost weatherContent={weatherContent} />
         ) : null}
-        {postType === "zenquote" ? (
-          <WeatherPost weatherContent={weatherContent} />
-        ) : null}
+        {postType === "zenquote" ? <ZenQuotes zenContent={zenContent} /> : null}
         {postType === "chuckquote" ? (
-          <WeatherPost weatherContent={weatherContent} />
+          <ChuckNorris chuckContent={chuckContent} />
         ) : null}
 
         {/* <div className="time">

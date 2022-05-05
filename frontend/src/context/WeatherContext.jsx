@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
-const WeatherContext = createContext("");
+const WeatherContext = createContext({});
 export default WeatherContext;
 
 export const WeatherContextProvider = ({ children }) => {
-  const [location, setLocation] = useState("berlin");
+  const [location, setLocation] = useState("Berlin");
   const [data, setData] = useState({});
 
   return (

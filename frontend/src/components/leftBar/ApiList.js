@@ -12,11 +12,11 @@ const Apis = [
     route: "/apis/books",
   },
   {
-    name: "chuck quotes",
+    name: "chuckquote",
     route: "/apis/chuck",
   },
   {
-    name: "zen quotes",
+    name: "zenquotes",
     route: "/apis/zen",
   },
 ];

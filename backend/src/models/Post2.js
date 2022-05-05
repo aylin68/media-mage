@@ -22,6 +22,14 @@ const PostSchema2 = new mongoose.Schema(
       type: Object,
       default: {},
     },
+    zenContent: {
+      type: Object,
+      default: {},
+    },
+    chuckContent: {
+      type: Object,
+      default: {},
+    },
     postTitle: {
       type: String,
       default: "",

@@ -62,6 +62,8 @@ function Feed() {
           postTitle={p.postTitle}
           createdAt={p.createdAt}
           weatherContent={p.weatherContent}
+          zenContent={p.zenContent}
+          chuckContent={p.chuckContent}
         />
       ))}
     </Container>

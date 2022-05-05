@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 import { WeatherContextProvider } from "./context/WeatherContext";
 import { SearchContextProvider } from "./context/SearchContext";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
-
 import "./App.css";
 import ProfilePage from "@components/profile-page/ProfilePage";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
@@ -70,10 +69,18 @@ function App() {
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}
                 />
-                <Route path="/apis/chuck" element={<ChuckNorris />} />
-                <Route path="/apis/zen" element={<ZenQuotes />} />
+                <Route
+                  path="/apis/chuck"
+                  element={<ChuckNorris showSearch={true} />}
+                />
+                <Route
+                  path="/apis/zen"
+                  element={<ZenQuotes showSearch={true} />}
+                />
                 <Route path="search" element={<SearchResults />} />
                 <Route path="profile/:user" element={<ProfilePage />} />
+                <Route path="search" element={<SearchResults />} />
+                <Route path="users/:user" element={<ProfilePage />} />
               </Route>
               {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />

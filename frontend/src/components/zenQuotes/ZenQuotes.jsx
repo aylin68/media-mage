@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./zenQuotes.css";
 import { AuthContext } from "../../context/AuthContext";
 
-const ZenQuotes = () => {
-  const [quote, setQuote] = useState("");
+const ZenQuotes = (props) => {
+  const { showSearch, zenContent } = props;
+  const [quote, setQuote] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
   const { user } = useContext(AuthContext);
   const rand = Math.floor(Math.random() * 1643);
@@ -18,32 +19,62 @@ const ZenQuotes = () => {
     axios
       .get(url)
       .then((response) => {
-        setQuote(response.data);
+        setQuote(response.data[rand]);
         setDataLoaded(true);
-        console.log(quote[rand].text);
-        console.log(response.data[rand].text);
-        console.log(response.data[rand].author);
+        console.log(quote);
       })
       .catch((err) => console.log(err));
   };
 
   const createZenPost = async (e) => {
     e.preventDefault();
+    const nPost = {
+      userId: user._id,
+      postContent: "zenquote",
+      zenContent: quote,
+      postTitle: "Zenquote",
+      postType: "zenquote",
+      username: user.username,
+      likes: [],
+      comments: [],
+      profilePic: "src/assets/images/icon.png",
+    };
+    try {
+      await axios.post("/posts", nPost);
+      window.location.replace("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
+  useEffect(() => {
+    if (zenContent) {
+      setQuote(zenContent);
+    } else {
+      SearchHandel();
+    }
+  }, []);
 
   return (
     <Container>
       <Card className="">
-        <Card.Title>Hello Zen</Card.Title>
-        <div className="">
-          <Button className="" onClick={SearchHandel}>
-            click me
+        {showSearch ? (
+          <div>
+            <Card.Title>Hello Zen</Card.Title>
+
+            <Button className="" onClick={SearchHandel}>
+              click me
+            </Button>
+          </div>
+        ) : null}
+        {/* <h2>{dataLoaded ? quote.text : null}</h2> */}
+        <h2>{quote.text}</h2>
+        <h5>{quote.author}</h5>
+
+        {showSearch ? (
+          <Button className="" onClick={createZenPost}>
+            Create a Post
           </Button>
-          <h2>{dataLoaded ? "the quote is: " + quote[rand].text : null}</h2>
-        </div>
-        <Button className="" onClick={createZenPost}>
-          Create a Post
-        </Button>
+        ) : null}
       </Card>
     </Container>
   );

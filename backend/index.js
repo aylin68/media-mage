@@ -15,7 +15,7 @@ app.use(express.json());
 // app.use(cors());
 connectDB();
 
-// Cors
+// // Cors
 const corsOptions = {
   origin: (origin, callback) => {
     callback(null, true);
@@ -34,7 +34,7 @@ const corsOptions = {
 
 app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));
-// end Cors
+// // end Cors
 
 app.use("/api/auth", authRoute); // when i go to this address it will run "authRoute" router
 app.use("/api/posts", postRoute);
