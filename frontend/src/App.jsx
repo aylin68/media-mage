@@ -13,7 +13,7 @@ import ForgetPassword from "./pages/Login/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
 import ProtectedRoute from "./ProtectedRoute";
-import Topbar from "./components/navbar/topbar";
+import Topbar from "./components/topbar/topbar";
 import SearchResults from "./components/search/SearchResult";
 import { useEffect, useState } from "react";
 import { WeatherContextProvider } from "./context/WeatherContext";
