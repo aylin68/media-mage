@@ -1,15 +1,23 @@
 const Apis = [
   {
     name: "weather",
-    route: "/weather",
+    route: "/apis/weather",
   },
   {
     name: "vimeo",
-    route: "/vimeo",
+    route: "/apis/vimeo",
   },
   {
     name: "books",
-    route: "/books",
+    route: "/apis/books",
+  },
+  {
+    name: "chuck quotes",
+    route: "/apis/chuck",
+  },
+  {
+    name: "zen quotes",
+    route: "/apis/zen",
   },
 ];
 

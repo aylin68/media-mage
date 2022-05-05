@@ -3,9 +3,7 @@ import "./post.css";
 import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PropTypes from "prop-types";
 import CommentSection from "./commentSection";
-import { format } from "timeago.js";
 import moment from "moment";
 import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
@@ -27,7 +25,6 @@ function Post(props) {
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
   let finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
-
   return (
     <Card>
       <Card.Header>
@@ -44,7 +41,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to="/">{username}</Link>
+          <Link to={`/profile/${userId}`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
@@ -60,6 +57,12 @@ function Post(props) {
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
         {postType === "weather" ? (
+          <WeatherPost weatherContent={weatherContent} />
+        ) : null}
+        {postType === "zenquote" ? (
+          <WeatherPost weatherContent={weatherContent} />
+        ) : null}
+        {postType === "chuckquote" ? (
           <WeatherPost weatherContent={weatherContent} />
         ) : null}
 
