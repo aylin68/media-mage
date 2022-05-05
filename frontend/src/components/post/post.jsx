@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
-import Weather from "../weather/Weather";
+import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
 
 function Post(props) {
@@ -58,7 +58,9 @@ function Post(props) {
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
         {postType === "weather" ? (
+
           <Weather weatherContent={weatherContent} />
+
         ) : null}
 
         {/* <div className="time">

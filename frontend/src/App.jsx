@@ -11,6 +11,7 @@ import Registration from "./pages/Login/Registration";
 import ForgetPassword from "./pages/Login/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
+import WeatherPost from "./components/weather/WeatherPost";
 import ProtectedRoute from "./ProtectedRoute";
 import Topbar from "./components/navbar/topbar";
 import SearchResults from "./components/search/SearchResult";
@@ -61,10 +62,12 @@ function App() {
                 }
               >
                 <Route path="" element={<Feed />} />
+
                 <Route path="/apis/vimeo" element={<Vimeo />} />
                 <Route
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}
+
                 />
                 <Route path="search" element={<SearchResults />} />
                 <Route path="users/:user" element={<ProfilePage />} />
