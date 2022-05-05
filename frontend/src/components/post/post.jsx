@@ -42,7 +42,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to={`/profile/${userId}`}>{username}</Link>
+          <Link to={`/users/${userId}`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}

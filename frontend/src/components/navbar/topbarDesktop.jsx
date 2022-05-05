@@ -65,6 +65,7 @@ const TopbarDesktop = () => {
           alignItems: "center",
         }}
       >
+        <Link to="/">
         <img
           src={logo}
           alt="logo"
@@ -75,7 +76,8 @@ const TopbarDesktop = () => {
             height: "auto",
             margin: "0, 1.5rem",
           }}
-        />
+          />
+          </Link>
 
         <Navbar.Brand
           style={{
@@ -104,7 +106,7 @@ const TopbarDesktop = () => {
           </Form>
           <FontAwesomeIcon icon={faEnvelope} />
           <FontAwesomeIcon icon={faPaperPlane} />
-          <Link to="/profile/:user">
+          <Link to={`/users/${user._id}`}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
           <FontAwesomeIcon icon={faBell} />
@@ -118,7 +120,7 @@ const TopbarDesktop = () => {
             </Nav.Link>
               </LinkContainer>
               <LinkContainer
-                to="/profile/:user"
+                to={`/users/${user._id}`}
                 style={{ textDecoration: "none", color: "white" }}
                 >
                 <Nav.Link>
