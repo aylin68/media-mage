@@ -57,12 +57,12 @@ function SearchCard(props) {
                 backgroundColor: "transparent"
               }}/>
           <Stack direction="vertical" gap={1}>
-          <Card.Title> {username} </Card.Title>
+          <Link to={`/users/${userID}`}> <Card.Title> {username} </Card.Title> </Link>
           <Card.Text >Followers: {fr} </Card.Text>
           <Card.Text >Following: {fn} </Card.Text>
           </Stack>
-          <div className="vr" />
-          {amFollowing ? <Button onClick={handleUnfollow}>Unfollow</Button> : <Button onClick={handleFollow}>Follow</Button>}
+          <div className="vr" style={{leftMargin: "auto"}}/>
+          {userID === user._id ? null : amFollowing ? <Button  onClick={handleUnfollow}>Unfollow</Button> : <Button onClick={handleFollow}>Follow</Button>}
         </Stack>
       </Card.Body>
     </Card>

@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from "react";
+import { React, useContext, useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
 import {
@@ -11,14 +11,19 @@ import {
   Button,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
+import {SearchContext} from "../../context/SearchContext";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TopbarMobile = () => {
   const { user, dispatch } = useContext(AuthContext);
+  const {searchResults, setSearchResults} = useContext(SearchContext);
+  const searchInput = useRef();
+  const navigate = useNavigate(); 
   const logOut = () => {
     dispatch({
       type: "LOGOUT",
@@ -26,6 +31,21 @@ const TopbarMobile = () => {
     localStorage.clear();
     console.log("hey");
   };
+
+  async function handleSearch(event) {
+    event.preventDefault(event.target);
+    console.log(searchResults);
+    try { const res = await axios.get("/users/search/" + searchInput.current.value);
+    console.log( res );
+    setSearchResults(res.data);
+    console.log(searchResults);
+    navigate("/search", { replace: true });}
+   catch(error){
+     console.log(error);
+     setSearchResults(null);
+     navigate("/search", { replace: true });}
+   }
+
   return (
     <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
       <Container
@@ -57,14 +77,15 @@ const TopbarMobile = () => {
             />
           </Link>
 
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSearch}>
             <FormControl
               type="search"
               placeholder="Search"
               className="me-3"
               aria-label="Search"
+              ref={searchInput}
             />
-            <Button variant="outline" id="searchText">
+            <Button variant="outline" id="searchText" type="submit">
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>

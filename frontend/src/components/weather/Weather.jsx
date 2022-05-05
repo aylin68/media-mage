@@ -16,6 +16,12 @@ const Weather = (props) => {
   const { user } = useContext(AuthContext);
 
 
+  const handleEnterDown = (event) => {
+    if (event.key === "Enter") {
+      SearchHandel();
+    }
+  };
+
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
     axios
@@ -71,8 +77,9 @@ const Weather = (props) => {
                   value={location}
                   placeholder="Enter location"
                   onChange={(e) => setLocation(e.target.value)}
+                  onKeyDown={handleEnterDown}
                 ></input>
-                <button className="search-button" onClick={SearchHandel}>
+                <button className="search-button" onClick={SearchHandel} >
                   <FontAwesomeIcon
                     className="weather-search"
                     icon="fa-solid fa-magnifying-glass"
