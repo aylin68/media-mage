@@ -10,7 +10,6 @@ import moment from "moment";
 import Weather from "../weather/Weather";
 import "../weather/Weather.css";
 
-
 function Post(props) {
   const {
     username,
@@ -23,10 +22,12 @@ function Post(props) {
     comments,
     likes,
     createdAt,
+    weatherContent,
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
   let finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
+  //console.log(weatherContent);
 
   return (
     <Card>
@@ -59,7 +60,9 @@ function Post(props) {
         {postType === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
-        {postType === "weather" ? <Weather /> : null}
+        {postType === "weather" ? (
+          <Weather weatherContent={weatherContent} />
+        ) : null}
 
         {/* <div className="time">
           <span className="span-time"> Posted at: {finalDate}</span>
