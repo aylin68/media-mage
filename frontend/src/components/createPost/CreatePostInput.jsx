@@ -14,6 +14,7 @@ function CreatePostInput(props) {
   const handleEnterDown = (event) => {
     if (event.key === "Enter") {
       postContent.current.value.concat("\r");
+      console.log(postContent.current.value);
     }
   };
 
@@ -28,7 +29,7 @@ function CreatePostInput(props) {
       username: user.username,
       likes: [],
       comments: [],
-      profilePic: "src/assets/images/icon.png",
+      profilePic: user.profilePicture,
     };
     try {
       await axios.post("/posts", nPost);
@@ -44,7 +45,7 @@ function CreatePostInput(props) {
         <Card.Body>
           <Card.Title>Create a text post</Card.Title>
           <Form onSubmit={handleSubmit}>
-            <Stack className="post-input" direction="vertical" gap={3}>
+          <Stack className="post-input" direction="vertical" gap={3}>
               <Stack direction="horizontal" gap={3}>
                 <Stack direction="vertical" gap={3}>
                   <Form.Control
@@ -83,24 +84,5 @@ function CreatePostInput(props) {
   );
 }
 
-//     return (
-//         <>
-//         <Card className="create-post">
-//             <Card.Body>
-//             <Card.Title>
-//             Create a text post
-//             </Card.Title>
-//             <Stack className="post-input" direction="vertical" gap={3}>
-//             <Form.Control className="me-auto" as="input" type="text" value={newPostTitle} placeholder="Give your new post a title (or not)..."  onChange={(e) => setNewPostTitle(e.target.value)}/>
-//             <Stack direction="horizontal" gap={3}>
-//             <Form.Control className="me-auto" as="textarea" type="text" value={newPostContent} placeholder="What's on your mind..."  onChange={(e) => setNewPostContent(e.target.value)}/>
-//             <Button variant="primary" onClick={handlePostCreation} onKeyDown={handleEnterDown}>POST</Button>
-//             </Stack>
-//             </Stack>
-//             </Card.Body>
-//         </Card>
-//         <hr className="outside-card-hr" />
-//         </>
-//     );
 
 export default CreatePostInput;

@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import WeatherContextProvider from "../../context/WeatherContext";
+import WeatherContext from "../../context/WeatherContext";
 import Icons from "./Icons";
 import ForecastWeatherTime from "./ForecastWeatherTime";
 import ForecastWeatherDay from "./ForecastWeatherDay";
@@ -11,14 +10,11 @@ import "./weather.css";
 import { AuthContext } from "../../context/AuthContext";
 
 const Weather = (props) => {
-  const { location, setLocation, data, setData } = useContext(
-    WeatherContextProvider
-  );
+  const { showSearch, weatherContent } = props;
+  const [location, setLocation] = useState("Berlin");
+  const [data, setData] = useState({});
   const { user } = useContext(AuthContext);
 
-  //const [searchQuery, setSerachQuery] = useState(location);
-  const { showSearch, weatherContent } = props;
-  // console.log("TEST ", weatherContent);
 
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
@@ -26,10 +22,11 @@ const Weather = (props) => {
       .get(url)
       .then((response) => {
         setData(response.data);
-        // console.log(response.data.city.name);
-        setLocation(response.data.city.name);
+
+        console.log("data is: ", data);
+
       })
-      .catch((err) => alert("This citye does not exist"));
+      .catch((err) => console.log("erorr ", err));
   };
 
   const createPostWeatherHandel = async (e) => {
@@ -53,13 +50,13 @@ const Weather = (props) => {
     }
   };
   useEffect(() => {
-    if (location) {
+    if (weatherContent) {
+      setData(weatherContent);
+    } else {
       SearchHandel();
     }
   }, []);
 
-  // console.log(data);
-  // console.log(weatherContent);
 
   return (
     <>
@@ -91,13 +88,21 @@ const Weather = (props) => {
                 </div>
                 {data.city ? <h5>{data.city.name}</h5> : null}
               </div>
-              {data.list ? <h1>{data.list[0].main.temp.toFixed()}°C</h1> : null}
+              {data.list ? (
+                <h1>
+                  {data.list[0].main.temp.toFixed()}
+                  °C
+                </h1>
+              ) : null}
             </div>
             <div className="info-box">
               <div className="info">
                 <div className="feels_like">
                   {data.list ? (
-                    <p>{data.list[0].main.feels_like.toFixed()}°C</p>
+                    <p>
+                      {data.list[0].main.feels_like.toFixed()}
+                      °C
+                    </p>
                   ) : null}
                   {data.list ? <span>Feels Like</span> : null}
                 </div>
@@ -107,13 +112,19 @@ const Weather = (props) => {
                 </div>
                 <div className="temp_min">
                   {data.list ? (
-                    <p>{data.list[0].main.temp_min.toFixed()}°C</p>
+                    <p>
+                      {data.list[0].main.temp_min.toFixed()}
+                      °C
+                    </p>
                   ) : null}
                   {data.list ? <span>Min</span> : null}
                 </div>
                 <div className="temp_max">
                   {data.list ? (
-                    <p>{data.list[0].main.temp_max.toFixed()}°C</p>
+                    <p>
+                      {data.list[0].main.temp_max.toFixed()}
+                      °C
+                    </p>
                   ) : null}
                   {data.list ? <span>Max</span> : null}
                 </div>

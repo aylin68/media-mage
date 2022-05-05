@@ -3,9 +3,7 @@ import "./post.css";
 import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PropTypes from "prop-types";
 import CommentSection from "./commentSection";
-import { format } from "timeago.js";
 import moment from "moment";
 import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
@@ -44,7 +42,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to="/">{username}</Link>
+          <Link to={`/users/${userId}`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}
@@ -60,7 +58,9 @@ function Post(props) {
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
         {postType === "weather" ? (
-          <WeatherPost weatherContent={weatherContent} />
+
+          <Weather weatherContent={weatherContent} />
+
         ) : null}
 
         {/* <div className="time">

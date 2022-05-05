@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./post.css";
 import { Card, Button, Stack, Form } from "react-bootstrap";
-//import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   faThumbsUp as fasThumbsUp,
@@ -27,6 +27,7 @@ function commentSection(props) {
       userId: user._id,
       comment: comment.current.value,
       createdAt: new Date().toUTCString(),
+      profilePic: user.profilePicture,
     };
     try {
       await axios.patch("/posts/comment/" + postID, nComment);
@@ -85,7 +86,7 @@ function commentSection(props) {
           >
             <img
               alt="icon"
-              src="src/assets/images/icon.png"
+              src={comment.profilePic}
               style={{
                 width: "2rem",
                 height: "auto",
@@ -96,10 +97,12 @@ function commentSection(props) {
               }}
             />
             <Stack direction="vertical" gap={1} className="comment-body">
-              <Card.Text className="comment-username">
-                {comment.username}
+            <Card.Text className="comment-username">
+              <Link to="/profile/user_id">
+              {comment.username}
+              </Link>
               </Card.Text>
-              <Card.Text>{comment.comment}</Card.Text>
+            <Card.Text >{comment.comment}</Card.Text>
             </Stack>
             <Card.Text>{moment(comment.createdAt).fromNow()}</Card.Text>
             <hr />
