@@ -17,7 +17,8 @@ const Weather = (props) => {
   const { user } = useContext(AuthContext);
 
   //const [searchQuery, setSerachQuery] = useState(location);
-  const { showSearch } = props;
+  const { showSearch, weatherContent } = props;
+  // console.log("TEST ", weatherContent);
 
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
@@ -25,11 +26,14 @@ const Weather = (props) => {
       .get(url)
       .then((response) => {
         setData(response.data);
+        // console.log(response.data.city.name);
+        setLocation(response.data.city.name);
       })
       .catch((err) => alert("This citye does not exist"));
   };
 
-  const createPostWeatherHandel = async () => {
+  const createPostWeatherHandel = async (e) => {
+    e.preventDefault();
     const nPost = {
       userId: user._id,
       postContent: "weather",
@@ -53,6 +57,9 @@ const Weather = (props) => {
       SearchHandel();
     }
   }, []);
+
+  // console.log(data);
+  // console.log(weatherContent);
 
   return (
     <>
@@ -121,7 +128,7 @@ const Weather = (props) => {
           {showSearch ? (
             <button
               className="weather-btn-post"
-              onClick={createPostWeatherHandel}
+              onClick={(e) => createPostWeatherHandel(e)}
             >
               Create a Post
             </button>

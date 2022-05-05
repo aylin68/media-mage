@@ -7,9 +7,8 @@ import PropTypes from "prop-types";
 import CommentSection from "./commentSection";
 import { format } from "timeago.js";
 import moment from "moment";
-import Weather from "../weather/Weather";
+import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
-
 
 function Post(props) {
   const {
@@ -23,6 +22,7 @@ function Post(props) {
     comments,
     likes,
     createdAt,
+    weatherContent,
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
@@ -59,7 +59,9 @@ function Post(props) {
         {postType === "image" ? (
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
-        {postType === "weather" ? <Weather /> : null}
+        {postType === "weather" ? (
+          <WeatherPost weatherContent={weatherContent} />
+        ) : null}
 
         {/* <div className="time">
           <span className="span-time"> Posted at: {finalDate}</span>
