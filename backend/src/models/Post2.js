@@ -22,6 +22,10 @@ const PostSchema2 = new mongoose.Schema(
       type: Object,
       default: {},
     },
+    coinContent: {
+      type: Array,
+      default: [],
+    },
     postTitle: {
       type: String,
       default: "",

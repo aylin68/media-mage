@@ -34,8 +34,8 @@
 }
 
 .card-body {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 .btn-primary {
@@ -47,7 +47,7 @@
 }
 
 .card-body img {
-  margin: auto;
+  /* margin: auto; */
 }
 
 .btn-primary {

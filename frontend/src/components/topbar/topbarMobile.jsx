@@ -43,19 +43,19 @@ const TopbarMobile = () => {
           style={{ display: "flex", alignItems: "center", padding: "0" }}
         >
           <Link to="/">
-          <img
-            src={logo}
-            alt="logo"
-            className="logo"
-            style={{
-              display: "flex",
-              width: "3rem",
-              height: "auto",
-              margin: "0",
-              padding: "0",
-            }}
+            <img
+              src={logo}
+              alt="logo"
+              className="logo"
+              style={{
+                display: "flex",
+                width: "3rem",
+                height: "auto",
+                margin: "0",
+                padding: "0",
+              }}
             />
-            </Link>
+          </Link>
 
           <Form className="d-flex">
             <FormControl
@@ -97,6 +97,12 @@ const TopbarMobile = () => {
                 style={{ textDecoration: "none" }}
               >
                 <NavDropdown.Item>Weather</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer
+                to="/apis/cryptotracker"
+                style={{ textDecoration: "none" }}
+              >
+                <NavDropdown.Item>Cryptotracker</NavDropdown.Item>
               </LinkContainer>
               <LinkContainer
                 to="/apis/vimeo"

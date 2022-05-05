@@ -20,23 +20,5 @@
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.0"
   },
-  "dependencies": {
-    "@babel/helper-module-imports": "^7.16.7",
-    "@babel/runtime": "^7.17.9",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-regular-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
-    "babel-plugin-macros": "^3.1.0",
-    "bootstrap": "^5.1.3",
-    "esbuild": "^0.14.38",
-    "esbuild-darwin-arm64": "^0.14.38",
-    "prettier": "^2.6.2",
-    "prop-types": "^15.8.1",
-    "react-bootstrap": "^2.3.0",
-    "react-router": "^6.3.0",
-    "react-router-bootstrap": "^0.26.1",
-    "react-router-dom": "^6.3.0"
-  },
   "proxy": "http://localhost:8000/api"
 }

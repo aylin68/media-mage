@@ -22,7 +22,7 @@ function RightBar() {
     rows.push(<FriendList key={i}/>);
       }
   return (
-    <Container className="rightBarContainer" style={{ display: "flex", alignItems: "flex-end" }}>
+    <Container className="rightBarContainer" style={{ display: "flex"}}>
       <ListGroup>
           {rows}
       </ListGroup>

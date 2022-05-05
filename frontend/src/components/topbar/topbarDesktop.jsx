@@ -10,13 +10,13 @@ import {
   Container,
   Button,
 } from "react-bootstrap";
-import { LinkContainer  } from "react-router-bootstrap";
-import {Link, useNavigate} from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {SearchContext} from "../../context/SearchContext";
+import { SearchContext } from "../../context/SearchContext";
 import {
   faEnvelope,
   faUser,
@@ -26,9 +26,9 @@ import {
 
 const TopbarDesktop = () => {
   const { user, dispatch } = useContext(AuthContext);
-  const {searchResults, setSearchResults} = useContext(SearchContext);
+  const { searchResults, setSearchResults } = useContext(SearchContext);
   const searchInput = useRef();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const logOut = () => {
     dispatch({
       type: "LOGOUT",
@@ -40,18 +40,19 @@ const TopbarDesktop = () => {
   async function handleSearch(event) {
     event.preventDefault(event.target);
     console.log(searchResults);
-    try { const res = await axios.get("/users/search/" + searchInput.current.value);
-    console.log( res );
-    setSearchResults(res.data);
-    console.log(searchResults);
-    navigate("/search", { replace: true });}
-   catch(error){
-     console.log(error);
-     setSearchResults(null);
-     navigate("/search", { replace: true });}
-   }
-    // console.log(searchResults);
-    
+    try {
+      const res = await axios.get("/users/search/" + searchInput.current.value);
+      console.log(res);
+      setSearchResults(res.data);
+      console.log(searchResults);
+      navigate("/search", { replace: true });
+    } catch (error) {
+      console.log(error);
+      setSearchResults(null);
+      navigate("/search", { replace: true });
+    }
+  }
+  // console.log(searchResults);
 
   return (
     <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
@@ -66,18 +67,18 @@ const TopbarDesktop = () => {
         }}
       >
         <Link to="/">
-        <img
-          src={logo}
-          alt="logo"
-          className="logo"
-          style={{
-            display: "flex",
-            width: "3rem",
-            height: "auto",
-            margin: "0, 1.5rem",
-          }}
+          <img
+            src={logo}
+            alt="logo"
+            className="logo"
+            style={{
+              display: "flex",
+              width: "3rem",
+              height: "auto",
+              margin: "0, 1.5rem",
+            }}
           />
-          </Link>
+        </Link>
 
         <Navbar.Brand
           style={{
@@ -114,58 +115,61 @@ const TopbarDesktop = () => {
         </Container>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-              <LinkContainer to="/" style={{ textDecoration: "none", color: "white" }}>
-            <Nav.Link>
-                Home
-            </Nav.Link>
-              </LinkContainer>
-              <LinkContainer
-                to={`/users/${user._id}`}
-                style={{ textDecoration: "none", color: "white" }}
-                >
-                <Nav.Link>
-                Profile
-            </Nav.Link>
-              </LinkContainer>
+            <LinkContainer
+              to="/"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer
+              to={`/users/${user._id}`}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Nav.Link>Profile</Nav.Link>
+            </LinkContainer>
             <NavDropdown
               title="API's"
               id="basic-nav-dropdown"
               variant="dark"
               bg="dark"
             >
-                <LinkContainer
-                  to="/apis/weather"
-                  style={{ textDecoration: "none"}}
-                  >
-                  <NavDropdown.Item>
-                  Weather
-              </NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer
-                  to="/apis/vimeo"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    backgroundColor: "white",
-                  }}
-                  >
-                  <NavDropdown.Item>
-                  Vimeo
-              </NavDropdown.Item>
-                </LinkContainer>
+              <LinkContainer
+                to="/apis/weather"
+                style={{ textDecoration: "none" }}
+              >
+                <NavDropdown.Item>Weather</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer
+                to="/apis/cryptotracker"
+                style={{ textDecoration: "none" }}
+              >
+                <NavDropdown.Item>Cryptotracker</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer
+                to="/apis/vimeo"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  backgroundColor: "white",
+                }}
+              >
+                <NavDropdown.Item>Vimeo</NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
-              <LinkContainer
-                to="/register"
-                style={{ textDecoration: "none", color: "white", marginRight: '1rem'}}
-                onClick={logOut}
-                >
-                <Nav.Link>
-                Log out
-            </Nav.Link>
-              </LinkContainer>
+            <LinkContainer
+              to="/register"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                marginRight: "1rem",
+              }}
+              onClick={logOut}
+            >
+              <Nav.Link>Log out</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

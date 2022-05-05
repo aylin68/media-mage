@@ -6,13 +6,15 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Feed from "@components/feed/feed";
 import FullPage from "@pages/fullpage/fullPage";
 import Vimeo from "@components/Vimeo/vimeo";
+import CryptoTracker from "@components/cryptotracker/CryptoTracker";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Login/Registration";
 import ForgetPassword from "./pages/Login/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
+import WeatherPost from "./components/weather/WeatherPost";
 import ProtectedRoute from "./ProtectedRoute";
-import Topbar from "./components/navbar/topbar";
+import Topbar from "./components/topbar/topbar";
 import SearchResults from "./components/search/SearchResult";
 import { useEffect, useState } from "react";
 import { WeatherContextProvider } from "./context/WeatherContext";
@@ -61,10 +63,13 @@ function App() {
                 }
               >
                 <Route path="" element={<Feed />} />
+
                 <Route path="/apis/vimeo" element={<Vimeo />} />
+                <Route path="/apis/cryptotracker" element={<CryptoTracker />} />
                 <Route
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}
+
                 />
                 <Route path="search" element={<SearchResults />} />
                 <Route path="users/:user" element={<ProfilePage />} />
