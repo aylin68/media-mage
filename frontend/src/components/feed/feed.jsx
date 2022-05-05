@@ -9,6 +9,7 @@ import CreatePostInput from "@components/createPost/CreatePostInput";
 import PostList from "../post/PostList";
 import moment from "moment";
 
+
 function Feed() {
   const [posts, setPosts] = useState([]);
   const { user, error } = useContext(AuthContext);
@@ -63,6 +64,7 @@ function Feed() {
           postTitle={p.postTitle}
           createdAt={p.createdAt}
           weatherContent={p.weatherContent}
+          coinContent={p.coinContent}
         />
       ))}
     </Container>
