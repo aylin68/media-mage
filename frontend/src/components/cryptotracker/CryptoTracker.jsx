@@ -22,13 +22,12 @@ const CryptoTracker = () => {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-  console.log(coins)
   const filteredCoins = coins.filter((coin) =>
     coin.id.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <Card>
-      <Form className="d-flex" style={{margin: '.5rem'}}>
+      <Form className="d-flex" style={{ margin: ".5rem" }}>
         <FormControl
           type="search"
           placeholder="search cryptocurrencies"
