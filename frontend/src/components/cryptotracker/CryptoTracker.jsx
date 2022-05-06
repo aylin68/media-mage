@@ -40,6 +40,7 @@ const CryptoTracker = () => {
         </Button>
       </Form>
       {filteredCoins.map((coin) => {
+        // console.log(coin.id)
         return (
           <Coin
             key={coin.id}
