@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
-import WeatherPost from "../weather/WeatherPost";
+import Weather from "../weather/Weather";
 import "../weather/Weather.css";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
@@ -64,7 +64,7 @@ function Post(props) {
           <img alt="random" src="https://picsum.photos/400/320" />
         ) : null}
         {postType === "weather" ? (
-          <WeatherPost weatherContent={weatherContent} />
+          <Weather weatherContent={weatherContent} />
         ) : null}
         {postType === "zenquote" ? <ZenQuotes zenContent={zenContent} /> : null}
         {postType === "chuckquote" ? (
