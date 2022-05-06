@@ -94,7 +94,7 @@ const ProfilePage = (props) => {
               }}
             />
           )}
-          <Link to={`/users/${profileUser._id}`}>
+          <Link to={`/profile/${profileUser._id}`}>
             {profileUser.username}'s profile page
           </Link>
           <div className="infoDiv">followers: {dataLoaded ? fr : null}</div>
