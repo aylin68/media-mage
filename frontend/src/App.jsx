@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 // import Home from "@pages/Home";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -12,17 +12,16 @@ import Registration from "./pages/Login/Registration";
 import ForgetPassword from "./pages/Login/ForgetPassword";
 import { AuthContext } from "./context/AuthContext";
 import Weather from "./components/weather/Weather";
-import WeatherPost from "./components/weather/WeatherPost";
 import ProtectedRoute from "./ProtectedRoute";
 import Topbar from "./components/topbar/topbar";
 import SearchResults from "./components/search/SearchResult";
-import { useEffect, useState } from "react";
 import { WeatherContextProvider } from "./context/WeatherContext";
 import { SearchContextProvider } from "./context/SearchContext";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
 import "./App.css";
 import ProfilePage from "@components/profile-page/ProfilePage";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
+import Books from "@components/books/Books";
 
 library.add(fas);
 
@@ -46,9 +45,7 @@ function App() {
     <BrowserRouter>
       <SearchContextProvider>
         <WeatherContextProvider>
-          <nav className="App">
-            <Topbar />
-          </nav>
+          <nav className="App">{user ? <Topbar /> : null}</nav>
           <div className="bodyContainer">
             <Routes>
               {/* <Route exact path="/" element={<FullPage />}>
@@ -71,18 +68,12 @@ function App() {
                   path="/apis/weather"
                   element={<Weather showSearch={true} />}
                 />
-                <Route
-                  path="/apis/chuck"
-                  element={<ChuckNorris showSearch={true} />}
-                />
-                <Route
-                  path="/apis/zen"
-                  element={<ZenQuotes showSearch={true} />}
-                />
+                <Route path="/apis/books" element={<Books />} />
+                <Route path="/apis/chuck" element={<ChuckNorris />} />
+                <Route path="/apis/zen" element={<ZenQuotes />} />
                 <Route path="search" element={<SearchResults />} />
-                <Route path="profile/:user" element={<ProfilePage />} />
+                <Route path="profile/:id" element={<ProfilePage />} />
                 <Route path="search" element={<SearchResults />} />
-                <Route path="users/:user" element={<ProfilePage />} />
               </Route>
               {/* <Route exact path="/" element={user ? <FullPage /> : <Login />}>
             <Route path="" element={<Feed />} />

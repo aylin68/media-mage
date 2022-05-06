@@ -122,7 +122,7 @@ const TopbarDesktop = () => {
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             <LinkContainer
-              to={`/users/${user._id}`}
+              to={`/profile/${user._id}`}
               style={{ textDecoration: "none", color: "white" }}
             >
               <Nav.Link>Profile</Nav.Link>
