@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect, useRef } from "react";
+import { React, useContext, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
 import {
@@ -14,16 +14,16 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
-import {SearchContext} from "../../context/SearchContext";
+import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TopbarMobile = () => {
   const { user, dispatch } = useContext(AuthContext);
-  const {searchResults, setSearchResults} = useContext(SearchContext);
+  const { searchResults, setSearchResults } = useContext(SearchContext);
   const searchInput = useRef();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const logOut = () => {
     dispatch({
       type: "LOGOUT",
@@ -35,16 +35,18 @@ const TopbarMobile = () => {
   async function handleSearch(event) {
     event.preventDefault(event.target);
     console.log(searchResults);
-    try { const res = await axios.get("/users/search/" + searchInput.current.value);
-    console.log( res );
-    setSearchResults(res.data);
-    console.log(searchResults);
-    navigate("/search", { replace: true });}
-   catch(error){
-     console.log(error);
-     setSearchResults(null);
-     navigate("/search", { replace: true });}
-   }
+    try {
+      const res = await axios.get("/users/search/" + searchInput.current.value);
+      console.log(res);
+      setSearchResults(res.data);
+      console.log(searchResults);
+      navigate("/search", { replace: true });
+    } catch (error) {
+      console.log(error);
+      setSearchResults(null);
+      navigate("/search", { replace: true });
+    }
+  }
 
   return (
     <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">

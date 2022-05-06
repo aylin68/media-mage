@@ -27,7 +27,7 @@ const CryptoTracker = () => {
   );
   return (
     <Card>
-      <Form className="d-flex" style={{margin: '.5rem'}}>
+      <Form className="d-flex" style={{ margin: ".5rem" }}>
         <FormControl
           type="search"
           placeholder="search cryptocurrencies"
@@ -40,6 +40,7 @@ const CryptoTracker = () => {
         </Button>
       </Form>
       {filteredCoins.map((coin) => {
+        // console.log(coin.id)
         return (
           <Coin
             key={coin.id}
@@ -48,6 +49,7 @@ const CryptoTracker = () => {
             symbol={coin.symbol}
             volume={coin.market_cap}
             price={coin.current_price}
+            percentage={coin.market_cap_change_percentage_24h}
           />
         );
       })}

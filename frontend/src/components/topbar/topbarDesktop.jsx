@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect, useRef } from "react";
+import { React, useContext, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
 import {
@@ -160,7 +160,7 @@ const TopbarDesktop = () => {
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
             <LinkContainer
-              to="/register"
+              to="/login"
               style={{
                 textDecoration: "none",
                 color: "white",

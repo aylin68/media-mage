@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
-import Weather from "../weather/WeatherPost";
+import WeatherPost from "../weather/WeatherPost";
 import "../weather/Weather.css";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
