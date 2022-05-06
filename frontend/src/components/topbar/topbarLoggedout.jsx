@@ -7,17 +7,14 @@ import logo from "../../assets/images/logo.svg";
 
 const TopbarLoggedout = () => {
   return (
-    <Navbar variant="dark" expand="lg" className="ml-auto" fixed="top">
-      <Container
-        fluid
-        className="navContainer"
-        style={{
-          display: "flex",
-          flexDirection: "row !important",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <Navbar
+      variant="dark"
+      expand="lg"
+      className="ml-auto"
+      fixed="top"
+      style={{ justifyContent: "left !important" }}
+    >
+      <Container fluid className="navContainer">
         <Link to="/login">
           <img
             src={logo}
@@ -32,13 +29,7 @@ const TopbarLoggedout = () => {
           />
         </Link>
 
-        <Navbar.Brand
-          style={{
-            display: "flex !important",
-            flexDirection: "row !important",
-            padding: "0 1rem !important  ",
-          }}
-        >
+        <Navbar.Brand>
           <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
             mediamage
           </Link>

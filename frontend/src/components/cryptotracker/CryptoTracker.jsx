@@ -22,6 +22,7 @@ const CryptoTracker = () => {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+  console.log(coins)
   const filteredCoins = coins.filter((coin) =>
     coin.id.toLowerCase().includes(search.toLowerCase())
   );
@@ -49,6 +50,7 @@ const CryptoTracker = () => {
             symbol={coin.symbol}
             volume={coin.market_cap}
             price={coin.current_price}
+            percentage={coin.market_cap_change_percentage_24h}
           />
         );
       })}
