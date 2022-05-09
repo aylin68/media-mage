@@ -1,14 +1,45 @@
-require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const connectDB = require("./db");
+const authRoute = require("./src/routes/auth");
+const postRoute = require("./src/routes/posts");
+const userRoute = require("./src/routes/users");
+const cors = require("cors");
 
-const app = require("./src/app");
+dotenv.config();
 
-const port = parseInt(process.env.APP_PORT ?? "5000", 10);
+// middlewares
+const app = express();
+app.use(express.json());
+// app.use(cors());
+connectDB();
 
-app.listen(port, (err) => {
-  if (err) {
-    console.error("Something bad happened");
-  } else {
-    // eslint-disable-next-line no-restricted-syntax
-    console.log(`Server is listening on ${port}`);
-  }
+// // Cors
+const corsOptions = {
+  origin: (origin, callback) => {
+    callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: [
+    "Access-Control-Allow-Origin",
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+  ],
+  credentials: true,
+};
+
+app.options("*", cors(corsOptions));
+app.use(cors(corsOptions));
+// // end Cors
+
+app.use("/api/auth", authRoute); // when i go to this address it will run "authRoute" router
+app.use("/api/posts", postRoute);
+app.use("/api/users", userRoute);
+
+app.listen(process.env.APP_PORT ?? 3002, () => {
+  console.log("Backend server is running");
 });

@@ -1,0 +1,17 @@
+.apiList {
+  list-style: none;
+  width: 100%;
+}
+
+.apiListItem {
+  margin-bottom: 0.2rem;
+}
+
+.apiListItem a {
+  text-decoration: none;
+  background-color: transparent;
+  color: darkslateblue;
+  display: block;
+  width: inherit;
+  height: inherit;
+}
