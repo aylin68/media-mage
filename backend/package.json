@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "APP_PORT=3002 nodemon index.js",
+    "dev": "nodemon index.js",
     "migrate": "node migrate.js",
     "start": "node index.js",
     "lint": "echo '----- Checking Backend...' && npx prettier --debug-check . && eslint --ext .js . && echo '----- Done!'",

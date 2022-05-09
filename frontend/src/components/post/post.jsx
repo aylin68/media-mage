@@ -1,12 +1,12 @@
 import React from "react";
 import "./post.css";
+import "../weather/weather.css";
 import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
 import Weather from "../weather/Weather";
-import "../weather/Weather.css";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
