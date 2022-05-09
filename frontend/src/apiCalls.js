@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@services/axios";
 
 export const loginCall = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });

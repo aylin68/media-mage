@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { SearchContext } from "../../context/SearchContext";
-import axios from "axios";
+import axios from "@services/axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faSearch } from "@fortawesome/free-solid-svg-icons";
 
