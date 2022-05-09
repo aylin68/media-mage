@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import PropTypes from "prop-types";
 import "./CreatePost.css";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import axios from "@services/axios";
 
 function CreatePostInput(props) {
   const { user } = useContext(AuthContext);
@@ -45,7 +45,7 @@ function CreatePostInput(props) {
         <Card.Body>
           <Card.Title>Create a text post</Card.Title>
           <Form onSubmit={handleSubmit}>
-          <Stack className="post-input" direction="vertical" gap={3}>
+            <Stack className="post-input" direction="vertical" gap={3}>
               <Stack direction="horizontal" gap={3}>
                 <Stack direction="vertical" gap={3}>
                   <Form.Control
@@ -83,6 +83,5 @@ function CreatePostInput(props) {
     </>
   );
 }
-
 
 export default CreatePostInput;

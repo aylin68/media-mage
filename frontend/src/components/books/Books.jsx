@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
 import { Card, Stack, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";

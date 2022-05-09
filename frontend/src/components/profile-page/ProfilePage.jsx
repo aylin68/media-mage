@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin, faUser } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import axios from "@services/axios";
 import icon from "../../assets/images/icon.png";
 import { AuthContext } from "../../context/AuthContext";
 

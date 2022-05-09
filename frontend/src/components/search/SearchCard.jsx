@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import PropTypes from "prop-types";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import axios from "@services/axios";
 
 function SearchCard(props) {
   const {

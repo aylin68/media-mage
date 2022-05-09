@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./feed.css";
-import axios from "axios";
+import axios from "@services/axios";
 import { Container } from "react-bootstrap";
 import Post from "@components/post/post";
 import "bootstrap/dist/css/bootstrap.min.css";
