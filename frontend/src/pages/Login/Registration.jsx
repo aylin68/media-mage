@@ -26,7 +26,7 @@ function Registration() {
         await axios.post("/auth/register", user);
         navigate("/login");
       } catch (error) {
-        console.log("you have an error:", error);
+        console.error("you have an error:", error);
       }
     }
   };

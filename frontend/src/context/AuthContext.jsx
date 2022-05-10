@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import PropTypes from "prop-types";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
@@ -9,7 +10,7 @@ const INITIAL_STATE = {
 
 export const AuthContext = createContext(INITIAL_STATE);
 
-export const AuthContextProvider = ({ children }) => {
+export function AuthContextProvider({ children }) {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
   return (
@@ -24,4 +25,11 @@ export const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+}
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.shape(),
+};
+AuthContextProvider.defaultProps = {
+  children: {},
 };

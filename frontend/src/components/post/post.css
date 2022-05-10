@@ -33,21 +33,12 @@
   margin-bottom: 1.5rem !important;
 }
 
-.card-body {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
 .btn-primary {
   margin-right: 10px;
 }
 
 .vr {
   background-color: black !important;
-}
-
-.card-body img {
-  /* margin: auto; */
 }
 
 .btn-primary {
@@ -93,20 +84,20 @@ svg:focus {
   color: gray;
 }
 
-.post-time{
+.post-time {
   margin-left: auto;
   background-color: transparent;
-  color: gray
+  color: gray;
 }
 
-.post-content{
+.post-content {
   white-space: pre;
 }
 
-.post-input-field{
+.post-input-field {
   min-height: 8rem !important;
 }
 
-.submit-button{
+.submit-button {
   align-self: flex-end;
 }

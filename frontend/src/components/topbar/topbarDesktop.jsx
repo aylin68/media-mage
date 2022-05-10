@@ -6,27 +6,26 @@ import {
   Nav,
   NavDropdown,
   Form,
-  FormControl,
   Container,
   Button,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "@services/axios";
-import logo from "../../assets/images/logo.svg";
-import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SearchContext } from "../../context/SearchContext";
 import {
   faEnvelope,
   faUser,
   faPaperPlane,
   faBell,
 } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../assets/images/logo.svg";
+import { AuthContext } from "../../context/AuthContext";
+import { SearchContext } from "../../context/SearchContext";
 
-const TopbarDesktop = () => {
+function TopbarDesktop() {
   const { user, dispatch } = useContext(AuthContext);
-  const { searchResults, setSearchResults } = useContext(SearchContext);
+  const { setSearchResults } = useContext(SearchContext);
   const searchInput = useRef();
   const navigate = useNavigate();
   const logOut = () => {
@@ -34,20 +33,19 @@ const TopbarDesktop = () => {
       type: "LOGOUT",
     });
     localStorage.clear();
-    console.log("hey");
   };
 
   async function handleSearch(event) {
     event.preventDefault(event.target);
-    console.log(searchResults);
+    // console.log(searchResults);
     try {
-      const res = await axios.get("/users/search/" + searchInput.current.value);
-      console.log(res);
+      const res = await axios.get(`/users/search/${searchInput.current.value}`);
+      // console.log(res);
       setSearchResults(res.data);
-      console.log(searchResults);
+      // console.log(searchResults);
       navigate("/search", { replace: true });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setSearchResults(null);
       navigate("/search", { replace: true });
     }
@@ -107,7 +105,8 @@ const TopbarDesktop = () => {
           </Form>
           <FontAwesomeIcon icon={faEnvelope} />
           <FontAwesomeIcon icon={faPaperPlane} />
-          <Link to={`/users/${user._id}`}>
+          {/* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */}
+          <Link to={`/profile/${user._id}`}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
           <FontAwesomeIcon icon={faBell} />
@@ -175,6 +174,6 @@ const TopbarDesktop = () => {
       </Container>
     </Navbar>
   );
-};
+}
 
 export default TopbarDesktop;

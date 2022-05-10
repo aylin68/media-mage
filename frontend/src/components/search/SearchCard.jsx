@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-//import "./post.css";
+// import "./post.css";
 import "./SearchCard.css";
 import { Card, Stack, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import PropTypes from "prop-types";
-import { AuthContext } from "../../context/AuthContext";
+// import PropTypes from "prop-types";
 import axios from "@services/axios";
+import PropTypes from "prop-types";
+import { AuthContext } from "../../context/AuthContext";
 
 function SearchCard(props) {
   const {
@@ -19,6 +20,7 @@ function SearchCard(props) {
   const { user } = useContext(AuthContext);
   const [fn, setFn] = useState(followings.length);
   const [fr, setFr] = useState(followers.length);
+  /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
   const [amFollowing, setAmFollowing] = useState(followers.includes(user._id));
 
   const handleFollow = async () => {
@@ -26,12 +28,12 @@ function SearchCard(props) {
       userId: user._id,
     };
     try {
-      await axios.patch("/users/" + userID + "/follow", userToChange);
-      console.log("success");
+      await axios.patch(`/users/${userID}/follow`, userToChange);
+      // console.log("success");
       setAmFollowing(!amFollowing);
       setFr(fr + 1);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -40,12 +42,12 @@ function SearchCard(props) {
       userId: user._id,
     };
     try {
-      await axios.patch("/users/" + userID + "/unfollow", userToChange);
-      console.log("success");
+      await axios.patch(`/users/${userID}/unfollow`, userToChange);
+      // console.log("success");
       setAmFollowing(!amFollowing);
       setFr(fr - 1);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -84,10 +86,17 @@ function SearchCard(props) {
   );
 }
 
-// Post.propTypes = {
-//   type: PropTypes.string.isRequired,
-//   postID: PropTypes.number.isRequired,
-//   length: PropTypes.number.isRequired,
-// };
+SearchCard.propTypes = {
+  username: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
+  profilePic: PropTypes.string,
+  followings: PropTypes.shape([]),
+  followers: PropTypes.shape([]),
+};
+SearchCard.defaultProps = {
+  profilePic: "",
+  followings: [],
+  followers: [],
+};
 
 export default SearchCard;
