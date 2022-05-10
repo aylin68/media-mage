@@ -51,21 +51,38 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
 router.get("/search/:username", async (req, res) => {
-  let query = {username: {
-        $regex: req.params.username,
-        $options: "i"
-    }
-};
-const users = await User.find(query);
+  let query = {
+    username: {
+      $regex: req.params.username,
+      $options: "i",
+    },
+  };
+  const users = await User.find(query);
   try {
     res.status(200).json(users);
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
+router.post("/many", async (req, res) => {
+  try {
+    const users = await User.find()
+      .where("_id")
+      .in(req.body)
+      .exec((err, records) => {
+        res.status(200).json(records);
+      });
+  } catch (error) {
+    res.status(500).json(error);
+
+    //   const users = await User.find(req.params.id);
+    //   const { password, updatedAt, ...other } = user._doc; // _doc command carry all the users objects
+    //   res.status(200).json(other);
+    // }
+  }
+});
 
 // router.get("/", async (req, res) => {
 //   const userId = req.query.userId;
@@ -124,7 +141,6 @@ router.patch("/:id/follow", async (req, res) => {
   }
 });
 
-
 // UNFOLLOW A USER
 router.patch("/:id/unfollow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
@@ -147,6 +163,5 @@ router.patch("/:id/unfollow", async (req, res) => {
     res.status(403).json("You can't unfollow yourself");
   }
 });
-
 
 module.exports = router;
