@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import WeatherContext from "../../context/WeatherContext";

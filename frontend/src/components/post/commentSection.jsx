@@ -10,7 +10,7 @@ import {
 import { faThumbsUp as farThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import axios from "@services/axios";
 import moment from "moment";
 
 function commentSection(props) {
@@ -97,12 +97,10 @@ function commentSection(props) {
               }}
             />
             <Stack direction="vertical" gap={1} className="comment-body">
-            <Card.Text className="comment-username">
-              <Link to="/profile/user_id">
-              {comment.username}
-              </Link>
+              <Card.Text className="comment-username">
+                <Link to="/profile/user_id">{comment.username}</Link>
               </Card.Text>
-            <Card.Text >{comment.comment}</Card.Text>
+              <Card.Text>{comment.comment}</Card.Text>
             </Stack>
             <Card.Text>{moment(comment.createdAt).fromNow()}</Card.Text>
             <hr />

@@ -1,12 +1,16 @@
 import React from "react";
 import "./post.css";
+import "../weather/weather.css";
 import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CommentSection from "./commentSection";
 import moment from "moment";
 import Weather from "../weather/Weather";
+<<<<<<< HEAD
 import "../weather/Weather.css";
+=======
+>>>>>>> ca0f2e451864222b6bb99e75743ef6772c9a80e0
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
@@ -48,7 +52,7 @@ function Post(props) {
               backgroundColor: "transparent",
             }}
           />
-          <Link to={`/users/${userId}`}>{username}</Link>
+          <Link to={`/profile/${userId}`}>{username}</Link>
 
           <span className="post-time">
             {moment(finalDate, "dddd, MMMM Do YYYY, HH:mm:ss").fromNow()}

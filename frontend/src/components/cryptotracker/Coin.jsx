@@ -1,12 +1,20 @@
 import React, { useContext, useRef, useState } from "react";
 import { Card, Stack, Button, Modal, Form } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
-const Coin = ({ name, image, symbol, price, volume, coinContent }) => {
+import axios from "@services/axios";
+const Coin = ({
+  name,
+  image,
+  symbol,
+  price,
+  volume,
+  percentage,
+  coinContent,
+}) => {
   const { user } = useContext(AuthContext);
   const postTitle = useRef();
   const handleCoinPost = async () => {
-    const coinInfo = [name, image, symbol, price, volume];
+    const coinInfo = [name, image, symbol, price, volume, percentage];
 
     const nPost = {
       userId: user._id,
@@ -46,11 +54,20 @@ const Coin = ({ name, image, symbol, price, volume, coinContent }) => {
               style={{ width: "2.5rem" }}
             />
             <h2 className="coinName">{coinContent[0]}</h2>
-            <p className="coinSymbol">{coinContent[2]}</p>
+            <p className="coinSymbol">{coinContent[2].toUpperCase()}</p>
           </Stack>
           <Stack direction="horizontal" gap={2}>
             <h4 className="coinPrice">€{coinContent[3]} </h4>
             <p className="coinVolume">€{coinContent[4].toLocaleString()}</p>
+            {coinContent[5] >= 0 ? (
+              <p className="coinVolume" style={{ color: "green" }}>
+                %{coinContent[5]}
+              </p>
+            ) : (
+              <p className="coinVolume" style={{ color: "red" }}>
+                %{coinContent[5]}
+              </p>
+            )}
           </Stack>
         </Card>
       ) : (
@@ -63,11 +80,24 @@ const Coin = ({ name, image, symbol, price, volume, coinContent }) => {
               style={{ width: "2.5rem" }}
             />
             <h2 className="coinName">{name}</h2>
-            <p className="coinSymbol">{symbol}</p>
+            <p className="coinSymbol">{symbol.toUpperCase()}</p>
           </Stack>
-          <Stack direction="horizontal" gap={2}>
+          <Stack
+            direction="horizontal"
+            gap={2}
+            style={{ justifyContent: "space-between" }}
+          >
             <h4 className="coinPrice">€{price} </h4>
             <p className="coinVolume">€{volume.toLocaleString()}</p>
+            {percentage >= 0 ? (
+              <p className="coinVolume" style={{ color: "green" }}>
+                %{percentage}
+              </p>
+            ) : (
+              <p className="coinVolume" style={{ color: "red" }}>
+                %{percentage}
+              </p>
+            )}
           </Stack>
           <Button onClick={handleShow}>post to feed</Button>
           <Modal show={show} onHide={handleClose}>

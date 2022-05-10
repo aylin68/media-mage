@@ -3,10 +3,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { Card, Stack, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./chuckNorris.css";
+//import "./chuckNorris.css";
 import { AuthContext } from "../../context/AuthContext";
 
-const ChuckNorris = (props) => {
+const Books = (props) => {
   const { showSearch, chuckContent } = props;
   const [quote, setQuote] = useState({});
   const { user } = useContext(AuthContext);
@@ -55,31 +55,22 @@ const ChuckNorris = (props) => {
   return (
     <>
       <Container>
-        <Card
-          style={{ justifyContent: "center", display: "flex" }}
-          className=""
-        >
+        <Card className="">
           {showSearch ? (
             <div>
-              <Card.Title className="title">
-                Have fun with Chuck Norris
-              </Card.Title>
+              <Card.Title>Hello Chuck</Card.Title>
 
-              <Button
-                className="mx-auto d-block"
-                onClick={SearchHandel}
-                variant="outline-secondary"
-              >
-                Give me a new quote
+              <Button className="" onClick={SearchHandel}>
+                click me
               </Button>
             </div>
           ) : null}
-          <h2 className="quote">{quote.value}</h2>
+          <h2>{quote.value}</h2>
           {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
 
           {showSearch ? (
-            <Button className="btn-share" onClick={createChuckPost}>
-              Share the quote
+            <Button className="" onClick={createChuckPost}>
+              Create a Post
             </Button>
           ) : null}
         </Card>
@@ -87,4 +78,4 @@ const ChuckNorris = (props) => {
     </>
   );
 };
-export default ChuckNorris;
+export default Books;

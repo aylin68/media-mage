@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from "@services/axios";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 // adding email and passwordAgain formù
-axios.defaults.baseURL = "http://localhost:8000/api";
+axios.defaults.baseURL = "http://localhost:3002/api";
 function Registration() {
   const username = useRef();
   const email = useRef();

@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect, useRef } from "react";
+import { React, useContext, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./topbar.css";
 import {
@@ -12,7 +12,7 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "@services/axios";
 import logo from "../../assets/images/logo.svg";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -122,7 +122,7 @@ const TopbarDesktop = () => {
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             <LinkContainer
-              to={`/users/${user._id}`}
+              to={`/profile/${user._id}`}
               style={{ textDecoration: "none", color: "white" }}
             >
               <Nav.Link>Profile</Nav.Link>
@@ -160,7 +160,7 @@ const TopbarDesktop = () => {
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
             <LinkContainer
-              to="/register"
+              to="/login"
               style={{
                 textDecoration: "none",
                 color: "white",
