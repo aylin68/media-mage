@@ -10,6 +10,7 @@ function ChuckNorris(props) {
   const { chuckContent, showSearch } = props;
   const [quote, setQuote] = useState({});
   const { user } = useContext(AuthContext);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   const SearchHandel = () => {
     const url = "https://api.chucknorris.io/jokes/random";
