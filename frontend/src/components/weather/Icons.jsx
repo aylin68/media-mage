@@ -1,7 +1,8 @@
 import React from "react";
 import "./weather.css";
+import PropTypes from "prop-types";
 
-const Icons = ({ icons }) => {
+function Icons({ icons }) {
   let weatherIcon;
   if (icons) {
     switch (icons.weather[0].main) {
@@ -23,10 +24,20 @@ const Icons = ({ icons }) => {
       case "Clouds":
         weatherIcon = "overcastClouds";
         break;
+      default:
+        weatherIcon = "sun";
     }
   } else {
     return null;
   }
-  return <span className={`icon ${weatherIcon}`}></span>;
+  return <span className={`icon ${weatherIcon}`} />;
+}
+
+Icons.propTypes = {
+  icons: PropTypes.shape({}),
 };
+Icons.defaultProps = {
+  icons: {},
+};
+
 export default Icons;

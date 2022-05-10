@@ -1,8 +1,6 @@
 import React, { useRef, useContext } from "react";
-import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavLink } from "react-router-dom";
 import "./Login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
@@ -10,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 function Login() {
   const email = useRef(); // we can use useState, but it will re render at every input, we want to avoid this
   const password = useRef();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext); // to use the value in AuthContext for loginCall
+  const { dispatch } = useContext(AuthContext); // to use the value in AuthContext for loginCall
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -29,7 +27,7 @@ function Login() {
           Log in to <strong>mediamage</strong>
         </h3>
         <div className="login-style">
-          {/* I changed username with email and added required*/}
+          {/* I changed username with email and added required */}
           <input
             type="email"
             className="form-control"

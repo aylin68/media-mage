@@ -1,14 +1,17 @@
 import React, { useContext, useRef, useState } from "react";
 import { Card, Stack, Button, Modal, Form } from "react-bootstrap";
+import axios from "@services/axios";
+import PropTypes from "prop-types";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
-const Coin = ({ name, image, symbol, price, volume, percentage, coinContent }) => {
+
+function Coin({ name, image, symbol, price, volume, percentage, coinContent }) {
   const { user } = useContext(AuthContext);
   const postTitle = useRef();
   const handleCoinPost = async () => {
     const coinInfo = [name, image, symbol, price, volume, percentage];
 
     const nPost = {
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
       userId: user._id,
       postContent: "coin",
       weatherContent: {},
@@ -24,7 +27,7 @@ const Coin = ({ name, image, symbol, price, volume, percentage, coinContent }) =
       await axios.post("/posts", nPost);
       window.location.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const [show, setShow] = useState(false);
@@ -51,7 +54,15 @@ const Coin = ({ name, image, symbol, price, volume, percentage, coinContent }) =
           <Stack direction="horizontal" gap={2}>
             <h4 className="coinPrice">€{coinContent[3]} </h4>
             <p className="coinVolume">€{coinContent[4].toLocaleString()}</p>
-            {coinContent[5] >= 0 ? <p className="coinVolume" style={{color: 'green'}}>%{coinContent[5]}</p> : <p className="coinVolume" style={{color: 'red'}}>%{coinContent[5]}</p>}
+            {coinContent[5] >= 0 ? (
+              <p className="coinVolume" style={{ color: "green" }}>
+                %{coinContent[5]}
+              </p>
+            ) : (
+              <p className="coinVolume" style={{ color: "red" }}>
+                %{coinContent[5]}
+              </p>
+            )}
           </Stack>
         </Card>
       ) : (
@@ -66,11 +77,22 @@ const Coin = ({ name, image, symbol, price, volume, percentage, coinContent }) =
             <h2 className="coinName">{name}</h2>
             <p className="coinSymbol">{symbol.toUpperCase()}</p>
           </Stack>
-          <Stack direction="horizontal" gap={2} style={{justifyContent: 'space-between'}}>
+          <Stack
+            direction="horizontal"
+            gap={2}
+            style={{ justifyContent: "space-between" }}
+          >
             <h4 className="coinPrice">€{price} </h4>
             <p className="coinVolume">€{volume.toLocaleString()}</p>
-            {percentage >= 0 ? <p className="coinVolume" style={{color: 'green'}}>%{percentage}</p> : <p className="coinVolume" style={{color: 'red'}}>%{percentage}</p>}
-
+            {percentage >= 0 ? (
+              <p className="coinVolume" style={{ color: "green" }}>
+                %{percentage}
+              </p>
+            ) : (
+              <p className="coinVolume" style={{ color: "red" }}>
+                %{percentage}
+              </p>
+            )}
           </Stack>
           <Button onClick={handleShow}>post to feed</Button>
           <Modal show={show} onHide={handleClose}>
@@ -101,6 +123,25 @@ const Coin = ({ name, image, symbol, price, volume, percentage, coinContent }) =
       )}
     </>
   );
+}
+
+Coin.propTypes = {
+  name: PropTypes.string,
+  image: PropTypes.string,
+  symbol: PropTypes.string,
+  price: PropTypes.number,
+  volume: PropTypes.string,
+  percentage: PropTypes.string,
+  coinContent: PropTypes.shape({}),
+};
+Coin.defaultProps = {
+  name: "",
+  image: "",
+  symbol: "",
+  price: 0,
+  volume: "",
+  percentage: "",
+  coinContent: {},
 };
 
 export default Coin;

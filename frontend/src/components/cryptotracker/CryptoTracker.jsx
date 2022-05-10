@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "@services/axios";
 import { Card, Form, FormControl, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Coin from "./Coin";
 
-const CryptoTracker = () => {
+function CryptoTracker() {
   const [coins, setCoins] = useState([]);
   useEffect(() => {
     axios
@@ -14,9 +14,8 @@ const CryptoTracker = () => {
       )
       .then((res) => {
         setCoins(res.data);
-        console.log(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, []);
   const [search, setSearch] = useState("");
   const handleChange = (e) => {
@@ -55,6 +54,6 @@ const CryptoTracker = () => {
       })}
     </Card>
   );
-};
+}
 
 export default CryptoTracker;

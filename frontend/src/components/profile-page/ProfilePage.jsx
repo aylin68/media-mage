@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Card, Stack, Container, Button } from "react-bootstrap";
+import { Card, Stack, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faUser } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import { faMapPin } from "@fortawesome/free-solid-svg-icons";
+import axios from "@services/axios";
 import icon from "../../assets/images/icon.png";
 import { AuthContext } from "../../context/AuthContext";
 
-const ProfilePage = (props) => {
+function ProfilePage() {
   /* const search = props.location.search; */
-  const { user, error } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [profileUser, setProfileUser] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
   const [amFollowing, setAmFollowing] = useState(false);
@@ -22,6 +22,7 @@ const ProfilePage = (props) => {
     const fetchUsers = async () => {
       axios.get(`/users/${params.id}`).then((response) => {
         setProfileUser(response.data);
+        /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
         setAmFollowing(response.data.followers.includes(user._id));
         setFn(response.data.followings.length);
         setFr(response.data.followers.length);
@@ -37,12 +38,12 @@ const ProfilePage = (props) => {
       userId: user._id,
     };
     try {
-      await axios.patch("/users/" + profileUser._id + "/follow", userToChange);
-      console.log("success");
+      await axios.patch(`/users/${profileUser._id}/follow`, userToChange);
+      // console.log("success");
       setAmFollowing(!amFollowing);
       setFr(fr + 1);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -51,15 +52,12 @@ const ProfilePage = (props) => {
       userId: user._id,
     };
     try {
-      await axios.patch(
-        "/users/" + profileUser._id + "/unfollow",
-        userToChange
-      );
-      console.log("success");
+      await axios.patch(`/users/${profileUser._id}/unfollow`, userToChange);
+      // console.log("success");
       setAmFollowing(!amFollowing);
       setFr(fr - 1);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -95,14 +93,14 @@ const ProfilePage = (props) => {
             />
           )}
           <Link to={`/profile/${profileUser._id}`}>
-            {profileUser.username}'s profile page
+            {profileUser.username}
+            {`&apos;`}s profile page
           </Link>
           <div className="infoDiv">followers: {dataLoaded ? fr : null}</div>
           <div className="infoDiv">following: {dataLoaded ? fn : null}</div>
           {profileUser.city ? (
             <div>
-              <FontAwesomeIcon icon={faMapPin}></FontAwesomeIcon> `$
-              {profileUser.city}`
+              <FontAwesomeIcon icon={faMapPin} /> {profileUser.city}{" "}
             </div>
           ) : null}
         </Stack>
@@ -118,6 +116,6 @@ const ProfilePage = (props) => {
       </Stack>
     </Card>
   );
-};
+}
 
 export default ProfilePage;

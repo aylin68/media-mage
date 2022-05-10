@@ -40,6 +40,6 @@ app.use("/api/auth", authRoute); // when i go to this address it will run "authR
 app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
 
-app.listen(process.env.PORT, () => {
+app.listen(3002, () => {
   console.log("Backend server is running");
 });
