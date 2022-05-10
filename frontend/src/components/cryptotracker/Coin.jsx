@@ -1,22 +1,17 @@
 import React, { useContext, useRef, useState } from "react";
 import { Card, Stack, Button, Modal, Form } from "react-bootstrap";
-import { AuthContext } from "../../context/AuthContext";
 import axios from "@services/axios";
-const Coin = ({
-  name,
-  image,
-  symbol,
-  price,
-  volume,
-  percentage,
-  coinContent,
-}) => {
+import PropTypes from "prop-types";
+import { AuthContext } from "../../context/AuthContext";
+
+function Coin({ name, image, symbol, price, volume, percentage, coinContent }) {
   const { user } = useContext(AuthContext);
   const postTitle = useRef();
   const handleCoinPost = async () => {
     const coinInfo = [name, image, symbol, price, volume, percentage];
 
     const nPost = {
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
       userId: user._id,
       postContent: "coin",
       weatherContent: {},
@@ -32,7 +27,7 @@ const Coin = ({
       await axios.post("/posts", nPost);
       window.location.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const [show, setShow] = useState(false);
@@ -128,6 +123,25 @@ const Coin = ({
       )}
     </>
   );
+}
+
+Coin.propTypes = {
+  name: PropTypes.string,
+  image: PropTypes.string,
+  symbol: PropTypes.string,
+  price: PropTypes.number,
+  volume: PropTypes.string,
+  percentage: PropTypes.string,
+  coinContent: PropTypes.shape({}),
+};
+Coin.defaultProps = {
+  name: "",
+  image: "",
+  symbol: "",
+  price: 0,
+  volume: "",
+  percentage: "",
+  coinContent: {},
 };
 
 export default Coin;

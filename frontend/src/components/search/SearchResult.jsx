@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "@services/axios";
 import { Container, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AuthContext } from "../../context/AuthContext";
 import SearchCard from "./SearchCard";
 import { SearchContext } from "../../context/SearchContext";
 
 function SearchResults() {
   // const [searchResults, setSearchResults] = useOutletContext();
-  const { searchResults, setSearchResults } = useContext(SearchContext);
+  const { searchResults } = useContext(SearchContext);
 
-  let [resp, setResp] = useState([]);
+  const [resp, setResp] = useState([]);
 
   useEffect(() => {
-    console.log(searchResults);
+    // console.log(searchResults);
     {
       searchResults
         ? setResp(
@@ -21,6 +19,7 @@ function SearchResults() {
               <SearchCard
                 key={searchResults.indexOf(p)}
                 username={p.username}
+                /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
                 userID={p._id}
                 profilePic={p.profilePicture}
                 followings={p.followings}
@@ -36,7 +35,7 @@ function SearchResults() {
             </Card>,
           ]);
     }
-    console.log(resp);
+    // console.log(resp);
   }, [searchResults]);
 
   return (

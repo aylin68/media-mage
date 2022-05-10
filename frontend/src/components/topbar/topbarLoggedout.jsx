@@ -5,7 +5,7 @@ import { Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 
-const TopbarLoggedout = () => {
+function TopbarLoggedout() {
   return (
     <Navbar
       variant="dark"
@@ -37,6 +37,6 @@ const TopbarLoggedout = () => {
       </Container>
     </Navbar>
   );
-};
+}
 
 export default TopbarLoggedout;

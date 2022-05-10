@@ -8,14 +8,6 @@ const Apis = [
     route: "/apis/cryptotracker",
   },
   {
-    name: "vimeo",
-    route: "/apis/vimeo",
-  },
-  {
-    name: "books",
-    route: "/apis/books",
-  },
-  {
     name: "chuckquote",
     route: "/apis/chuck",
   },
