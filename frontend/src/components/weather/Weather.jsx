@@ -1,25 +1,20 @@
 import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import WeatherContext from "../../context/WeatherContext";
+import PropTypes from "prop-types";
 import Icons from "./Icons";
 import ForecastWeatherTime from "./ForecastWeatherTime";
 import ForecastWeatherDay from "./ForecastWeatherDay";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./weather.css";
+
 import { AuthContext } from "../../context/AuthContext";
 
-const Weather = (props) => {
+function Weather(props) {
   const { showSearch, weatherContent } = props;
   const [location, setLocation] = useState("Berlin");
   const [data, setData] = useState({});
   const { user } = useContext(AuthContext);
-
-  const handleEnterDown = (event) => {
-    if (event.key === "Enter") {
-      SearchHandel();
-    }
-  };
 
   const SearchHandel = () => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=4266a1091de6973c5820cf5ec044b4f8`;
@@ -28,13 +23,20 @@ const Weather = (props) => {
       .then((response) => {
         setData(response.data);
 
-        console.log("data is: ", data);
+        // console.log("data is: ", data);
       })
-      .catch((err) => console.log("erorr ", err));
+      .catch((err) => console.error("erorr ", err));
+  };
+
+  const handleEnterDown = (event) => {
+    if (event.key === "Enter") {
+      SearchHandel();
+    }
   };
 
   const createPostWeatherHandel = async () => {
     const nPost = {
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
       userId: user._id,
       postContent: "weather",
       weatherContent: data,
@@ -49,7 +51,7 @@ const Weather = (props) => {
       await axios.post("/posts", nPost);
       window.location.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -74,8 +76,12 @@ const Weather = (props) => {
                   placeholder="Enter location"
                   onChange={(e) => setLocation(e.target.value)}
                   onKeyDown={handleEnterDown}
-                ></input>
-                <button className="search-button" onClick={SearchHandel}>
+                />
+                <button
+                  className="search-button"
+                  onClick={SearchHandel}
+                  type="button"
+                >
                   <FontAwesomeIcon
                     className="weather-search"
                     icon="fa-solid fa-magnifying-glass"
@@ -143,6 +149,7 @@ const Weather = (props) => {
             <button
               className="weather-btn-post"
               onClick={createPostWeatherHandel}
+              type="button"
             >
               Create a Post
             </button>
@@ -151,5 +158,15 @@ const Weather = (props) => {
       </div>
     </>
   );
+}
+
+Weather.propTypes = {
+  showSearch: PropTypes.bool,
+  weatherContent: PropTypes.shape({}),
 };
+Weather.defaultProps = {
+  showSearch: false,
+  weatherContent: {},
+};
+
 export default Weather;

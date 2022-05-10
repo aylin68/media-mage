@@ -19,13 +19,11 @@ function RightBar() {
   const rows = [];
 
   for (let i = 0; i < friendsOnline.length; i++) {
-    rows.push(<FriendList key={i}/>);
-      }
+    rows.push(<FriendList key={i} />);
+  }
   return (
-    <Container className="rightBarContainer" style={{ display: "flex"}}>
-      <ListGroup>
-          {rows}
-      </ListGroup>
+    <Container className="rightBarContainer" style={{ display: "flex" }}>
+      <ListGroup>{rows}</ListGroup>
     </Container>
   );
 }

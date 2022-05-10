@@ -1,13 +1,13 @@
 import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
-import { Card, Stack, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./chuckNorris.css";
+import PropTypes from "prop-types";
 import { AuthContext } from "../../context/AuthContext";
 
-const ChuckNorris = (props) => {
-  const { showSearch, chuckContent } = props;
+function ChuckNorris(props) {
+  const { chuckContent } = props;
   const [quote, setQuote] = useState({});
   const { user } = useContext(AuthContext);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -19,14 +19,15 @@ const ChuckNorris = (props) => {
       .then((response) => {
         setQuote(response.data);
         setDataLoaded(true);
-        console.log(quote.value);
+        // console.log(quote.value);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   const createChuckPost = async (e) => {
     e.preventDefault();
     const nPost = {
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
       userId: user._id,
       postContent: "chuckquote",
       chuckContent: quote,
@@ -41,7 +42,7 @@ const ChuckNorris = (props) => {
       await axios.post("/posts", nPost);
       window.location.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -53,29 +54,35 @@ const ChuckNorris = (props) => {
   }, []);
 
   return (
-    <>
-      <Container>
-        <Card className="">
-          {showSearch ? (
-            <div>
-              <Card.Title>Hello Chuck</Card.Title>
+    <Container>
+      <Card className="">
+        {dataLoaded ? (
+          <div>
+            <Card.Title>Hello Chuck</Card.Title>
 
-              <Button className="" onClick={SearchHandel}>
-                click me
-              </Button>
-            </div>
-          ) : null}
-          <h2>{quote.value}</h2>
-          {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
-
-          {showSearch ? (
-            <Button className="" onClick={createChuckPost}>
-              Create a Post
+            <Button className="" onClick={SearchHandel}>
+              click me
             </Button>
-          ) : null}
-        </Card>
-      </Container>
-    </>
+          </div>
+        ) : null}
+        <h2>{quote.value}</h2>
+        {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
+
+        {dataLoaded ? (
+          <Button className="" onClick={createChuckPost}>
+            Create a Post
+          </Button>
+        ) : null}
+      </Card>
+    </Container>
   );
+}
+
+ChuckNorris.propTypes = {
+  chuckContent: PropTypes.shape({}),
+};
+
+ChuckNorris.defaultProps = {
+  chuckContent: {},
 };
 export default ChuckNorris;

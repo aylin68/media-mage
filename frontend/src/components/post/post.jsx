@@ -4,12 +4,13 @@ import "../weather/weather.css";
 import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CommentSection from "./commentSection";
 import moment from "moment";
-import Weather from "../weather/Weather";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
+import PropTypes from "prop-types";
+import CommentSection from "./commentSection";
+import Weather from "../weather/Weather";
 
 function Post(props) {
   const {
@@ -30,7 +31,7 @@ function Post(props) {
   } = props;
 
   // let now = moment().format("dddd, MMMM Do YYYY, HH:mm:ss");
-  let finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
+  const finalDate = moment(createdAt).format("dddd, MMMM DD YYYY, HH:mm:ss ");
 
   return (
     <Card>
@@ -84,10 +85,31 @@ function Post(props) {
   );
 }
 
-// Post.propTypes = {
-//   type: PropTypes.string.isRequired,
-//   postID: PropTypes.number.isRequired,
-//   length: PropTypes.number.isRequired,
-// };
+Post.propTypes = {
+  username: PropTypes.string.isRequired,
+  postID: PropTypes.number.isRequired,
+  postType: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  profilePic: PropTypes.string.isRequired,
+  postContent: PropTypes.string.isRequired,
+  postTitle: PropTypes.string,
+  comments: PropTypes.shape([]),
+  likes: PropTypes.shape([]),
+  createdAt: PropTypes.number.isRequired,
+  weatherContent: PropTypes.shape({}),
+  coinContent: PropTypes.shape([]),
+  zenContent: PropTypes.shape({}),
+  chuckContent: PropTypes.shape({}),
+};
+
+Post.defaultProps = {
+  postTitle: "",
+  comments: [],
+  likes: [],
+  weatherContent: {},
+  coinContent: [],
+  zenContent: {},
+  chuckContent: {},
+};
 
 export default Post;

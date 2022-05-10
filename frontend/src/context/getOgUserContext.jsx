@@ -1,15 +1,13 @@
-import { createContext, useState} from "react";
+import { createContext, useState } from "react";
 
 export const getOgUserContext = createContext([]);
 
 export const getOgUserContextProvider = ({ children }) => {
-  const [searchResults, setSearchResults ] = useState([])
+  const [searchResults, setSearchResults] = useState([]);
 
   return (
-    <SearchContext.Provider
-      value={{searchResults,setSearchResults}}
-    >
+    <getOgUserContext.Provider value={{ searchResults, setSearchResults }}>
       {children}
-    </SearchContext.Provider>
+    </getOgUserContext.Provider>
   );
 };

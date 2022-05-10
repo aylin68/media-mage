@@ -1,8 +1,11 @@
 import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
+
 const WeatherContext = createContext({});
+
 export default WeatherContext;
 
-export const WeatherContextProvider = ({ children }) => {
+export function WeatherContextProvider({ children }) {
   const [location, setLocation] = useState("Berlin");
   const [data, setData] = useState({});
 
@@ -11,4 +14,11 @@ export const WeatherContextProvider = ({ children }) => {
       {children}
     </WeatherContext.Provider>
   );
+}
+
+WeatherContextProvider.propTypes = {
+  children: PropTypes.shape({}),
+};
+WeatherContextProvider.defaultProps = {
+  children: {},
 };

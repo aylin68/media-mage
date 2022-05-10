@@ -63,8 +63,8 @@ svg:hover {
   .navbar-brand {
     display: none;
   }
-  .me-3, .form-control input  {
+  .me-3,
+  .form-control input {
     margin: 0 !important;
   }
-  
 }

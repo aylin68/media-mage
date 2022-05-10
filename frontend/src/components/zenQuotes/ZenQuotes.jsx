@@ -1,13 +1,13 @@
 import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
-import { Card, Stack, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, Container, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./zenQuotes.css";
 import { AuthContext } from "../../context/AuthContext";
 
-const ZenQuotes = (props) => {
-  const { showSearch, zenContent } = props;
+function ZenQuotes(props) {
+  const { zenContent } = props;
   const [quote, setQuote] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
   const { user } = useContext(AuthContext);
@@ -21,14 +21,15 @@ const ZenQuotes = (props) => {
       .then((response) => {
         setQuote(response.data[rand]);
         setDataLoaded(true);
-        console.log(quote);
+        // console.log(quote);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   const createZenPost = async (e) => {
     e.preventDefault();
     const nPost = {
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
       userId: user._id,
       postContent: "zenquote",
       zenContent: quote,
@@ -43,7 +44,7 @@ const ZenQuotes = (props) => {
       await axios.post("/posts", nPost);
       window.location.replace("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   useEffect(() => {
@@ -57,7 +58,7 @@ const ZenQuotes = (props) => {
   return (
     <Container>
       <Card className="">
-        {showSearch ? (
+        {dataLoaded ? (
           <div>
             <Card.Title>Hello Zen</Card.Title>
 
@@ -70,7 +71,7 @@ const ZenQuotes = (props) => {
         <h2>{quote.text}</h2>
         <h5>{quote.author}</h5>
 
-        {showSearch ? (
+        {dataLoaded ? (
           <Button className="" onClick={createZenPost}>
             Create a Post
           </Button>
@@ -78,5 +79,13 @@ const ZenQuotes = (props) => {
       </Card>
     </Container>
   );
+}
+
+ZenQuotes.propTypes = {
+  zenContent: PropTypes.shape({}),
 };
+ZenQuotes.defaultProps = {
+  zenContent: {},
+};
+
 export default ZenQuotes;

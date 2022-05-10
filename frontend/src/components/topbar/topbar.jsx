@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import useMediaQuery from "@components/hooks/MediaQuery";
 import TopbarDesktop from "./topbarDesktop";
 import TopbarMobile from "./topbarMobile";
 import TopbarLoggedout from "./topbarLoggedout";
 import { AuthContext } from "../../context/AuthContext";
 
-const Topbar = () => {
-  const { user, dispatch } = useContext(AuthContext);
+function Topbar() {
+  const { user } = useContext(AuthContext);
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   return (
     <div>
@@ -21,6 +21,6 @@ const Topbar = () => {
       )}
     </div>
   );
-};
+}
 
 export default Topbar;

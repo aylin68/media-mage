@@ -3,15 +3,14 @@ import "./feed.css";
 import axios from "@services/axios";
 import { Container } from "react-bootstrap";
 import Post from "@components/post/post";
+import CreatePostInput from "@components/createPost/CreatePostInput";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext } from "../../context/AuthContext";
-import CreatePostInput from "@components/createPost/CreatePostInput";
 import PostList from "../post/PostList";
-import moment from "moment";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
-  const { user, error } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [postList, setPostList] = useState([...PostList]);
 
   // useEffect(() => {
@@ -25,7 +24,8 @@ function Feed() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("posts/timeline/" + user._id);
+      /* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */
+      const res = await axios.get(`posts/timeline/${user._id}`);
       // console.log(res);
       // setPosts(res.data);
       setPosts(
@@ -33,7 +33,7 @@ function Feed() {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
         })
       );
-      //console.log(posts);
+      // console.log(posts);
     };
     // console.log({ user });
     // console.log(user._id);
