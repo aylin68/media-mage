@@ -31,10 +31,10 @@ function ForecastTimes({ data }) {
 }
 
 ForecastTimes.propTypes = {
-  data: PropTypes.shape({}),
+  data: PropTypes.array,
 };
 ForecastTimes.defaultProps = {
-  data: {},
+  data: [],
 };
 
 export default ForecastTimes;

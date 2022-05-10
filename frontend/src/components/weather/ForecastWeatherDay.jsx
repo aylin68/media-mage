@@ -53,10 +53,10 @@ function ForecastDays({ data }) {
 }
 
 ForecastDays.propTypes = {
-  data: PropTypes.shape({}),
+  data: PropTypes.array,
 };
 ForecastDays.defaultProps = {
-  data: {},
+  data: [],
 };
 
 export default ForecastDays;

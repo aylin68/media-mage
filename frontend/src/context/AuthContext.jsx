@@ -28,7 +28,7 @@ export function AuthContextProvider({ children }) {
 }
 
 AuthContextProvider.propTypes = {
-  children: PropTypes.shape({}),
+  children: PropTypes.shape(),
 };
 AuthContextProvider.defaultProps = {
   children: {},
