@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { AuthContext } from "../../context/AuthContext";
 
 function ChuckNorris(props) {
-  const { chuckContent } = props;
+  const { chuckContent, showSearch } = props;
   const [quote, setQuote] = useState({});
   const { user } = useContext(AuthContext);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -54,34 +54,30 @@ function ChuckNorris(props) {
   }, []);
 
   return (
-      <Container>
-        <Card
-          style={{ justifyContent: "center", display: "flex" }}
-          className=""
-        >
-          {showSearch ? (
-            <div>
-              <Card.Title className="title">
-                Have fun with Chuck Norris
-              </Card.Title>
+    <Container>
+      <Card style={{ justifyContent: "center", display: "flex" }} className="">
+        {showSearch ? (
+          <div>
+            <Card.Title className="title">
+              Have fun with Chuck Norris
+            </Card.Title>
 
-              <Button
-                className="mx-auto d-block"
-                onClick={SearchHandel}
-                variant="outline-secondary"
-              >
-                Give me a new quote
-              </Button>
-            </div>
-          ) : null}
-          <h2 className="quote">{quote.value}</h2>
-          {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
-
-          {showSearch ? (
-            <Button className="btn-share" onClick={createChuckPost}>
-              Share the quote
+            <Button
+              className="mx-auto d-block"
+              onClick={SearchHandel}
+              variant="outline-secondary"
+            >
+              Give me a new quote
             </Button>
           </div>
+        ) : null}
+        <h2 className="quote">{quote.value}</h2>
+        {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
+
+        {showSearch ? (
+          <Button className="btn-share" onClick={createChuckPost}>
+            Share the quote
+          </Button>
         ) : null}
         <h2>{quote.value}</h2>
         {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
@@ -98,9 +94,11 @@ function ChuckNorris(props) {
 
 ChuckNorris.propTypes = {
   chuckContent: PropTypes.shape({}),
+  showSearch: PropTypes.bool,
 };
 
 ChuckNorris.defaultProps = {
   chuckContent: {},
+  showSearch: false,
 };
 export default ChuckNorris;

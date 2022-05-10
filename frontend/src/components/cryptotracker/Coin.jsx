@@ -132,7 +132,7 @@ Coin.propTypes = {
   price: PropTypes.number,
   volume: PropTypes.string,
   percentage: PropTypes.string,
-  coinContent: PropTypes.shape({}),
+  coinContent: PropTypes.array,
 };
 Coin.defaultProps = {
   name: "",
@@ -141,7 +141,7 @@ Coin.defaultProps = {
   price: 0,
   volume: "",
   percentage: "",
-  coinContent: {},
+  coinContent: [],
 };
 
 export default Coin;

@@ -5,7 +5,6 @@ import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
-import Weather from "../weather/Weather";
 import "../weather/weather.css";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
@@ -89,17 +88,17 @@ function Post(props) {
 
 Post.propTypes = {
   username: PropTypes.string.isRequired,
-  postID: PropTypes.number.isRequired,
+  postID: PropTypes.string.isRequired,
   postType: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
   profilePic: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
   postTitle: PropTypes.string,
-  comments: PropTypes.shape([]),
-  likes: PropTypes.shape([]),
-  createdAt: PropTypes.number.isRequired,
+  comments: PropTypes.array,
+  likes: PropTypes.array,
+  createdAt: PropTypes.string.isRequired,
   weatherContent: PropTypes.shape({}),
-  coinContent: PropTypes.shape([]),
+  coinContent: PropTypes.array,
   zenContent: PropTypes.shape({}),
   chuckContent: PropTypes.shape({}),
 };

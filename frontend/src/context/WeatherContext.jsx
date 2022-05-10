@@ -17,8 +17,8 @@ export function WeatherContextProvider({ children }) {
 }
 
 WeatherContextProvider.propTypes = {
-  children: PropTypes.shape({}),
+  children: PropTypes.array,
 };
 WeatherContextProvider.defaultProps = {
-  children: {},
+  children: [],
 };
