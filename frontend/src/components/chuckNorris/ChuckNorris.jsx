@@ -54,14 +54,32 @@ function ChuckNorris(props) {
   }, []);
 
   return (
-    <Container>
-      <Card className="">
-        {dataLoaded ? (
-          <div>
-            <Card.Title>Hello Chuck</Card.Title>
+      <Container>
+        <Card
+          style={{ justifyContent: "center", display: "flex" }}
+          className=""
+        >
+          {showSearch ? (
+            <div>
+              <Card.Title className="title">
+                Have fun with Chuck Norris
+              </Card.Title>
 
-            <Button className="" onClick={SearchHandel}>
-              click me
+              <Button
+                className="mx-auto d-block"
+                onClick={SearchHandel}
+                variant="outline-secondary"
+              >
+                Give me a new quote
+              </Button>
+            </div>
+          ) : null}
+          <h2 className="quote">{quote.value}</h2>
+          {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
+
+          {showSearch ? (
+            <Button className="btn-share" onClick={createChuckPost}>
+              Share the quote
             </Button>
           </div>
         ) : null}

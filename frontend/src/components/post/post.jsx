@@ -5,6 +5,8 @@ import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
+import Weather from "../weather/Weather";
+import "../weather/weather.css";
 import Coin from "@components/cryptotracker/Coin";
 import ZenQuotes from "@components/zenQuotes/ZenQuotes";
 import ChuckNorris from "@components/chuckNorris/ChuckNorris";
