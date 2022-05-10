@@ -95,7 +95,11 @@ function Weather(props) {
                 <div className="icons-lg">
                   {data.list ? <Icons icons={data.list[0]} /> : null}
                 </div>
-                {data.city ? <h5>{data.city.name}</h5> : null}
+                {data.city ? (
+                  <h5 style={{ fontFamily: "Roboto", fontSize: "22px" }}>
+                    {data.city.name}
+                  </h5>
+                ) : null}
               </div>
               {data.list ? (
                 <h1>
@@ -166,7 +170,7 @@ Weather.propTypes = {
 };
 Weather.defaultProps = {
   showSearch: false,
-  weatherContent: {},
+  weatherContent: null,
 };
 
 export default Weather;

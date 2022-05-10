@@ -3,14 +3,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Card, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./chuckNorris.css";
-import PropTypes from "prop-types";
+
 import { AuthContext } from "../../context/AuthContext";
 
 function ChuckNorris(props) {
   const { chuckContent, showSearch } = props;
   const [quote, setQuote] = useState({});
   const { user } = useContext(AuthContext);
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   const SearchHandel = () => {
     const url = "https://api.chucknorris.io/jokes/random";
@@ -79,26 +78,9 @@ function ChuckNorris(props) {
             Share the quote
           </Button>
         ) : null}
-        <h2>{quote.value}</h2>
-        {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
-
-        {dataLoaded ? (
-          <Button className="" onClick={createChuckPost}>
-            Create a Post
-          </Button>
-        ) : null}
       </Card>
     </Container>
   );
 }
 
-ChuckNorris.propTypes = {
-  chuckContent: PropTypes.shape({}),
-  showSearch: PropTypes.bool,
-};
-
-ChuckNorris.defaultProps = {
-  chuckContent: {},
-  showSearch: false,
-};
 export default ChuckNorris;

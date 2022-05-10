@@ -19,16 +19,16 @@ function RightBar() {
       .post(`/users/many`, user.followings)
       .then((res) => {
         setFollowing(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
     axios
       .post(`/users/many`, user.followers)
       .then((res) => {
         setFollower(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
@@ -41,17 +41,21 @@ function RightBar() {
       });
     });
     setFriends(friendsList);
-    console.log("test", friendsList);
+    // console.log("test", friendsList);
   }, [follower, following]);
 
   const rows = [];
 
   for (let i = 0; i < friends.length; i++) {
     rows.push(
-      <ListGroupItem style={{width: '10rem'}}>
-        <FontAwesomeIcon icon={faUser} style={{ color: "purple" }}>
-        </FontAwesomeIcon>
-          <Link to={`profile/${friends[i]._id}`} style={{padding: '0 .5rem'}}>{friends[i].username}</Link>
+      <ListGroupItem style={{ width: "10rem" }}>
+        <FontAwesomeIcon
+          icon={faUser}
+          style={{ color: "purple" }}
+        ></FontAwesomeIcon>
+        <Link to={`profile/${friends[i]._id}`} style={{ padding: "0 .5rem" }}>
+          {friends[i].username}
+        </Link>
       </ListGroupItem>
     );
   }

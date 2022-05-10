@@ -1,13 +1,12 @@
 import axios from "@services/axios";
 import React, { useState, useEffect, useContext } from "react";
 import { Card, Container, Button } from "react-bootstrap";
-import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./zenQuotes.css";
 import { AuthContext } from "../../context/AuthContext";
 
 function ZenQuotes(props) {
-  const { zenContent } = props;
+  const { zenContent, showSearch } = props;
   const [quote, setQuote] = useState({});
   const [dataLoaded, setDataLoaded] = useState(false);
   const { user } = useContext(AuthContext);
@@ -58,7 +57,7 @@ function ZenQuotes(props) {
   return (
     <Container>
       <Card className="">
-        {dataLoaded ? (
+        {showSearch ? (
           <div>
             <Card.Title className="title">
               Get your daily Zen inspiration
@@ -77,7 +76,7 @@ function ZenQuotes(props) {
         <h2>{quote.text}</h2>
         <h5>{quote.author}</h5>
 
-        {dataLoaded ? (
+        {showSearch ? (
           <Button className="" onClick={createZenPost}>
             Share the quote
           </Button>
@@ -86,12 +85,5 @@ function ZenQuotes(props) {
     </Container>
   );
 }
-
-ZenQuotes.propTypes = {
-  zenContent: PropTypes.shape({}),
-};
-ZenQuotes.defaultProps = {
-  zenContent: {},
-};
 
 export default ZenQuotes;

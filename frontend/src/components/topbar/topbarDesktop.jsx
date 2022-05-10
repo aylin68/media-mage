@@ -106,7 +106,7 @@ function TopbarDesktop() {
           <FontAwesomeIcon icon={faEnvelope} />
           <FontAwesomeIcon icon={faPaperPlane} />
           {/* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */}
-          <Link to={`/users/${user._id}`}>
+          <Link to={`/profile/${user._id}`}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
           <FontAwesomeIcon icon={faBell} />

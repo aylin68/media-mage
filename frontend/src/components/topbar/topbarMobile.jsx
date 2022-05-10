@@ -102,7 +102,7 @@ function TopbarMobile() {
             </LinkContainer>
             {/* eslint no-underscore-dangle: [1, { "allow": ["_id"] }] */}
             <LinkContainer
-              to={`/users/${user._id}`}
+              to={`/profile/${user._id}`}
               style={{ textDecoration: "none", color: "white" }}
             >
               <Nav.Link>Profile</Nav.Link>

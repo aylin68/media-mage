@@ -59,8 +59,11 @@ function App() {
                 <Route path="/apis/vimeo" element={<Vimeo />} />
                 <Route path="/apis/cryptotracker" element={<CryptoTracker />} />
                 <Route path="/apis/weather" element={<Weather showSearch />} />
-                <Route path="/apis/chuck" element={<ChuckNorris />} />
-                <Route path="/apis/zen" element={<ZenQuotes />} />
+                <Route
+                  path="/apis/chuck"
+                  element={<ChuckNorris showSearch />}
+                />
+                <Route path="/apis/zen" element={<ZenQuotes showSearch />} />
                 <Route path="search" element={<SearchResults />} />
                 <Route path="profile/:id" element={<ProfilePage />} />
                 <Route path="search" element={<SearchResults />} />

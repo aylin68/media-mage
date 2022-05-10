@@ -93,8 +93,7 @@ function ProfilePage() {
             />
           )}
           <Link to={`/profile/${profileUser._id}`}>
-            {profileUser.username}
-            {`&apos;`}s profile page
+            {profileUser.username}'s profile page
           </Link>
           <div className="infoDiv">followers: {dataLoaded ? fr : null}</div>
           <div className="infoDiv">following: {dataLoaded ? fn : null}</div>
