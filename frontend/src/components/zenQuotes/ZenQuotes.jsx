@@ -59,10 +59,16 @@ const ZenQuotes = (props) => {
       <Card className="">
         {showSearch ? (
           <div>
-            <Card.Title>Hello Zen</Card.Title>
+            <Card.Title className="title">
+              Get your daily Zen inspiration
+            </Card.Title>
 
-            <Button className="" onClick={SearchHandel}>
-              click me
+            <Button
+              onClick={SearchHandel}
+              className="mx-auto d-block"
+              variant="outline-secondary"
+            >
+              Give me more inspiration
             </Button>
           </div>
         ) : null}
@@ -72,7 +78,7 @@ const ZenQuotes = (props) => {
 
         {showSearch ? (
           <Button className="" onClick={createZenPost}>
-            Create a Post
+            Share the quote
           </Button>
         ) : null}
       </Card>

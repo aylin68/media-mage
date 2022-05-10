@@ -55,22 +55,31 @@ const ChuckNorris = (props) => {
   return (
     <>
       <Container>
-        <Card className="">
+        <Card
+          style={{ justifyContent: "center", display: "flex" }}
+          className=""
+        >
           {showSearch ? (
             <div>
-              <Card.Title>Hello Chuck</Card.Title>
+              <Card.Title className="title">
+                Have fun with Chuck Norris
+              </Card.Title>
 
-              <Button className="" onClick={SearchHandel}>
-                click me
+              <Button
+                className="mx-auto d-block"
+                onClick={SearchHandel}
+                variant="outline-secondary"
+              >
+                Give me a new quote
               </Button>
             </div>
           ) : null}
-          <h2>{quote.value}</h2>
+          <h2 className="quote">{quote.value}</h2>
           {/* <h2>{dataLoaded ? quote.value : null}</h2> */}
 
           {showSearch ? (
-            <Button className="" onClick={createChuckPost}>
-              Create a Post
+            <Button className="btn-share" onClick={createChuckPost}>
+              Share the quote
             </Button>
           ) : null}
         </Card>
